@@ -55,8 +55,7 @@
   "status": "live",
   "href": "/granolaisdead",
   "sprite": "slime",
-  "repo": "https://github.com/tommy-muckstack/granolaisdead",
-  "app": "/granolaisdead/app"
+  "repo": "https://github.com/tommy-muckstack/granolaisdead"
  },
  {
   "name": "DocuSignIsDead",
