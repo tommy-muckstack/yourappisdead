@@ -153,6 +153,14 @@
     {
       "source": "/airtableisdead/:path*",
       "destination": "https://airtableisdead.vercel.app/airtableisdead/:path*"
+    },
+    {
+      "source": "/onepasswordisdead",
+      "destination": "https://onepasswordisdead.vercel.app/onepasswordisdead"
+    },
+    {
+      "source": "/onepasswordisdead/:path*",
+      "destination": "https://onepasswordisdead.vercel.app/onepasswordisdead/:path*"
     }
   ],
   "redirects": [

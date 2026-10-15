@@ -38,7 +38,7 @@
   "replaces": "Miro",
   "category": "Whiteboard",
   "blurb": "Infinite canvas with stickies, shapes, connectors and frames.",
-  "status": "soon",
+  "status": "live",
   "href": "/miroisdead",
   "sprite": "pumpkin",
   "repo": "https://github.com/tommy-muckstack/miroisdead"
@@ -49,10 +49,10 @@
   "replaces": "Loom",
   "category": "Screen recording",
   "blurb": "Record your screen in the browser and get a share link.",
-  "status": "soon",
+  "status": "live",
   "href": "/loomisdead",
   "sprite": "eyeball",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/loomisdead"
  },
  {
   "name": "LinktreeIsDead",
@@ -60,10 +60,10 @@
   "replaces": "Linktree",
   "category": "Link in bio",
   "blurb": "One themed link page with click counts. Your bio, minus the toll.",
-  "status": "soon",
+  "status": "live",
   "href": "/linktreeisdead",
   "sprite": "spider",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/linktreeisdead"
  },
  {
   "name": "NotionIsDead",
@@ -71,10 +71,10 @@
   "replaces": "Notion",
   "category": "Docs & wikis",
   "blurb": "Pages, blocks and a sidebar for your docs and wiki.",
-  "status": "soon",
+  "status": "live",
   "href": "/notionisdead",
   "sprite": "cat",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/notionisdead"
  },
  {
   "name": "TrelloIsDead",
@@ -82,10 +82,10 @@
   "replaces": "Trello",
   "category": "Kanban boards",
   "blurb": "Drag-and-drop kanban boards, lists and cards.",
-  "status": "soon",
+  "status": "live",
   "href": "/trelloisdead",
   "sprite": "zombie",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/trelloisdead"
  },
  {
   "name": "BitlyIsDead",
@@ -93,10 +93,10 @@
   "replaces": "Bitly",
   "category": "Short links",
   "blurb": "Short links with click stats, without the $35 a month.",
-  "status": "soon",
+  "status": "live",
   "href": "/bitlyisdead",
   "sprite": "slime",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/bitlyisdead"
  },
  {
   "name": "1PasswordIsDead",
@@ -104,10 +104,10 @@
   "replaces": "1Password",
   "category": "Passwords",
   "blurb": "Encrypted-in-browser password vault. Free, and auditable.",
-  "status": "soon",
+  "status": "live",
   "href": "/onepasswordisdead",
   "sprite": "vampire",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/onepasswordisdead"
  },
  {
   "name": "OtterIsDead",
@@ -115,10 +115,10 @@
   "replaces": "Otter.ai",
   "category": "Meeting notes",
   "blurb": "Live meeting transcripts and summaries.",
-  "status": "soon",
+  "status": "live",
   "href": "/otterisdead",
   "sprite": "jelly",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/otterisdead"
  },
  {
   "name": "LinearIsDead",
@@ -126,10 +126,10 @@
   "replaces": "Linear",
   "category": "Issue tracking",
   "blurb": "Keyboard-first issues, cycles and a command palette.",
-  "status": "soon",
+  "status": "live",
   "href": "/linearisdead",
   "sprite": "imp",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/linearisdead"
  },
  {
   "name": "WeTransferIsDead",
@@ -137,10 +137,10 @@
   "replaces": "WeTransfer",
   "category": "File transfer",
   "blurb": "Send big files with no signup and no limits.",
-  "status": "soon",
+  "status": "live",
   "href": "/wetransferisdead",
   "sprite": "ghost2",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/wetransferisdead"
  },
  {
   "name": "AirtableIsDead",
@@ -148,10 +148,10 @@
   "replaces": "Airtable",
   "category": "Databases",
   "blurb": "A spreadsheet-database with grid and kanban views.",
-  "status": "soon",
+  "status": "live",
   "href": "/airtableisdead",
   "sprite": "witch",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/airtableisdead"
  },
  {
   "name": "CanvaIsDead",
@@ -159,7 +159,7 @@
   "replaces": "Canva",
   "category": "Design",
   "blurb": "Drag-and-drop design editor with templates, text, shapes and export.",
-  "status": "soon",
+  "status": "live",
   "href": "/canvaisdead",
   "sprite": "zombie",
   "repo": "https://github.com/tommy-muckstack/canvaisdead"
@@ -170,7 +170,7 @@
   "replaces": "Typeform",
   "category": "Forms & surveys",
   "blurb": "One-question-at-a-time forms with logic and responses.",
-  "status": "soon",
+  "status": "live",
   "href": "/typeformisdead",
   "sprite": "mummy",
   "repo": "https://github.com/tommy-muckstack/typeformisdead"
@@ -181,7 +181,7 @@
   "replaces": "DocuSign",
   "category": "E-signature",
   "blurb": "Upload a PDF, place fields and collect signatures.",
-  "status": "soon",
+  "status": "live",
   "href": "/docusignisdead",
   "sprite": "vampire",
   "repo": "https://github.com/tommy-muckstack/docusignisdead"
@@ -192,7 +192,7 @@
   "replaces": "Grammarly",
   "category": "Writing",
   "blurb": "Spelling, grammar and clarity checks as you write.",
-  "status": "soon",
+  "status": "live",
   "href": "/grammarlyisdead",
   "sprite": "frank",
   "repo": "https://github.com/tommy-muckstack/grammarlyisdead"
@@ -203,7 +203,7 @@
   "replaces": "Granola",
   "category": "Meeting notes",
   "blurb": "Turn rough notes and transcripts into clean meeting notes.",
-  "status": "soon",
+  "status": "live",
   "href": "/granolaisdead",
   "sprite": "slime",
   "repo": "https://github.com/tommy-muckstack/granolaisdead"
@@ -214,7 +214,7 @@
   "replaces": "CleanShot X",
   "category": "Screenshots",
   "blurb": "Capture, annotate, beautify and share screenshots.",
-  "status": "soon",
+  "status": "live",
   "href": "/cleanshotxisdead",
   "sprite": "crow",
   "repo": "https://github.com/tommy-muckstack/cleanshotxisdead"
