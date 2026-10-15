@@ -30,3 +30,6 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
   q.addEventListener('keydown', e => { if (e.key === 'Enter') { const f = tiles.find(x => !x.hidden); f && f.querySelector('a').focus(); } });
   filter();
 });
+(() => { const q = document.getElementById('q'), mq = matchMedia('(max-width: 600px)');
+  const set = () => { q.placeholder = mq.matches ? 'KILL WHICH APP?' : 'WHICH APP DO YOU WANT DEAD?'; };
+  set(); mq.addEventListener('change', set); })();

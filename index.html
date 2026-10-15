@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YourAppIsDead — SaaS is dead. Free, open-source replacements.</title>
 <meta name="description" content="Free, open-source replacements for the SaaS you pay for every month. Calendly, Superhuman, Wispr Flow and more.">
+<!--og--><meta property="og:title" content="SaaS is dead | YourAppIsDead"><meta property="og:description" content="Free, open-source replacements for the SaaS you rent every month."><meta property="og:image" content="https://yourappisdead.com/api/og?score=0&amp;name=YAD"><meta name="twitter:card" content="summary_large_image"><!--/og-->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/PressStart2P.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/arcade.css">
@@ -17,6 +18,7 @@
   <span class="credits">CREDITS 00 · FREE PLAY</span>
 </header>
 <main>
+  <div id="banner" class="banner" hidden role="status"></div>
   <section class="hero">
     <svg class="moon" viewBox="0 0 16 16" aria-hidden="true" shape-rendering="crispEdges"><path fill="#f5f0c8" d="M5 1h6v1h2v2h1v2h1v4h-1v2h-1v2h-2v1H5v-1H3v-2H2v-2H1V6h1V4h1V2h2z"/><path fill="#d8d09a" d="M5 4h2v2H5zM10 8h2v2h-2zM6 10h1v1H6z"/></svg>
     <p class="insert flicker">INSERT COIN TO CANCEL SUBSCRIPTION</p>
@@ -33,6 +35,24 @@
     <ul id="grid" class="grid"></ul>
     <p id="empty" class="empty" hidden>NO SOULS FOUND. <a href="https://github.com/tommy-muckstack">SUMMON ONE ON GITHUB</a></p>
   </section>
+  <section id="arcade" class="arcade" aria-labelledby="arcade-h">
+    <h2 id="arcade-h" class="arcade-h">SAAS SLAYER</h2>
+    <p class="arcade-sub">Move with ← → (or A/D), jump with ↑ or Space. On mobile: tap left or right half to move, swipe up to jump. Stomp the subscriptions!</p>
+    <div class="cab">
+      <canvas id="game" width="640" height="320" aria-label="SaaS Slayer arcade game" tabindex="0"></canvas>
+      <div class="cab-side">
+        <h3>HIGH SCORES</h3>
+        <ol id="board" class="board"></ol>
+        <p class="fine2">Saved on this device.</p>
+      </div>
+    </div>
+    <form id="initials" class="initials" hidden>
+      <label for="ini">NEW HIGH SCORE! ENTER INITIALS</label>
+      <input id="ini" maxlength="3" pattern="[A-Za-z]{1,3}" autocomplete="off" required>
+      <button type="submit">SAVE</button>
+    </form>
+    <p class="game-actions"><button id="share" type="button" hidden>SHARE ON X</button></p>
+  </section>
   <svg class="ground" viewBox="0 0 64 6" preserveAspectRatio="none" aria-hidden="true" shape-rendering="crispEdges"><path fill="#0f2a14" d="M0 2h6v-1h5v1h9v-1h7v1h12v-1h6v1h19v4H0z"/></svg>
 </main>
 <footer class="foot">
@@ -41,5 +61,6 @@
 </footer>
 <noscript><style>.grid{display:none}</style><p class="empty">Apps: <a href="/calendlyisdead">CalendlyIsDead</a> · <a href="/superhumanisdead">SuperhumanIsDead</a> · <a href="/wisprflowisdead">WisprFlowIsDead</a></p></noscript>
 <script src="/app.js" defer></script>
+<script src="/game.js" defer></script>
 </body>
 </html>
