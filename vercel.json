@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/calendlyisdead", "destination": "https://calendlyisdead-muckstack-projects.vercel.app/calendlyisdead" },
+    { "source": "/calendlyisdead/:path*", "destination": "https://calendlyisdead-muckstack-projects.vercel.app/calendlyisdead/:path*" }
+  ],
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.yourappisdead.com" }], "destination": "https://yourappisdead.com/:path*", "permanent": true }
+  ]
+}
