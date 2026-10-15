@@ -42,5 +42,115 @@
   "href": "/miroisdead",
   "sprite": "pumpkin",
   "repo": null
+ },
+ {
+  "name": "LoomIsDead",
+  "slug": "loomisdead",
+  "replaces": "Loom",
+  "category": "Screen recording",
+  "blurb": "Record your screen in the browser and get a share link.",
+  "status": "soon",
+  "href": "/loomisdead",
+  "sprite": "ghost",
+  "repo": null
+ },
+ {
+  "name": "LinktreeIsDead",
+  "slug": "linktreeisdead",
+  "replaces": "Linktree",
+  "category": "Link in bio",
+  "blurb": "One themed link page with click counts. Your bio, minus the toll.",
+  "status": "soon",
+  "href": "/linktreeisdead",
+  "sprite": "bat",
+  "repo": null
+ },
+ {
+  "name": "NotionIsDead",
+  "slug": "notionisdead",
+  "replaces": "Notion",
+  "category": "Docs & wikis",
+  "blurb": "Pages, blocks and a sidebar for your docs and wiki.",
+  "status": "soon",
+  "href": "/notionisdead",
+  "sprite": "pumpkin",
+  "repo": null
+ },
+ {
+  "name": "TrelloIsDead",
+  "slug": "trelloisdead",
+  "replaces": "Trello",
+  "category": "Kanban boards",
+  "blurb": "Drag-and-drop kanban boards, lists and cards.",
+  "status": "soon",
+  "href": "/trelloisdead",
+  "sprite": "skull",
+  "repo": null
+ },
+ {
+  "name": "BitlyIsDead",
+  "slug": "bitlyisdead",
+  "replaces": "Bitly",
+  "category": "Short links",
+  "blurb": "Short links with click stats, without the $35 a month.",
+  "status": "soon",
+  "href": "/bitlyisdead",
+  "sprite": "ghost",
+  "repo": null
+ },
+ {
+  "name": "1PasswordIsDead",
+  "slug": "onepasswordisdead",
+  "replaces": "1Password",
+  "category": "Passwords",
+  "blurb": "Encrypted-in-browser password vault. Free, and auditable.",
+  "status": "soon",
+  "href": "/onepasswordisdead",
+  "sprite": "bat",
+  "repo": null
+ },
+ {
+  "name": "OtterIsDead",
+  "slug": "otterisdead",
+  "replaces": "Otter.ai",
+  "category": "Meeting notes",
+  "blurb": "Live meeting transcripts and summaries.",
+  "status": "soon",
+  "href": "/otterisdead",
+  "sprite": "pumpkin",
+  "repo": null
+ },
+ {
+  "name": "LinearIsDead",
+  "slug": "linearisdead",
+  "replaces": "Linear",
+  "category": "Issue tracking",
+  "blurb": "Keyboard-first issues, cycles and a command palette.",
+  "status": "soon",
+  "href": "/linearisdead",
+  "sprite": "skull",
+  "repo": null
+ },
+ {
+  "name": "WeTransferIsDead",
+  "slug": "wetransferisdead",
+  "replaces": "WeTransfer",
+  "category": "File transfer",
+  "blurb": "Send big files with no signup and no limits.",
+  "status": "soon",
+  "href": "/wetransferisdead",
+  "sprite": "ghost",
+  "repo": null
+ },
+ {
+  "name": "AirtableIsDead",
+  "slug": "airtableisdead",
+  "replaces": "Airtable",
+  "category": "Databases",
+  "blurb": "A spreadsheet-database with grid and kanban views.",
+  "status": "soon",
+  "href": "/airtableisdead",
+  "sprite": "bat",
+  "repo": null
  }
 ]
