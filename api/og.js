@@ -117,7 +117,7 @@ export default async function handler(req) {
     const el2 = d({ width: 1200, height: 630, position: 'relative', fontFamily: 'P', color: '#f5f0c8' }, [
       { type: 'img', props: { src: bg2, width: 1200, height: 630, style: { position: 'absolute', left: 0, top: 0 } } },
       d({ position: 'absolute', left: 0, top: 70, width: 1200, justifyContent: 'center', fontSize: 64, color: '#f5f0c8', textShadow: '6px 6px 0 #2b0a3d' }, [d({}, 'YOURAPP'), d({ color: '#ff2a3d' }, 'IS'), d({}, 'DEAD')]),
-      d({ position: 'absolute', left: 0, top: 170, width: 1200, justifyContent: 'center', fontSize: 24, color: '#39ff14', textShadow: '0 0 12px #39ff14' }, 'SAAS IS DEAD'),
+      d({ position: 'absolute', left: 0, top: 170, width: 1200, justifyContent: 'center', fontSize: 24, color: '#39ff14', textShadow: '3px 3px 0 #0b3d05' }, 'SAAS IS DEAD'),
       d({ position: 'absolute', left: 0, top: 222, width: 1200, justifyContent: 'center', fontSize: 17, color: '#cfc9a8' }, 'FREE, OPEN-SOURCE REPLACEMENTS FOR THE APPS YOU RENT'),
       ...stones,
       d({ position: 'absolute', left: 0, top: 566, width: 1200, justifyContent: 'center', fontSize: 18, color: '#39ff14' }, 'YOURAPPISDEAD.COM'),
