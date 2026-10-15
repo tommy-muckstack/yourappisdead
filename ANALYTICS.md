@@ -96,4 +96,6 @@ The native Mac app sends the same super properties plus `app_version`, `app_buil
 | `app_recording_saved`          | `format` (`mp4`, `gif`) |
 | `app_editor_opened`            | |
 | `app_editor_saved`             | `annotations`, `backdrop`, `cutout`, `corner_radius` |
+| `app_editor_text_copied`       | `chars` (count only) |
+| `app_editor_background_removed`| |
 | `app_shared`                   | `channel` (`cloud`) |
