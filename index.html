@@ -9,7 +9,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/SpaceGrotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/PressStart2P.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/site.css?v=7">
+<link rel="stylesheet" href="/site.css?v=8">
 </head>
 <body>
 <a class="skip" href="#apps">Skip to apps</a>
@@ -30,9 +30,6 @@
       <input id="q" type="search" placeholder="Search to see if your app is dead" autocomplete="off" aria-controls="grid" aria-describedby="count">
     </form>
     <p id="count" class="count" aria-live="polite"></p>
-    <div id="chips" class="chips" role="group" aria-label="Filter by status">
-      <button type="button" data-f="all" aria-pressed="true">ALL</button><button type="button" data-f="live" aria-pressed="false">LIVE</button><button type="button" data-f="soon" aria-pressed="false">COMING SOON</button><button type="button" data-f="community" aria-pressed="false">COMMUNITY</button>
-    </div>
   </section>
   <section id="apps" class="graveyard" aria-label="Apps">
     <ul id="grid" class="grid"></ul>
@@ -86,7 +83,7 @@
         <div class="cab-side">
           <h3>HIGH SCORES</h3>
           <ol id="board" class="board"></ol>
-          <p class="fine2">Saved on this device.</p>
+          <p class="fine2">Top 10 worldwide.</p>
         </div>
       </div>
       <form id="initials" class="initials" hidden>
@@ -94,7 +91,7 @@
         <input id="ini" maxlength="3" pattern="[A-Za-z]{1,3}" autocomplete="off" required>
         <button type="submit">SAVE</button>
       </form>
-      <p class="game-actions"><button id="share" class="x" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Share my score on X</button> <button id="shareli" class="li" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</button> <button id="savepng" type="button" hidden>Save image</button></p>
+      <p class="game-actions"><button id="share" class="x" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Share my score on X</button> <button id="shareli" class="li" type="button" hidden aria-label="Share my score on LinkedIn" title="Share on LinkedIn"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></button> <button id="sharefb" class="fb" type="button" hidden aria-label="Share my score on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></button> <button id="savepng" type="button" hidden>Save image</button></p>
     </div>
     <div id="cab-more" class="cabwrap" hidden>
       <div class="cab">
@@ -109,9 +106,19 @@
             <button type="button" id="pause2" aria-label="Pause or resume">PAUSE</button>
           </div>
         </div>
+        <div class="cab-side">
+          <h3>HIGH SCORES</h3>
+          <ol id="board2" class="board"></ol>
+          <p class="fine2">Top 10 worldwide.</p>
+        </div>
       </div>
-      <p class="game-actions"><button id="share2" class="x" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Share my score on X</button> <button id="share2li" class="li" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</button></p>
-      <p class="fine2">Best scores are saved on this device.</p>
+      <form id="initials2" class="initials" hidden>
+        <label for="ini2">TOP 10! ENTER INITIALS</label>
+        <input id="ini2" maxlength="3" pattern="[A-Za-z]{1,3}" autocomplete="off" required>
+        <button type="submit">SAVE</button>
+      </form>
+      <p class="game-actions"><button id="share2" class="x" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Share my score on X</button> <button id="share2li" class="li" type="button" hidden aria-label="Share my score on LinkedIn" title="Share on LinkedIn"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></button> <button id="share2fb" class="fb" type="button" hidden aria-label="Share my score on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></button></p>
+      <p class="fine2">Your personal best is saved on this device.</p>
     </div>
   </section>
   <svg class="ground" viewBox="0 0 64 6" preserveAspectRatio="none" aria-hidden="true" shape-rendering="crispEdges"><path fill="#0f2a14" d="M0 2h6v-1h5v1h9v-1h7v1h12v-1h6v1h19v4H0z"/></svg>
@@ -123,8 +130,8 @@
 <noscript><style>.grid{display:none}</style><p class="empty">Apps: <a href="/calendlyisdead">CalendlyIsDead</a> · <a href="/superhumanisdead">SuperhumanIsDead</a> · <a href="/wisprflowisdead">WisprFlowIsDead</a> · <a href="/miroisdead">MiroIsDead</a> · <a href="/loomisdead">LoomIsDead</a> · <a href="/linktreeisdead">LinktreeIsDead</a> · <a href="/notionisdead">NotionIsDead</a> · <a href="/trelloisdead">TrelloIsDead</a> · <a href="/bitlyisdead">BitlyIsDead</a> · <a href="/onepasswordisdead">1PasswordIsDead</a> · <a href="/otterisdead">OtterIsDead</a> · <a href="/linearisdead">LinearIsDead</a> · <a href="/wetransferisdead">WeTransferIsDead</a> · <a href="/airtableisdead">AirtableIsDead</a> · <a href="/canvaisdead">CanvaIsDead</a> · <a href="/typeformisdead">TypeformIsDead</a> · <a href="/docusignisdead">DocuSignIsDead</a> · <a href="/grammarlyisdead">GrammarlyIsDead</a> · <a href="/granolaisdead">GranolaIsDead</a> · <a href="/cleanshotxisdead">CleanShotXIsDead</a></p></noscript>
 <script src="/analytics.js?v=1" defer></script>
 <script src="/sprites.js" defer></script>
-<script src="/app.js?v=8" defer></script>
-<script src="/game.js?v=3" defer></script>
-<script src="/games.js?v=5" defer></script>
+<script src="/app.js?v=10" defer></script>
+<script src="/game.js?v=5" defer></script>
+<script src="/games.js?v=7" defer></script>
 </body>
 </html>

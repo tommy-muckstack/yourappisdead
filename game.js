@@ -17,14 +17,17 @@
   } else beat.hidden = true;
 
   const KEY = 'yad.scores.v1', SEEN = 'yad.seen.v1', boardEl = $('board'), form = $('initials'),
-        ini = $('ini'), shareBtn = $('share'), shareLi = $('shareli'), saveBtn = $('savepng');
+        ini = $('ini'), shareBtn = $('share'), shareLi = $('shareli'), shareFb = $('sharefb'), saveBtn = $('savepng');
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } };
   const save = l => { try { localStorage.setItem(KEY, JSON.stringify(l.slice(0, 10))); } catch {} };
   let seen = false; try { seen = !!localStorage.getItem(SEEN); } catch {}
   const markSeen = () => { seen = true; try { localStorage.setItem(SEEN, '1'); } catch {} };
-  const render = () => { const l = load(); boardEl.innerHTML = (l.length ? l : [{n:'YAD',s:500},{n:'RIP',s:250},{n:'BOO',s:100}])
+  let gtop = null; // global top 10 from /api/scores, null until loaded (or if unavailable)
+  const render = () => { const l = gtop || load(); boardEl.innerHTML = (l.length ? l : [{n:'YAD',s:500},{n:'RIP',s:250},{n:'BOO',s:100}])
       .map(e => `<li>${e.n.replace(/[^A-Z]/g,'')} ${String(e.s|0).padStart(6,'0')}</li>`).join(''); };
-  render();
+  const fetchTop = () => fetch('/api/scores?game=slayer').then(r => r.ok ? r.json() : null).then(j => { if (j && j.top) { gtop = j.top; render(); } }).catch(() => {});
+  const qualifies = s => { const l = gtop || load(); return s > 0 && (l.length < 10 || s > l[l.length - 1].s); };
+  render(); fetchTop();
 
   // Fake, original SaaS names + colors. Never real brands.
   const FAKES = [['SYNERGIX','#4aa3ff'],['DASHLY','#ff5fa2'],['TIKTRAK','#ffd23f'],['SEATSY','#7cf'],['PIPELYNK','#9b7bff'],
@@ -47,7 +50,7 @@
     cx.fillStyle = color; cx.textAlign = align; cx.fillText(s, x, y); };
 
   const reset = () => { Object.assign(S, { st: 'play', frames: 0, score: 0, slain: 0, enemies: [], blocks: [], parts: [], spawn: 60, bspawn: 0, bump: 0, msg: '', msgT: 0, firstBlock: true, firstRun: !seen });
-    Object.assign(hero, { x: 80, y: G, vx: 0, vy: 0 }); form.hidden = true; shareBtn.hidden = true; shareLi.hidden = true; saveBtn.hidden = true; S.name = null; pauseBtn.textContent = 'PAUSE';
+    Object.assign(hero, { x: 80, y: G, vx: 0, vy: 0 }); form.hidden = true; shareBtn.hidden = true; shareLi.hidden = true; shareFb.hidden = true; saveBtn.hidden = true; S.name = null; pauseBtn.textContent = 'PAUSE';
     S.startedAt = Date.now(); track('arcade_game_started', { game: 'slayer', input: COARSE ? 'touch' : 'keyboard' }); };
   const pauseBtn = $('pause');
   const togglePause = () => { if (S.st === 'play') { S.st = 'pause'; pauseBtn.textContent = 'RESUME'; draw(); } else if (S.st === 'pause') { S.st = 'play'; pauseBtn.textContent = 'PAUSE'; kick(); } };
@@ -93,13 +96,15 @@
     const l = load(), dur = S.frames / 60;
     // sanity: score is bounded by slain count and play time (blockers never add score)
     const ok = S.score <= S.slain * 100 + dur * 12 + 10;
-    if (ok && S.score > 0 && (l.length < 10 || S.score > l[l.length - 1].s)) { form.hidden = false; ini.value = ''; ini.focus({ preventScroll: true }); }
-    shareBtn.hidden = shareLi.hidden = saveBtn.hidden = !(ok && S.score > 0);
+    if (ok && qualifies(S.score)) { form.hidden = false; ini.value = ''; ini.focus({ preventScroll: true }); }
+    shareBtn.hidden = shareLi.hidden = shareFb.hidden = saveBtn.hidden = !(ok && S.score > 0);
     track('arcade_game_over', { game: 'slayer', score: S.score, duration_s: Math.round(dur), is_new_best: ok && S.score > (l[0]?.s || 0) });
   }
   form.addEventListener('submit', e => { e.preventDefault(); const n = clean(ini.value); if (!n) return;
-    const l = load(); l.push({ n, s: S.score, d: Date.now() }); l.sort((a, b) => b.s - a.s); save(l); render(); form.hidden = true; S.name = n; cv.focus();
-    track('arcade_score_saved', { game: 'slayer', score: S.score }); });
+    const l = load(); l.push({ n, s: S.score, d: Date.now() }); l.sort((a, b) => b.s - a.s); save(l); form.hidden = true; S.name = n; cv.focus();
+    track('arcade_score_saved', { game: 'slayer', score: S.score });
+    fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ game: 'slayer', name: n, score: S.score, slain: S.slain, duration: Math.round(S.frames / 60) }) })
+      .then(r => r.ok ? r.json() : null).then(j => { if (j && j.top) gtop = j.top; render(); }).catch(render); });
   shareBtn.addEventListener('click', () => {
     const n = S.name || (load()[0]?.n) || 'YAD';
     const url = `https://yourappisdead.com/?score=${S.score}&name=${n}&slain=${S.slain}#game`;
@@ -112,6 +117,12 @@
     const url = `https://yourappisdead.com/?score=${S.score}&name=${n}&slain=${S.slain}#game`;
     track('arcade_score_shared', { game: 'slayer', score: S.score, channel: 'linkedin' });
     open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank', 'noopener');
+  });
+  shareFb.addEventListener('click', () => {
+    const n = S.name || (load()[0]?.n) || 'YAD';
+    const url = `https://yourappisdead.com/?score=${S.score}&name=${n}&slain=${S.slain}#game`;
+    track('arcade_score_shared', { game: 'slayer', score: S.score, channel: 'facebook' });
+    open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener');
   });
   saveBtn.addEventListener('click', async () => {
     const old = saveBtn.textContent; saveBtn.textContent = 'RENDERING…'; saveBtn.disabled = true;

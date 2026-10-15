@@ -14,14 +14,15 @@ const hash = s => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^
 const epitaph = a => { const id = hash(a.slug) % EPITAPHS.length; let t = EPITAPHS[id](a.replaces, a.name); if (a.status !== 'live') t += ' Coming soon.'; return { id, text: t }; };
 const appUrl = a => `https://yourappisdead.com${a.href}`;
 const xUrl = a => `https://x.com/intent/post?text=${encodeURIComponent(epitaph(a).text)}&url=${encodeURIComponent(appUrl(a))}`;
+const fbUrl = a => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(appUrl(a))}`;
+const FB = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>';
 const liUrl = a => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(appUrl(a))}`;
-const LI = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>';
+const LI = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>';
 const GH = '<svg class="gh-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
 const STATUS = { live: ['OPEN APP →', 'LIVE'], soon: ['COMING SOON', 'COMING SOON'], community: ['COMMUNITY-BUILT', 'COMMUNITY'] };
 fetch('/apps.json').then(r => r.json()).then(apps => {
   const grid = document.getElementById('grid'), q = document.getElementById('q'),
-        count = document.getElementById('count'), empty = document.getElementById('empty'), chips = [...document.querySelectorAll('#chips [data-f]')];
-  let sf = 'all';
+        count = document.getElementById('count'), empty = document.getElementById('empty');
   const sprites = TOMB.assign(apps);
   grid.innerHTML = apps.map((a, i) => `
     <li class="tile ${esc(a.status)}" style="--d:${(i * 0.37 % 2.4).toFixed(2)}s" data-status="${esc(a.status)}" data-search="${esc((a.name+' '+a.replaces+' '+a.category+' '+a.blurb+' '+(STATUS[a.status]||[,''])[1]).toLowerCase())}">
@@ -38,27 +39,27 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
         ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH} Open Source on GitHub</a>` : `<span class="repo none">${GH} Repo coming soon</span>`}
         <div class="shares">
           <a class="share x" href="${esc(xUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on X">${X} Share on X</a>
-          <a class="share li" href="${esc(liUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on LinkedIn">${LI} LinkedIn</a>
+          <a class="share li" href="${esc(liUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on LinkedIn" title="Share on LinkedIn">${LI}</a>
+          <a class="share fb" href="${esc(fbUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on Facebook" title="Share on Facebook">${FB}</a>
         </div>
       </div>
     </li>`).join('');
   const tiles = [...grid.children];
   const filter = () => {
     const t = q.value.trim().toLowerCase(); let n = 0;
-    tiles.forEach(el => { const show = (!t || el.dataset.search.includes(t)) && (sf === 'all' || el.dataset.status === sf); el.hidden = !show; n += show; });
+    tiles.forEach(el => { const show = !t || el.dataset.search.includes(t); el.hidden = !show; n += show; });
     empty.hidden = n > 0;
-    count.textContent = (t || sf !== 'all') ? `${n} ${n === 1 ? 'SOUL' : 'SOULS'} FOUND` : `${apps.length} APPS IN THE GRAVEYARD`;
+    count.textContent = t ? `${n} ${n === 1 ? 'SOUL' : 'SOULS'} FOUND` : `${apps.length} APPS IN THE GRAVEYARD`;
   };
   const shown = () => tiles.filter(x => !x.hidden).length;
   let qt = 0;
   q.addEventListener('input', () => { filter(); clearTimeout(qt); const len = q.value.trim().length; if (len) qt = setTimeout(() => track('hub_search_performed', { query_length: len, results_count: shown() }), 700); });
-  chips.forEach(c => c.addEventListener('click', () => { sf = c.dataset.f; chips.forEach(x => x.setAttribute('aria-pressed', x === c)); filter(); track('hub_filter_changed', { filter: sf, results_count: shown() }); }));
   grid.addEventListener('click', e => {
     const a = e.target.closest('a'); if (!a) return; const li = a.closest('.tile'); if (!li) return;
     const app = apps[tiles.indexOf(li)]; if (!app) return;
     if (a.classList.contains('main')) track('hub_app_opened', { app_slug: app.slug, app_status: app.status, position: tiles.indexOf(li) });
     else if (a.classList.contains('repo')) track('hub_app_repo_clicked', { app_slug: app.slug });
-    else if (a.classList.contains('share')) track('hub_app_shared', { app_slug: app.slug, channel: a.classList.contains('li') ? 'linkedin' : 'x', message_id: epitaph(app).id });
+    else if (a.classList.contains('share')) track('hub_app_shared', { app_slug: app.slug, channel: a.classList.contains('li') ? 'linkedin' : a.classList.contains('fb') ? 'facebook' : 'x', message_id: epitaph(app).id });
   });
   q.addEventListener('keydown', e => { if (e.key === 'Enter') { const f = tiles.find(x => !x.hidden); f && f.querySelector('a.main').focus(); } });
   filter();

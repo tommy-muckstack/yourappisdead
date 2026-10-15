@@ -112,10 +112,19 @@
   const GAMES = { breaker, invaders, bird, snake };
 
   /* ---------- shared shell ---------- */
-  const share2 = $('share2'), share2li = $('share2li');
-  function over() { st = 'over'; const best = bests[cur.id] | 0; saveBest(cur.id, score); share2.hidden = share2li.hidden = !(score > 0);
+  const share2 = $('share2'), share2li = $('share2li'), share2fb = $('share2fb');
+  const board2 = $('board2'), form2 = $('initials2'), ini2 = $('ini2'); const tops = {};
+  const renderBoard = () => { const l = tops[cur.id] || []; board2.innerHTML = (l.length ? l : [{ n: '---', s: 0 }]).map(e => `<li>${e.n.replace(/[^A-Z-]/g, '')} ${String(e.s | 0).padStart(6, '0')}</li>`).join(''); };
+  const fetchTop = id => fetch(`/api/scores?game=${id}`).then(r => r.ok ? r.json() : null).then(j => { if (j && j.top) { tops[id] = j.top; if (cur.id === id) renderBoard(); } }).catch(() => {});
+  const qualifies = s => { const l = tops[cur.id]; return !!l && s > 0 && (l.length < 10 || s > l[l.length - 1].s); };
+  form2.addEventListener('submit', e => { e.preventDefault(); const n = ini2.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3); if (!n) return; form2.hidden = true; cv.focus({ preventScroll: true });
+    track('arcade_score_saved', { game: cur.id, score });
+    fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ game: cur.id, name: n, score, duration: Math.round((Date.now() - startedAt) / 1000) }) })
+      .then(r => r.ok ? r.json() : null).then(j => { if (j && j.top) { tops[cur.id] = j.top; renderBoard(); } }).catch(() => {}); });
+  function over() { st = 'over'; const best = bests[cur.id] | 0; saveBest(cur.id, score); share2.hidden = share2li.hidden = share2fb.hidden = !(score > 0);
+    if (qualifies(score)) { form2.hidden = false; ini2.value = ''; ini2.focus({ preventScroll: true }); }
     track('arcade_game_over', { game: cur.id, score, duration_s: Math.round((Date.now() - startedAt) / 1000), is_new_best: score > best }); }
-  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = share2li.hidden = true; startedAt = Date.now(); track('arcade_game_started', { game: cur.id, input: lastInput }); }
+  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = share2li.hidden = share2fb.hidden = true; form2.hidden = true; startedAt = Date.now(); track('arcade_game_started', { game: cur.id, input: lastInput }); }
   share2.addEventListener('click', () => {
     const url = `https://yourappisdead.com/#${cur.id}`;
     const text = cur.share(score) + ' Can you beat it?';
@@ -124,6 +133,9 @@
   share2li.addEventListener('click', () => {
     track('arcade_score_shared', { game: cur.id, score, channel: 'linkedin' });
     open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://yourappisdead.com/#' + cur.id)}`, '_blank', 'noopener'); });
+  share2fb.addEventListener('click', () => {
+    track('arcade_score_shared', { game: cur.id, score, channel: 'facebook' });
+    open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://yourappisdead.com/#' + cur.id)}`, '_blank', 'noopener'); });
   const pauseBtn = $('pause2');
   const togglePause = () => { if (st === 'play') { st = 'pause'; pauseBtn.textContent = 'RESUME'; draw(); } else if (st === 'pause') { st = 'play'; pauseBtn.textContent = 'PAUSE'; kick(); } };
   const action = k => { if (st === 'pause') return togglePause(); if (st !== 'play') { if (k === 'action' || k === 'up') reset(); return; } cur.press(k); };
@@ -157,7 +169,7 @@
     if (id === 'slayer') { cabM.hidden = true; cabS.hidden = false; how.innerHTML = SLAYER_HOW; if (st === 'play') togglePause(); return; }
     cur = GAMES[id] || breaker; st = 'title'; score = 0; cur.reset(); pauseBtn.textContent = 'PAUSE';
     how.textContent = cur.how[0] + '. ' + cur.how[1].replace(/\s+·\s+/g, '. ').replace(/ {2,}/g, ', ') + '. P pauses.';
-    cabS.hidden = true; cabM.hidden = false; share2.hidden = share2li.hidden = true; draw(); };
+    cabS.hidden = true; cabM.hidden = false; share2.hidden = share2li.hidden = share2fb.hidden = true; form2.hidden = true; renderBoard(); if (!tops[cur.id]) fetchTop(cur.id); draw(); };
   tabs.forEach(b => b.addEventListener('click', () => { track('arcade_game_selected', { game: b.dataset.g }); select(b.dataset.g); (b.dataset.g === 'slayer' ? cv1 : cv).focus({ preventScroll: true }); }));
   function draw() { px(0, 0, W, H, BG); stars(t); cur.draw();
     txt('SCORE ' + String(score).padStart(5, '0'), 14, 8 + 16 * T, 10, GRN, 'left', 260); txt('BEST ' + String(bests[cur.id] | 0).padStart(5, '0'), 14, 12 + 32 * T, 10, PUR, 'left', 260);
