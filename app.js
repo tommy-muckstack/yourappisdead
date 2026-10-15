@@ -1,5 +1,5 @@
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const STATUS = { live: ['▶ OPEN APP', 'LIVE'], soon: ['… COMING SOON', 'COMING SOON'], community: ['★ COMMUNITY-BUILT', 'COMMUNITY'] };
+const STATUS = { live: ['OPEN APP →', 'LIVE'], soon: ['COMING SOON', 'COMING SOON'], community: ['COMMUNITY-BUILT', 'COMMUNITY'] };
 fetch('/apps.json').then(r => r.json()).then(apps => {
   const grid = document.getElementById('grid'), q = document.getElementById('q'),
         count = document.getElementById('count'), empty = document.getElementById('empty'), chips = [...document.querySelectorAll('#chips [data-f]')];
@@ -13,10 +13,10 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
         <h2>${esc(a.name)}</h2>
         <p class="replaces">REPLACES <strong>${esc(a.replaces)}</strong></p>
         <p class="blurb">${esc(a.blurb)}</p>
-        <p class="tags"><span>FREE</span><span>OPEN SOURCE</span><span>${esc(a.category)}</span></p>
+        <p class="tags"><span>${esc(a.category)}</span></p>
         <span class="status">${(STATUS[a.status]||STATUS.soon)[0]}</span>
       </a>
-      ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">OPEN SOURCE</a>` : `<span class="repo none">REPO COMING SOON</span>`}
+      ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">Source on GitHub</a>` : `<span class="repo none">Repo coming soon</span>`}
     </li>`).join('');
   const tiles = [...grid.children];
   const filter = () => {
