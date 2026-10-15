@@ -19,7 +19,7 @@
   "status": "soon",
   "href": "/superhumanisdead",
   "sprite": "bat",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/superhumanisdead"
  },
  {
   "name": "WisprFlowIsDead",
@@ -30,7 +30,7 @@
   "status": "soon",
   "href": "/wisprflowisdead",
   "sprite": "skull",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/wisprflowisdead"
  },
  {
   "name": "MiroIsDead",
@@ -41,7 +41,7 @@
   "status": "soon",
   "href": "/miroisdead",
   "sprite": "pumpkin",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/miroisdead"
  },
  {
   "name": "LoomIsDead",
