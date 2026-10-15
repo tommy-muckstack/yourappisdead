@@ -27,7 +27,7 @@
   "replaces": "Wispr Flow",
   "category": "Voice dictation",
   "blurb": "Hold-to-talk dictation that types anywhere on your Mac.",
-  "status": "soon",
+  "status": "live",
   "href": "/wisprflowisdead",
   "sprite": "skull",
   "repo": "https://github.com/tommy-muckstack/wisprflowisdead"
