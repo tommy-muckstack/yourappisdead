@@ -25,6 +25,14 @@
     {
       "source": "/miroisdead/:path*",
       "destination": "https://miroisdead.vercel.app/miroisdead/:path*"
+    },
+    {
+      "source": "/superhumanisdead",
+      "destination": "https://superhumanisdead.vercel.app/superhumanisdead"
+    },
+    {
+      "source": "/superhumanisdead/:path*",
+      "destination": "https://superhumanisdead.vercel.app/superhumanisdead/:path*"
     }
   ],
   "redirects": [
