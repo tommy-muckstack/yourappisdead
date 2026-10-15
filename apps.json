@@ -78,8 +78,7 @@
   "status": "live",
   "href": "/cleanshotxisdead",
   "sprite": "crow",
-  "repo": "https://github.com/tommy-muckstack/cleanshotxisdead",
-  "app": "/cleanshotxisdead/app"
+  "repo": "https://github.com/tommy-muckstack/cleanshotxisdead"
  },
  {
   "name": "SuperhumanIsDead",
@@ -87,7 +86,7 @@
   "replaces": "Superhuman",
   "category": "Email",
   "blurb": "Keyboard-first email with snippets, send later and AI.",
-  "status": "soon",
+  "status": "live",
   "href": "/superhumanisdead",
   "sprite": "bat",
   "repo": "https://github.com/tommy-muckstack/superhumanisdead"
