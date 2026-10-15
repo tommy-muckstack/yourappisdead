@@ -105,7 +105,7 @@ a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);o
 .banner button{font:inherit;background:var(--green);color:#0c0e12;border:0;border-radius:999px;padding:10px 14px;min-height:40px;cursor:pointer}
 .arcade{max-width:1000px;margin:96px auto 0;padding:0 24px;text-align:center}
 .arcade-h{font:700 clamp(26px,4vw,38px)/1.15 var(--sans);letter-spacing:-.025em;color:var(--ink);margin:0}
-.arcade-how{font:10px var(--pixel);color:var(--green);margin:12px 0 8px;letter-spacing:.06em}
+.arcade-how{font:10px var(--pixel);color:var(--green);margin:12px 0 12px;letter-spacing:.06em}
 .arcade-sub{color:var(--ink2);max-width:640px;margin:0 auto 20px;font-size:14px}
 .cab{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
 .cab-main{flex:0 1 640px;min-width:0;width:100%}
@@ -155,9 +155,8 @@ a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);o
  .topnav{justify-content:center}
 }
 
-/* more games */
-.games{margin-top:56px}
+/* arcade tabs */
 .gametabs{margin:0 0 14px}
-.games .arcade-sub{min-height:1.4em}
-.games #pause2{flex:1.2!important;font-size:8px!important}
+#pause2{flex:1.2!important;font-size:8px!important}
 #game2{cursor:pointer}
+.cabwrap[hidden]{display:none}

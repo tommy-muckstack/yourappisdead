@@ -138,11 +138,15 @@
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => b.addEventListener(ev, up)); });
   pauseBtn.addEventListener('click', () => { if (st === 'play' || st === 'pause') togglePause(); else reset(); });
 
-  const tabs = [...document.querySelectorAll('#gametabs [data-g]')];
-  const select = id => { cur = GAMES[id] || breaker; st = 'title'; score = 0; cur.reset(); tabs.forEach(b => b.setAttribute('aria-pressed', b.dataset.g === cur.id)); pauseBtn.textContent = 'PAUSE';
-    $('gamehow').textContent = cur.how[0] + '. ' + cur.how[1].replace(/\s+·\s+/g, '. ').replace(/ {2,}/g, ', ') + '. P pauses.'; draw(); };
-  tabs.forEach(b => b.addEventListener('click', () => { select(b.dataset.g); cv.focus({ preventScroll: true }); }));
-
+  const tabs = [...document.querySelectorAll('#gametabs [data-g]')], how = $('gamehow'), cabS = $('cab-slayer'), cabM = $('cab-more');
+  const SLAYER_HOW = how.innerHTML;
+  const select = id => {
+    tabs.forEach(b => b.setAttribute('aria-pressed', b.dataset.g === id));
+    if (id === 'slayer') { cabM.hidden = true; cabS.hidden = false; how.innerHTML = SLAYER_HOW; if (st === 'play') togglePause(); return; }
+    cur = GAMES[id] || breaker; st = 'title'; score = 0; cur.reset(); pauseBtn.textContent = 'PAUSE';
+    how.textContent = cur.how[0] + '. ' + cur.how[1].replace(/\s+·\s+/g, '. ').replace(/ {2,}/g, ', ') + '. P pauses.';
+    cabS.hidden = true; cabM.hidden = false; draw(); };
+  tabs.forEach(b => b.addEventListener('click', () => { select(b.dataset.g); (b.dataset.g === 'slayer' ? cv1 : cv).focus({ preventScroll: true }); }));
   function draw() { px(0, 0, W, H, BG); stars(t); cur.draw();
     txt('SCORE ' + String(score).padStart(5, '0'), 14, 8 + 16 * T, 10, GRN, 'left', 260); txt('BEST ' + String(bests[cur.id] | 0).padStart(5, '0'), 14, 12 + 32 * T, 10, PUR, 'left', 260);
     if (st !== 'play') { px(0, 0, W, H, 'rgba(0,0,0,.62)');
@@ -154,6 +158,7 @@
   const kick = () => { if (!raf && vis && !document.hidden) raf = requestAnimationFrame(loop); };
   fit(); new ResizeObserver(() => { fit(); if (st !== 'play') draw(); }).observe(cv);
   new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (!vis && st === 'play') togglePause(); kick(); }).observe(cv);
-  select(location.hash.replace('#', '') in GAMES ? location.hash.slice(1) : 'breaker');
+  cur = breaker; cur.reset();
+  select(location.hash.slice(1) in GAMES ? location.hash.slice(1) : 'slayer');
   document.fonts?.ready.then(draw); kick();
 })();

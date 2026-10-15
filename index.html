@@ -66,53 +66,52 @@
     </form>
   </section>
   <section id="arcade" class="arcade" aria-labelledby="arcade-h">
-    <h2 id="arcade-h" class="arcade-h">SaaS Slayer</h2>
-    <p class="arcade-how">JUMP ON APPS TO SLAY THEM</p>
-    <p class="arcade-sub"><span class="kbd-only">Move with ← → (or A/D), jump with ↑ or Space, pause with P.</span><span class="touch-only">Use the pad below, or tap the left/right half of the screen to move and swipe up to jump.</span> Land on an app's head to slay it. Touch one from the side and it's game over. Watch for barriers once your score passes 1500: they cap your jump, so time your hops.</p>
-    <div class="cab">
-      <div class="cab-main">
-        <canvas id="game" width="640" height="320" aria-label="SaaS Slayer arcade game. Jump on apps to slay them." tabindex="0"></canvas>
-        <div class="pad" id="pad">
-          <button type="button" data-k="left" aria-label="Move left">◀</button>
-          <button type="button" data-k="right" aria-label="Move right">▶</button>
-          <button type="button" data-k="jump" class="jumpb" aria-label="Jump">JUMP</button>
-          <button type="button" id="pause" aria-label="Pause or resume">PAUSE</button>
-        </div>
-      </div>
-      <div class="cab-side">
-        <h3>HIGH SCORES</h3>
-        <ol id="board" class="board"></ol>
-        <p class="fine2">Saved on this device.</p>
-      </div>
-    </div>
-    <form id="initials" class="initials" hidden>
-      <label for="ini">NEW HIGH SCORE! ENTER INITIALS</label>
-      <input id="ini" maxlength="3" pattern="[A-Za-z]{1,3}" autocomplete="off" required>
-      <button type="submit">SAVE</button>
-    </form>
-    <p class="game-actions"><button id="share" type="button" hidden>Share on X</button> <button id="savepng" type="button" hidden>Save image</button></p>
-  </section>
-  <section id="games" class="arcade games" aria-labelledby="games-h">
-    <h2 id="games-h" class="arcade-h">More games</h2>
+    <h2 id="arcade-h" class="arcade-h">Arcade</h2>
     <p class="arcade-how">ARROW KEYS AND SPACE. THAT IS IT.</p>
     <div id="gametabs" class="chips gametabs" role="group" aria-label="Choose a game">
-      <button type="button" data-g="breaker" aria-pressed="true">PAYWALL BREAKER</button><button type="button" data-g="invaders" aria-pressed="false">INVOICE INVADERS</button><button type="button" data-g="bird" aria-pressed="false">CHURN BIRD</button><button type="button" data-g="snake" aria-pressed="false">RENEWAL SNAKE</button>
+      <button type="button" data-g="slayer" aria-pressed="true">SAAS SLAYER</button><button type="button" data-g="breaker" aria-pressed="false">PAYWALL BREAKER</button><button type="button" data-g="invaders" aria-pressed="false">INVOICE INVADERS</button><button type="button" data-g="bird" aria-pressed="false">CHURN BIRD</button><button type="button" data-g="snake" aria-pressed="false">RENEWAL SNAKE</button>
     </div>
-    <p id="gamehow" class="arcade-sub" aria-live="polite"></p>
-    <div class="cab">
-      <div class="cab-main">
-        <canvas id="game2" width="640" height="320" aria-label="Mini arcade game. Choose a game above." tabindex="0"></canvas>
-        <div class="pad pad2" id="pad2">
-          <button type="button" data-k="left" aria-label="Left">◀</button>
-          <button type="button" data-k="up" aria-label="Up">▲</button>
-          <button type="button" data-k="down" aria-label="Down">▼</button>
-          <button type="button" data-k="right" aria-label="Right">▶</button>
-          <button type="button" data-k="action" class="jumpb" aria-label="Action">GO</button>
-          <button type="button" id="pause2" aria-label="Pause or resume">PAUSE</button>
+    <p id="gamehow" class="arcade-sub" aria-live="polite"><span class="kbd-only">Move with ← → (or A/D), jump with ↑ or Space, pause with P.</span><span class="touch-only">Use the pad below, or tap the left/right half of the screen to move and swipe up to jump.</span> Land on an app's head to slay it. Touch one from the side and it's game over. Watch for barriers once your score passes 1500: they cap your jump, so time your hops.</p>
+    <div id="cab-slayer" class="cabwrap">
+      <div class="cab">
+        <div class="cab-main">
+          <canvas id="game" width="640" height="320" aria-label="SaaS Slayer arcade game. Jump on apps to slay them." tabindex="0"></canvas>
+          <div class="pad" id="pad">
+            <button type="button" data-k="left" aria-label="Move left">◀</button>
+            <button type="button" data-k="right" aria-label="Move right">▶</button>
+            <button type="button" data-k="jump" class="jumpb" aria-label="Jump">JUMP</button>
+            <button type="button" id="pause" aria-label="Pause or resume">PAUSE</button>
+          </div>
+        </div>
+        <div class="cab-side">
+          <h3>HIGH SCORES</h3>
+          <ol id="board" class="board"></ol>
+          <p class="fine2">Saved on this device.</p>
         </div>
       </div>
+      <form id="initials" class="initials" hidden>
+        <label for="ini">NEW HIGH SCORE! ENTER INITIALS</label>
+        <input id="ini" maxlength="3" pattern="[A-Za-z]{1,3}" autocomplete="off" required>
+        <button type="submit">SAVE</button>
+      </form>
+      <p class="game-actions"><button id="share" type="button" hidden>Share on X</button> <button id="savepng" type="button" hidden>Save image</button></p>
     </div>
-    <p class="fine2">Best scores are saved on this device.</p>
+    <div id="cab-more" class="cabwrap" hidden>
+      <div class="cab">
+        <div class="cab-main">
+          <canvas id="game2" width="640" height="320" aria-label="Mini arcade game. Choose a game above." tabindex="0"></canvas>
+          <div class="pad pad2" id="pad2">
+            <button type="button" data-k="left" aria-label="Left">◀</button>
+            <button type="button" data-k="up" aria-label="Up">▲</button>
+            <button type="button" data-k="down" aria-label="Down">▼</button>
+            <button type="button" data-k="right" aria-label="Right">▶</button>
+            <button type="button" data-k="action" class="jumpb" aria-label="Action">GO</button>
+            <button type="button" id="pause2" aria-label="Pause or resume">PAUSE</button>
+          </div>
+        </div>
+      </div>
+      <p class="fine2">Best scores are saved on this device.</p>
+    </div>
   </section>
   <svg class="ground" viewBox="0 0 64 6" preserveAspectRatio="none" aria-hidden="true" shape-rendering="crispEdges"><path fill="#0f2a14" d="M0 2h6v-1h5v1h9v-1h7v1h12v-1h6v1h19v4H0z"/></svg>
 </main>
