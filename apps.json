@@ -152,5 +152,71 @@
   "href": "/airtableisdead",
   "sprite": "witch",
   "repo": null
+ },
+ {
+  "name": "CanvaIsDead",
+  "slug": "canvaisdead",
+  "replaces": "Canva",
+  "category": "Design",
+  "blurb": "Drag-and-drop design editor with templates, text, shapes and export.",
+  "status": "soon",
+  "href": "/canvaisdead",
+  "sprite": "zombie",
+  "repo": null
+ },
+ {
+  "name": "TypeformIsDead",
+  "slug": "typeformisdead",
+  "replaces": "Typeform",
+  "category": "Forms & surveys",
+  "blurb": "One-question-at-a-time forms with logic and responses.",
+  "status": "soon",
+  "href": "/typeformisdead",
+  "sprite": "mummy",
+  "repo": null
+ },
+ {
+  "name": "DocuSignIsDead",
+  "slug": "docusignisdead",
+  "replaces": "DocuSign",
+  "category": "E-signature",
+  "blurb": "Upload a PDF, place fields and collect signatures.",
+  "status": "soon",
+  "href": "/docusignisdead",
+  "sprite": "vampire",
+  "repo": "https://github.com/tommy-muckstack/docusignisdead"
+ },
+ {
+  "name": "GrammarlyIsDead",
+  "slug": "grammarlyisdead",
+  "replaces": "Grammarly",
+  "category": "Writing",
+  "blurb": "Spelling, grammar and clarity checks as you write.",
+  "status": "soon",
+  "href": "/grammarlyisdead",
+  "sprite": "frank",
+  "repo": null
+ },
+ {
+  "name": "GranolaIsDead",
+  "slug": "granolaisdead",
+  "replaces": "Granola",
+  "category": "Meeting notes",
+  "blurb": "Turn rough notes and transcripts into clean meeting notes.",
+  "status": "soon",
+  "href": "/granolaisdead",
+  "sprite": "slime",
+  "repo": null
+ },
+ {
+  "name": "CleanShotXIsDead",
+  "slug": "cleanshotxisdead",
+  "replaces": "CleanShot X",
+  "category": "Screenshots",
+  "blurb": "Capture, annotate, beautify and share screenshots.",
+  "status": "soon",
+  "href": "/cleanshotxisdead",
+  "sprite": "crow",
+  "repo": null
  }
 ]
