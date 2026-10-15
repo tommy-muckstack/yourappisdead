@@ -153,3 +153,10 @@ a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);o
  .arcade{margin-top:64px;padding:0 12px}
  .topnav{justify-content:center}
 }
+
+/* more games */
+.games{margin-top:56px}
+.gametabs{margin:0 0 14px}
+.games .arcade-sub{min-height:1.4em}
+.games #pause2{flex:1.2!important;font-size:8px!important}
+#game2{cursor:pointer}

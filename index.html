@@ -14,7 +14,7 @@
 <a class="skip" href="#apps">Skip to apps</a>
 <header class="top">
   <span class="logo">YOURAPP<span class="red">IS</span>DEAD</span>
-  <nav class="topnav" aria-label="Sections"><a href="#apps">Apps</a><a href="#open-source">Contribute</a><a href="#submit">Request an app</a><a class="gh" href="https://github.com/tommy-muckstack/yourappisdead" target="_blank" rel="noopener">GitHub</a></nav>
+  <nav class="topnav" aria-label="Sections"><a href="#apps">Apps</a><a href="#arcade">Games</a><a href="#open-source">Contribute</a><a href="#submit">Request an app</a><a class="gh" href="https://github.com/tommy-muckstack/yourappisdead" target="_blank" rel="noopener">GitHub</a></nav>
 </header>
 <main>
   <div id="banner" class="banner" hidden role="status"><span id="bantxt"></span> <button id="beat" type="button">BEAT THIS SCORE ▶</button></div>
@@ -91,6 +91,28 @@
     </form>
     <p class="game-actions"><button id="share" type="button" hidden>Share on X</button> <button id="savepng" type="button" hidden>Save image</button></p>
   </section>
+  <section id="games" class="arcade games" aria-labelledby="games-h">
+    <h2 id="games-h" class="arcade-h">More games</h2>
+    <p class="arcade-how">ARROW KEYS AND SPACE. THAT IS IT.</p>
+    <div id="gametabs" class="chips gametabs" role="group" aria-label="Choose a game">
+      <button type="button" data-g="breaker" aria-pressed="true">PAYWALL BREAKER</button><button type="button" data-g="invaders" aria-pressed="false">INVOICE INVADERS</button><button type="button" data-g="bird" aria-pressed="false">CHURN BIRD</button><button type="button" data-g="snake" aria-pressed="false">RENEWAL SNAKE</button>
+    </div>
+    <p id="gamehow" class="arcade-sub" aria-live="polite"></p>
+    <div class="cab">
+      <div class="cab-main">
+        <canvas id="game2" width="640" height="320" aria-label="Mini arcade game. Choose a game above." tabindex="0"></canvas>
+        <div class="pad pad2" id="pad2">
+          <button type="button" data-k="left" aria-label="Left">◀</button>
+          <button type="button" data-k="up" aria-label="Up">▲</button>
+          <button type="button" data-k="down" aria-label="Down">▼</button>
+          <button type="button" data-k="right" aria-label="Right">▶</button>
+          <button type="button" data-k="action" class="jumpb" aria-label="Action">GO</button>
+          <button type="button" id="pause2" aria-label="Pause or resume">PAUSE</button>
+        </div>
+      </div>
+    </div>
+    <p class="fine2">Best scores are saved on this device.</p>
+  </section>
   <svg class="ground" viewBox="0 0 64 6" preserveAspectRatio="none" aria-hidden="true" shape-rendering="crispEdges"><path fill="#0f2a14" d="M0 2h6v-1h5v1h9v-1h7v1h12v-1h6v1h19v4H0z"/></svg>
 </main>
 <footer class="foot">
@@ -101,5 +123,6 @@
 <script src="/sprites.js" defer></script>
 <script src="/app.js" defer></script>
 <script src="/game.js" defer></script>
+<script src="/games.js" defer></script>
 </body>
 </html>
