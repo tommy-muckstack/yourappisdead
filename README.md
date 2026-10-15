@@ -15,4 +15,8 @@ Every app listed has a public repo under a permissive license. So does this site
 
 Static HTML, no build step. `apps.json` drives the grid; `vercel.json` rewrites each `/<slug>` path to that app's own Vercel project. Two small functions render the share card and OG image for the SaaS Slayer game.
 
+## Secrets and config
+
+There are none in this repo. The PostHog key in `analytics.js` is a publishable project token (it can only send events). The leaderboard store (Upstash Redis) is provisioned through the Vercel marketplace and its credentials live only in Vercel environment variables; `api/scores.js` reads them at runtime. See [SECURITY.md](SECURITY.md) to report a vulnerability.
+
 Apache-2.0.

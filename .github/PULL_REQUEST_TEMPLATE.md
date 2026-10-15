@@ -8,4 +8,4 @@
 - [ ] Names are descriptive only (e.g. "replaces Calendly"); no implied affiliation
 - [ ] If adding a tile to `apps.json`: `repo` is a public repo, or `null` (shows "REPO COMING SOON")
 - [ ] Works on mobile (360px wide) and with reduced motion
-- [ ] I'm OK with this contribution being MIT-licensed
+- [ ] I'm OK with this contribution being Apache-2.0 licensed
