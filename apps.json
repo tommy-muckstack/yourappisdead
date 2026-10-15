@@ -51,7 +51,7 @@
   "blurb": "Record your screen in the browser and get a share link.",
   "status": "soon",
   "href": "/loomisdead",
-  "sprite": "ghost",
+  "sprite": "eyeball",
   "repo": null
  },
  {
@@ -62,7 +62,7 @@
   "blurb": "One themed link page with click counts. Your bio, minus the toll.",
   "status": "soon",
   "href": "/linktreeisdead",
-  "sprite": "bat",
+  "sprite": "spider",
   "repo": null
  },
  {
@@ -73,7 +73,7 @@
   "blurb": "Pages, blocks and a sidebar for your docs and wiki.",
   "status": "soon",
   "href": "/notionisdead",
-  "sprite": "pumpkin",
+  "sprite": "cat",
   "repo": null
  },
  {
@@ -84,7 +84,7 @@
   "blurb": "Drag-and-drop kanban boards, lists and cards.",
   "status": "soon",
   "href": "/trelloisdead",
-  "sprite": "skull",
+  "sprite": "zombie",
   "repo": null
  },
  {
@@ -95,7 +95,7 @@
   "blurb": "Short links with click stats, without the $35 a month.",
   "status": "soon",
   "href": "/bitlyisdead",
-  "sprite": "ghost",
+  "sprite": "slime",
   "repo": null
  },
  {
@@ -106,7 +106,7 @@
   "blurb": "Encrypted-in-browser password vault. Free, and auditable.",
   "status": "soon",
   "href": "/onepasswordisdead",
-  "sprite": "bat",
+  "sprite": "vampire",
   "repo": null
  },
  {
@@ -117,7 +117,7 @@
   "blurb": "Live meeting transcripts and summaries.",
   "status": "soon",
   "href": "/otterisdead",
-  "sprite": "pumpkin",
+  "sprite": "jelly",
   "repo": null
  },
  {
@@ -128,7 +128,7 @@
   "blurb": "Keyboard-first issues, cycles and a command palette.",
   "status": "soon",
   "href": "/linearisdead",
-  "sprite": "skull",
+  "sprite": "imp",
   "repo": null
  },
  {
@@ -139,7 +139,7 @@
   "blurb": "Send big files with no signup and no limits.",
   "status": "soon",
   "href": "/wetransferisdead",
-  "sprite": "ghost",
+  "sprite": "ghost2",
   "repo": null
  },
  {
@@ -150,7 +150,7 @@
   "blurb": "A spreadsheet-database with grid and kanban views.",
   "status": "soon",
   "href": "/airtableisdead",
-  "sprite": "bat",
+  "sprite": "witch",
   "repo": null
  }
 ]

@@ -38,6 +38,8 @@ h1{font:clamp(34px,9vw,92px)/1.15 "Press Start 2P",monospace;margin:24px 0}
 .tile.soon a.main:hover,.tile.soon a.main:focus-visible,.tile.community a.main:hover,.tile.community a.main:focus-visible{border-color:var(--purple);box-shadow:9px 12px 0 #000,0 0 28px rgba(177,75,255,.4)}
 .sprite{width:64px;height:64px;margin:0 auto 6px;image-rendering:pixelated}
 .tile a.main:hover .sprite{animation:bob .6s steps(2) infinite}
+@media (prefers-reduced-motion:no-preference){.sprite{animation:idle 2.4s steps(2) var(--d,0s) infinite}.tile a.main:hover .sprite{animation:bob .6s steps(2) infinite}}
+@keyframes idle{0%,60%{transform:translateY(0)}61%,100%{transform:translateY(-2px)}}
 .rip{font:10px "Press Start 2P",monospace;color:#8a90a0}
 .tile h2{font:15px/1.4 "Press Start 2P",monospace;margin:10px 0;color:var(--bone);word-break:break-word}
 .replaces{font:10px/1.6 "Press Start 2P",monospace;color:#aab;margin:4px 0}

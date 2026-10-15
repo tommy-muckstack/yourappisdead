@@ -35,7 +35,7 @@ Open a PR that adds an entry to `apps.json`:
 
 - `status`: `live`, `soon` (coming soon) or `community` (built by the community).
 - `repo`: the URL of the **public** repo, or `null` to show "REPO COMING SOON". Only link repos that are already public.
-- `sprite`: one of `ghost`, `bat`, `pumpkin`, `skull`.
+- `sprite` (optional): one of `ghost`, `ghost2`, `skull`, `bat`, `pumpkin`, `zombie`, `spider`, `cat`, `mummy`, `vampire`, `eyeball`, `frank`, `slime`, `witch`, `imp`, `crow`, `jelly`. Leave it out and one is picked from your slug, avoiding repeats next to its neighbours. Want a new sprite? Add a 16x16 grid to `sprites.js`.
 
 ## Pull requests
 Keep them small and focused, fill in the PR template, and be nice (see [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)). By contributing you agree your work is licensed under the MIT licence.
