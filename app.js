@@ -1,4 +1,8 @@
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const X = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+const shareUrl = a => { const url = `https://yourappisdead.com${a.href}`;
+  const text = a.status === 'live' ? `${a.replaces} is dead. ${a.name} is a free, open-source replacement. No seats, no monthly toll.` : `${a.replaces} is dead. ${a.name} is a free, open-source replacement, coming soon.`;
+  return `https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`; };
 const STATUS = { live: ['OPEN APP →', 'LIVE'], soon: ['COMING SOON', 'COMING SOON'], community: ['COMMUNITY-BUILT', 'COMMUNITY'] };
 fetch('/apps.json').then(r => r.json()).then(apps => {
   const grid = document.getElementById('grid'), q = document.getElementById('q'),
@@ -16,7 +20,10 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
         <p class="tags"><span>${esc(a.category)}</span></p>
         <span class="status">${(STATUS[a.status]||STATUS.soon)[0]}</span>
       </a>
-      ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">Source on GitHub</a>` : `<span class="repo none">Repo coming soon</span>`}
+      <div class="foot">
+        ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">Source on GitHub</a>` : `<span class="repo none">Repo coming soon</span>`}
+        <a class="share" href="${esc(shareUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on X">${X} Share on X</a>
+      </div>
     </li>`).join('');
   const tiles = [...grid.children];
   const filter = () => {

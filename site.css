@@ -52,11 +52,14 @@ h1 .glow-red{color:var(--red)}h1 .glow-green{color:var(--ink)}
 .tile a.main{position:relative;flex:1;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);text-align:center;
  padding:30px 20px 18px;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-bottom:0;
  border-radius:110px 110px 0 0;transition:border-color .18s ease,background .18s ease}
-.tile .repo{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;font:12px var(--sans);font-weight:500;text-decoration:none;color:var(--ink2);
- background:var(--card);border:1px solid var(--line);border-top-color:var(--line);border-radius:0 0 var(--r) var(--r)}
+.tile .foot{display:flex;flex-direction:column;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);overflow:hidden;background:var(--card)}
+.tile .repo{display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;font:12px var(--sans);font-weight:500;text-decoration:none;color:var(--ink2);padding:0 8px}
 .tile .repo::before{content:"";width:6px;height:6px;background:currentColor;border-radius:1px;opacity:.6}
-a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);outline:none}
-.tile .repo.none{color:var(--mute);border-style:dashed}
+a.repo:hover,a.repo:focus-visible{color:var(--green);outline:none}
+.tile .repo.none{color:var(--mute)}
+.tile .share{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;font:13px var(--sans);font-weight:600;text-decoration:none;color:var(--bg);background:var(--ink);padding:0 10px;margin:0 8px 8px;border-radius:10px}
+.tile .share svg{flex:none}
+a.share:hover,a.share:focus-visible{background:var(--green);outline:none}
 .tile:hover a.main,.tile a.main:focus-visible{border-color:var(--line2);background:linear-gradient(180deg,#1e242d,var(--card));outline:none}
 .tile.live:hover a.main{border-color:rgba(127,214,140,.5)}
 .tile.soon:hover a.main,.tile.community:hover a.main{border-color:rgba(165,150,255,.5)}
@@ -120,6 +123,7 @@ a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);o
 .initials button,.game-actions button{font:500 14px var(--sans);background:var(--card);color:var(--ink);border:1px solid var(--line2);border-radius:999px;padding:0 16px;min-height:42px;cursor:pointer}
 .initials button:hover,.game-actions button:hover,.initials button:focus-visible,.game-actions button:focus-visible{border-color:var(--green);color:var(--green);outline:none}
 .initials[hidden],.game-actions button[hidden]{display:none}
+.game-actions .x{background:var(--ink);color:var(--bg);border-color:var(--ink);display:inline-flex;align-items:center;gap:8px;font-weight:600}.game-actions .x:hover,.game-actions .x:focus-visible{background:var(--green);border-color:var(--green);color:var(--bg)}
 .game-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .touch-only{display:none}
 @media (pointer:coarse){.touch-only{display:inline}.kbd-only{display:none}}

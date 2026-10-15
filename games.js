@@ -24,7 +24,7 @@
   const keys = {}; let t = 0, st = 'title', score = 0, cur = null, raf = 0, last = 0, vis = true;
 
   /* ---------- 1. Paywall Breaker (breakout) ---------- */
-  const breaker = { id: 'breaker', name: 'PAYWALL BREAKER', how: ['SMASH THE PAYWALL BRICKS', COARSE ? 'LEFT/RIGHT PAD  ·  ACTION LAUNCHES' : '← → MOVE PADDLE   SPACE LAUNCH'],
+  const breaker = { id: 'breaker', name: 'PAYWALL BREAKER', share: n => `I smashed ${n} points of paywalls in Paywall Breaker on YourAppIsDead.`, how: ['SMASH THE PAYWALL BRICKS', COARSE ? 'LEFT/RIGHT PAD  ·  ACTION LAUNCHES' : '← → MOVE PADDLE   SPACE LAUNCH'],
     reset() { this.lvl = 1; this.lives = 3; this.pad = W / 2; this.bricks = []; this.ball = null; this.build(); this.serve(); },
     build() { const rows = ['$99', '$49', '$19', '$9'], cols = 8, bw = 70, gap = 6, x0 = (W - cols * bw - (cols - 1) * gap) / 2;
       this.bricks = []; rows.forEach((p, r) => { for (let c = 0; c < cols; c++) this.bricks.push({ x: x0 + c * (bw + gap), y: 44 + r * 24, w: bw, h: 18, p, v: (4 - r) * 10, c: FAKES[(r * 3 + c) % FAKES.length][1] }); }); },
@@ -49,7 +49,7 @@
       if (b.stuck && st === 'play') txt(COARSE ? 'TAP ACTION TO LAUNCH' : 'SPACE TO LAUNCH', W / 2, 270, 9, AMB); } };
 
   /* ---------- 2. Invoice Invaders (star shooter) ---------- */
-  const invaders = { id: 'invaders', name: 'INVOICE INVADERS', how: ['SHOOT DOWN THE INVOICES', COARSE ? 'LEFT/RIGHT PAD  ·  ACTION FIRES' : '← → MOVE   SPACE FIRE'],
+  const invaders = { id: 'invaders', name: 'INVOICE INVADERS', share: n => `I shot down ${n} points of invoices in Invoice Invaders on YourAppIsDead.`, how: ['SHOOT DOWN THE INVOICES', COARSE ? 'LEFT/RIGHT PAD  ·  ACTION FIRES' : '← → MOVE   SPACE FIRE'],
     reset() { this.x = W / 2; this.lives = 3; this.wave = 1; this.shots = []; this.bombs = []; this.cool = 0; this.parts = []; this.spawn(); },
     spawn() { this.inv = []; const cols = 7, rows = 3; for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const [n, col] = FAKES[(r * cols + c) % FAKES.length]; this.inv.push({ x: 90 + c * 68, y: 40 + r * 34, n, c: col, r }); }
       this.dir = 1; this.sp = 0.6 + this.wave * 0.25; },
@@ -76,7 +76,7 @@
       txt('LIVES ' + '♥'.repeat(this.lives), W - 14, 8 + 16 * T, 10, RED, 'right', 200); txt('WAVE ' + this.wave, W - 14, 12 + 32 * T, 10, AMB, 'right', 200); } };
 
   /* ---------- 3. Churn Bird (flappy) ---------- */
-  const bird = { id: 'bird', name: 'CHURN BIRD', how: ['FLY BETWEEN THE PAYWALLS', COARSE ? 'TAP ACTION OR THE SCREEN TO FLAP' : 'SPACE OR ↑ TO FLAP'],
+  const bird = { id: 'bird', name: 'CHURN BIRD', share: n => `I flew through ${n} paywall${n === 1 ? '' : 's'} in Churn Bird on YourAppIsDead.`, how: ['FLY BETWEEN THE PAYWALLS', COARSE ? 'TAP ACTION OR THE SCREEN TO FLAP' : 'SPACE OR ↑ TO FLAP'],
     reset() { this.y = 150; this.vy = 0; this.walls = []; this.next = 90; this.started = false; },
     press(k) { if (k === 'action' || k === 'up') { this.started = true; this.vy = -5.6; } },
     step() { if (!this.started) { this.y = 150 + Math.sin(t / 12) * 4; return; }
@@ -93,7 +93,7 @@
       if (!this.started && st === 'play') txt(COARSE ? 'TAP TO FLAP' : 'SPACE TO FLAP', W / 2, 270, 9, AMB); } };
 
   /* ---------- 4. Renewal Snake ---------- */
-  const snake = { id: 'snake', name: 'RENEWAL SNAKE', how: ['EAT INVOICES. DON\'T EAT YOURSELF', COARSE ? 'USE THE ARROW PAD TO TURN' : '← ↑ → ↓ TO TURN'],
+  const snake = { id: 'snake', name: 'RENEWAL SNAKE', share: n => `I ate ${n} points of invoices in Renewal Snake on YourAppIsDead.`, how: ['EAT INVOICES. DON\'T EAT YOURSELF', COARSE ? 'USE THE ARROW PAD TO TURN' : '← ↑ → ↓ TO TURN'],
     C: 20, reset() { this.cols = W / this.C; this.rows = H / this.C; this.body = [{ x: 8, y: 8 }, { x: 7, y: 8 }, { x: 6, y: 8 }]; this.dir = { x: 1, y: 0 }; this.q = []; this.every = 9; this.tick = 0; this.food(); },
     food() { do { this.f = { x: Math.floor(rnd(this.cols)), y: Math.floor(rnd(this.rows)) }; } while (this.body.some(b => b.x === this.f.x && b.y === this.f.y)); },
     press(k) { const d = { left: { x: -1, y: 0 }, right: { x: 1, y: 0 }, up: { x: 0, y: -1 }, down: { x: 0, y: 1 } }[k]; if (d) this.q.push(d); },
@@ -110,8 +110,13 @@
   const GAMES = { breaker, invaders, bird, snake };
 
   /* ---------- shared shell ---------- */
-  function over() { st = 'over'; saveBest(cur.id, score); }
-  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; }
+  const share2 = $('share2');
+  function over() { st = 'over'; saveBest(cur.id, score); share2.hidden = !(score > 0); }
+  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = true; }
+  share2.addEventListener('click', () => {
+    const url = `https://yourappisdead.com/#${cur.id}`;
+    const text = cur.share(score) + ' Can you beat it?';
+    open(`https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener'); });
   const pauseBtn = $('pause2');
   const togglePause = () => { if (st === 'play') { st = 'pause'; pauseBtn.textContent = 'RESUME'; draw(); } else if (st === 'pause') { st = 'play'; pauseBtn.textContent = 'PAUSE'; kick(); } };
   const action = k => { if (st === 'pause') return togglePause(); if (st !== 'play') { if (k === 'action' || k === 'up') reset(); return; } cur.press(k); };
@@ -145,7 +150,7 @@
     if (id === 'slayer') { cabM.hidden = true; cabS.hidden = false; how.innerHTML = SLAYER_HOW; if (st === 'play') togglePause(); return; }
     cur = GAMES[id] || breaker; st = 'title'; score = 0; cur.reset(); pauseBtn.textContent = 'PAUSE';
     how.textContent = cur.how[0] + '. ' + cur.how[1].replace(/\s+·\s+/g, '. ').replace(/ {2,}/g, ', ') + '. P pauses.';
-    cabS.hidden = true; cabM.hidden = false; draw(); };
+    cabS.hidden = true; cabM.hidden = false; share2.hidden = true; draw(); };
   tabs.forEach(b => b.addEventListener('click', () => { select(b.dataset.g); (b.dataset.g === 'slayer' ? cv1 : cv).focus({ preventScroll: true }); }));
   function draw() { px(0, 0, W, H, BG); stars(t); cur.draw();
     txt('SCORE ' + String(score).padStart(5, '0'), 14, 8 + 16 * T, 10, GRN, 'left', 260); txt('BEST ' + String(bests[cur.id] | 0).padStart(5, '0'), 14, 12 + 32 * T, 10, PUR, 'left', 260);
@@ -159,6 +164,7 @@
   fit(); new ResizeObserver(() => { fit(); if (st !== 'play') draw(); }).observe(cv);
   new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (!vis && st === 'play') togglePause(); kick(); }).observe(cv);
   cur = breaker; cur.reset();
-  select(location.hash.slice(1) in GAMES ? location.hash.slice(1) : 'slayer');
+  const h = location.hash.slice(1); select(h in GAMES ? h : 'slayer');
+  if (h in GAMES) addEventListener('load', () => setTimeout(() => $('arcade').scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }), 50));
   document.fonts?.ready.then(draw); kick();
 })();
