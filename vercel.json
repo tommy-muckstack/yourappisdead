@@ -3,16 +3,6 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "query",
-          "key": "score"
-        }
-      ],
-      "destination": "/api/share"
-    },
-    {
       "source": "/calendlyisdead",
       "destination": "https://calendlyisdead.vercel.app/calendlyisdead"
     },
