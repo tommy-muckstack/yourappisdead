@@ -80,3 +80,20 @@ Reuse these exact keys so cross-app insights line up:
 2. `posthog.register({ product: '<slug>', surface: 'app' | 'landing', platform: '<runtime>' })` right after init.
 3. Use `app_*` / `landing_*` names from section 2 and the keys from section 3.
 4. Add a row to this file for any new event name before shipping it.
+
+## 7. Mac app events (cleanshotxisdead, `platform: mac`)
+
+The native Mac app sends the same super properties plus `app_version`, `app_build`, `os_version`, with `$process_person_profile: false` (anonymous device id, no person profiles). Nothing is sent from dev builds.
+
+| event                          | properties |
+|--------------------------------|------------|
+| `app_opened`                   | (launch) |
+| `app_settings_opened`          | |
+| `app_capture_taken`            | `kind` (`area`, `window`, `fullscreen`, `timer`, `previous_area`, `scrolling`), `mode` (`capture`, `copy`, `save`, `upload`, `annotate`, `pin`) |
+| `app_scrolling_capture_started`| |
+| `app_scrolling_capture_saved`  | `sections` |
+| `app_recording_started`        | `mode` (`video`, `gif`), `mic`, `system_audio` |
+| `app_recording_saved`          | `format` (`mp4`, `gif`) |
+| `app_editor_opened`            | |
+| `app_editor_saved`             | `annotations`, `backdrop`, `cutout`, `corner_radius` |
+| `app_shared`                   | `channel` (`cloud`) |
