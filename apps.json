@@ -41,7 +41,8 @@
   "status": "live",
   "href": "/miroisdead",
   "sprite": "pumpkin",
-  "repo": "https://github.com/tommy-muckstack/miroisdead"
+  "repo": "https://github.com/tommy-muckstack/miroisdead",
+  "app": "/miroisdead/app"
  },
  {
   "name": "LoomIsDead",
