@@ -1,3 +1,4 @@
+const track = (e, p) => window.yad && window.yad.track(e, p);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const X = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
 const shareUrl = a => { const url = `https://yourappisdead.com${a.href}`;
@@ -33,8 +34,17 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
     empty.hidden = n > 0;
     count.textContent = (t || sf !== 'all') ? `${n} ${n === 1 ? 'SOUL' : 'SOULS'} FOUND` : `${apps.length} APPS IN THE GRAVEYARD`;
   };
-  q.addEventListener('input', filter);
-  chips.forEach(c => c.addEventListener('click', () => { sf = c.dataset.f; chips.forEach(x => x.setAttribute('aria-pressed', x === c)); filter(); }));
+  const shown = () => tiles.filter(x => !x.hidden).length;
+  let qt = 0;
+  q.addEventListener('input', () => { filter(); clearTimeout(qt); const len = q.value.trim().length; if (len) qt = setTimeout(() => track('hub_search_performed', { query_length: len, results_count: shown() }), 700); });
+  chips.forEach(c => c.addEventListener('click', () => { sf = c.dataset.f; chips.forEach(x => x.setAttribute('aria-pressed', x === c)); filter(); track('hub_filter_changed', { filter: sf, results_count: shown() }); }));
+  grid.addEventListener('click', e => {
+    const a = e.target.closest('a'); if (!a) return; const li = a.closest('.tile'); if (!li) return;
+    const app = apps[tiles.indexOf(li)]; if (!app) return;
+    if (a.classList.contains('main')) track('hub_app_opened', { app_slug: app.slug, app_status: app.status, position: tiles.indexOf(li) });
+    else if (a.classList.contains('repo')) track('hub_app_repo_clicked', { app_slug: app.slug });
+    else if (a.classList.contains('share')) track('hub_app_shared', { app_slug: app.slug, channel: 'x' });
+  });
   q.addEventListener('keydown', e => { if (e.key === 'Enter') { const f = tiles.find(x => !x.hidden); f && f.querySelector('a.main').focus(); } });
   filter();
 });
@@ -48,6 +58,10 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
     const name = v('app').slice(0, 80);
     const p = new URLSearchParams({ template: 'submit-an-app.yml', labels: 'app-request', title: `[App request] ${name}`,
       'app-name': name, 'app-url': v('url').slice(0, 300), why: v('why').slice(0, 1500), github: v('gh').replace(/^@/, '').slice(0, 39), build: v('build') });
+    track('hub_app_requested', { wants_to_build: /^Yes/.test(v('build')) ? 'yes' : /^Maybe/.test(v('build')) ? 'maybe' : 'no' });
     window.open('https://github.com/tommy-muckstack/yourappisdead/issues/new?' + p.toString(), '_blank', 'noopener');
   });
 })();
+
+// Links marked data-track="<event>" data-target="<target>" (nav, contribute cards)
+document.addEventListener('click', e => { const el = e.target.closest('[data-track]'); if (el) track(el.dataset.track, { target: el.dataset.target }); });

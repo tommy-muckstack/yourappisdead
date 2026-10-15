@@ -4,6 +4,8 @@
   const cx = cv.getContext('2d'), W = 640, H = 320;
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches, COARSE = matchMedia('(pointer: coarse)').matches;
   const $ = id => document.getElementById(id);
+  const track = (e, p) => window.yad && window.yad.track(e, p);
+  let startedAt = 0, lastInput = 'keyboard';
   const INK = '#ece7d8', GRN = '#7fd68c', RED = '#ef5f68', PUR = '#a596ff', AMB = '#e6b35a', BG = '#07040f';
   const FAKES = [['SYNERGIX','#4aa3ff'],['DASHLY','#ff5fa2'],['TIKTRAK','#ffd23f'],['SEATSY','#7cf'],['PIPELYNK','#9b7bff'],
     ['FORMULO','#e6a04a'],['CHURNIO','#5cf2b5'],['UPSELLR','#ef5f68'],['LOGINZ','#c0ff4a'],['INVOYCE','#f0a']];
@@ -111,11 +113,13 @@
 
   /* ---------- shared shell ---------- */
   const share2 = $('share2');
-  function over() { st = 'over'; saveBest(cur.id, score); share2.hidden = !(score > 0); }
-  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = true; }
+  function over() { st = 'over'; const best = bests[cur.id] | 0; saveBest(cur.id, score); share2.hidden = !(score > 0);
+    track('arcade_game_over', { game: cur.id, score, duration_s: Math.round((Date.now() - startedAt) / 1000), is_new_best: score > best }); }
+  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = true; startedAt = Date.now(); track('arcade_game_started', { game: cur.id, input: lastInput }); }
   share2.addEventListener('click', () => {
     const url = `https://yourappisdead.com/#${cur.id}`;
     const text = cur.share(score) + ' Can you beat it?';
+    track('arcade_score_shared', { game: cur.id, score, channel: 'x' });
     open(`https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener'); });
   const pauseBtn = $('pause2');
   const togglePause = () => { if (st === 'play') { st = 'pause'; pauseBtn.textContent = 'RESUME'; draw(); } else if (st === 'pause') { st = 'play'; pauseBtn.textContent = 'PAUSE'; kick(); } };
@@ -125,7 +129,7 @@
   const mine = () => { const ae = document.activeElement; if (ae === cv) return true; if (ae && ae !== document.body) return false; return inView(cv) && !(cv1 && inView(cv1)); };
   addEventListener('keydown', e => {
     const ae = document.activeElement; if (ae?.tagName === 'INPUT' || ae?.tagName === 'TEXTAREA' || ae?.tagName === 'SELECT') return;
-    if (!mine()) return; const k = e.key;
+    if (!mine()) return; const k = e.key; lastInput = 'keyboard';
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' '].includes(k)) e.preventDefault();
     if (k === 'p' || k === 'P' || k === 'Escape') { if (st === 'play' || st === 'pause') togglePause(); return; }
     if (e.repeat) { keys[k] = true; return; }
@@ -135,10 +139,10 @@
   const releaseAll = () => { for (const k in keys) keys[k] = false; };
   addEventListener('blur', () => { releaseAll(); if (st === 'play') togglePause(); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) { releaseAll(); if (st === 'play') togglePause(); } kick(); });
-  cv.addEventListener('pointerdown', e => { cv.focus({ preventScroll: true }); if (st === 'over' || st === 'title') reset(); else if (st === 'pause') togglePause(); else if (cur === bird) action('action'); e.preventDefault(); });
+  cv.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') lastInput = 'touch'; cv.focus({ preventScroll: true }); if (st === 'over' || st === 'title') reset(); else if (st === 'pause') togglePause(); else if (cur === bird) action('action'); e.preventDefault(); });
   const PAD = { left: 'ArrowLeft', right: 'ArrowRight', up: 'ArrowUp', down: 'ArrowDown', action: ' ' };
   document.querySelectorAll('#pad2 [data-k]').forEach(b => { const k = b.dataset.k;
-    b.addEventListener('pointerdown', e => { e.preventDefault(); b.classList.add('on'); action(k); keys[PAD[k]] = true; });
+    b.addEventListener('pointerdown', e => { e.preventDefault(); lastInput = 'touch'; b.classList.add('on'); action(k); keys[PAD[k]] = true; });
     const up = () => { b.classList.remove('on'); keys[PAD[k]] = false; };
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => b.addEventListener(ev, up)); });
   pauseBtn.addEventListener('click', () => { if (st === 'play' || st === 'pause') togglePause(); else reset(); });
@@ -151,7 +155,7 @@
     cur = GAMES[id] || breaker; st = 'title'; score = 0; cur.reset(); pauseBtn.textContent = 'PAUSE';
     how.textContent = cur.how[0] + '. ' + cur.how[1].replace(/\s+·\s+/g, '. ').replace(/ {2,}/g, ', ') + '. P pauses.';
     cabS.hidden = true; cabM.hidden = false; share2.hidden = true; draw(); };
-  tabs.forEach(b => b.addEventListener('click', () => { select(b.dataset.g); (b.dataset.g === 'slayer' ? cv1 : cv).focus({ preventScroll: true }); }));
+  tabs.forEach(b => b.addEventListener('click', () => { track('arcade_game_selected', { game: b.dataset.g }); select(b.dataset.g); (b.dataset.g === 'slayer' ? cv1 : cv).focus({ preventScroll: true }); }));
   function draw() { px(0, 0, W, H, BG); stars(t); cur.draw();
     txt('SCORE ' + String(score).padStart(5, '0'), 14, 8 + 16 * T, 10, GRN, 'left', 260); txt('BEST ' + String(bests[cur.id] | 0).padStart(5, '0'), 14, 12 + 32 * T, 10, PUR, 'left', 260);
     if (st !== 'play') { px(0, 0, W, H, 'rgba(0,0,0,.62)');

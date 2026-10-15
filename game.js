@@ -3,6 +3,7 @@
   const COARSE = matchMedia('(pointer: coarse)').matches;
   const P = new URLSearchParams(location.search);
   const $ = id => document.getElementById(id);
+  const track = (e, p) => window.yad && window.yad.track(e, p);
   const ban = $('banner'), bantxt = $('bantxt'), beat = $('beat');
   const clean = s => (s || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
   const qs = parseInt(P.get('score'), 10), qn = clean(P.get('name')), qk = parseInt(P.get('slain'), 10);
@@ -46,7 +47,8 @@
     cx.fillStyle = color; cx.textAlign = align; cx.fillText(s, x, y); };
 
   const reset = () => { Object.assign(S, { st: 'play', frames: 0, score: 0, slain: 0, enemies: [], blocks: [], parts: [], spawn: 60, bspawn: 0, bump: 0, msg: '', msgT: 0, firstBlock: true, firstRun: !seen });
-    Object.assign(hero, { x: 80, y: G, vx: 0, vy: 0 }); form.hidden = true; shareBtn.hidden = true; saveBtn.hidden = true; S.name = null; pauseBtn.textContent = 'PAUSE'; };
+    Object.assign(hero, { x: 80, y: G, vx: 0, vy: 0 }); form.hidden = true; shareBtn.hidden = true; saveBtn.hidden = true; S.name = null; pauseBtn.textContent = 'PAUSE';
+    S.startedAt = Date.now(); track('arcade_game_started', { game: 'slayer', input: COARSE ? 'touch' : 'keyboard' }); };
   const pauseBtn = $('pause');
   const togglePause = () => { if (S.st === 'play') { S.st = 'pause'; pauseBtn.textContent = 'RESUME'; draw(); } else if (S.st === 'pause') { S.st = 'play'; pauseBtn.textContent = 'PAUSE'; kick(); } };
   const jump = () => { if (S.st === 'pause') return togglePause(); if (S.st !== 'play') return reset(); if (hero.y >= G) hero.vy = -9.5; };
@@ -93,13 +95,16 @@
     const ok = S.score <= S.slain * 100 + dur * 12 + 10;
     if (ok && S.score > 0 && (l.length < 10 || S.score > l[l.length - 1].s)) { form.hidden = false; ini.value = ''; ini.focus({ preventScroll: true }); }
     shareBtn.hidden = saveBtn.hidden = !(ok && S.score > 0);
+    track('arcade_game_over', { game: 'slayer', score: S.score, duration_s: Math.round(dur), is_new_best: ok && S.score > (l[0]?.s || 0) });
   }
   form.addEventListener('submit', e => { e.preventDefault(); const n = clean(ini.value); if (!n) return;
-    const l = load(); l.push({ n, s: S.score, d: Date.now() }); l.sort((a, b) => b.s - a.s); save(l); render(); form.hidden = true; S.name = n; cv.focus(); });
+    const l = load(); l.push({ n, s: S.score, d: Date.now() }); l.sort((a, b) => b.s - a.s); save(l); render(); form.hidden = true; S.name = n; cv.focus();
+    track('arcade_score_saved', { game: 'slayer', score: S.score }); });
   shareBtn.addEventListener('click', () => {
     const n = S.name || (load()[0]?.n) || 'YAD';
     const url = `https://yourappisdead.com/?score=${S.score}&name=${n}&slain=${S.slain}#game`;
     const text = `I slayed ${S.slain} SaaS subscription${S.slain === 1 ? '' : 's'} for ${S.score} points in SaaS Slayer. See if your app is in the graveyard!`;
+    track('arcade_score_shared', { game: 'slayer', score: S.score, channel: 'x' });
     open(`https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener');
   });
   saveBtn.addEventListener('click', async () => {
