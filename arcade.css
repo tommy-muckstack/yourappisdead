@@ -12,7 +12,6 @@ body{margin:0;min-height:100vh;color:var(--bone);font:22px/1.3 "VT323",monospace
 a{color:var(--green)}
 .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 24px;font:12px "Press Start 2P",monospace}
 .logo{color:var(--bone);text-shadow:0 0 6px var(--purple)}.red{color:var(--red)}
-.credits{color:var(--orange)}
 .hero{position:relative;text-align:center;padding:48px 20px 24px;max-width:1000px;margin:0 auto}
 .moon{position:absolute;right:6%;top:10px;width:72px;filter:drop-shadow(0 0 18px rgba(245,240,200,.5))}
 .insert{font:11px "Press Start 2P",monospace;color:var(--orange);letter-spacing:1px}
@@ -24,20 +23,21 @@ h1{font:clamp(34px,9vw,92px)/1.15 "Press Start 2P",monospace;margin:24px 0}
  box-shadow:0 0 0 4px #000,0 0 24px rgba(57,255,20,.5),inset 0 0 18px rgba(57,255,20,.2)}
 .prompt{font:24px "Press Start 2P",monospace;color:var(--green);padding:0 4px 0 18px}
 .search input{flex:1;min-width:0;background:transparent;border:0;color:var(--green);caret-color:var(--green);
- font:clamp(14px,2.4vw,22px) "Press Start 2P",monospace;padding:24px 16px;outline:none}
+ font:clamp(12px,1.9vw,19px) "Press Start 2P",monospace;padding:24px 16px;outline:none;min-height:64px}
 .search input::placeholder{color:rgba(57,255,20,.45)}
 .search:focus-within{border-color:var(--bone)}
 .count{font:11px "Press Start 2P",monospace;color:var(--purple);min-height:1em;margin-top:16px}
 .graveyard{max-width:1180px;margin:0 auto;padding:24px 20px 0}
-.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:32px 28px}
+.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:32px 28px}
 .tile[hidden]{display:none}
-.tile a{position:relative;display:flex;flex-direction:column;height:100%;text-decoration:none;color:var(--bone);text-align:center;
+.tile{display:flex;flex-direction:column}
+.tile a.main{position:relative;flex:1;display:flex;flex-direction:column;height:100%;text-decoration:none;color:var(--bone);text-align:center;
  padding:28px 22px 22px;background:linear-gradient(var(--stone2),var(--stone));border:4px solid #555c6b;border-bottom-width:10px;
  border-radius:120px 120px 0 0;box-shadow:6px 6px 0 #000;transition:transform .12s steps(3),box-shadow .12s steps(3)}
-.tile a:hover,.tile a:focus-visible{transform:translate(-3px,-6px);box-shadow:9px 12px 0 #000,0 0 28px rgba(57,255,20,.35);outline:none;border-color:var(--green)}
-.tile.soon a:hover,.tile.soon a:focus-visible{border-color:var(--purple);box-shadow:9px 12px 0 #000,0 0 28px rgba(177,75,255,.4)}
+.tile a.main:hover,.tile a.main:focus-visible{transform:translate(-3px,-6px);box-shadow:9px 12px 0 #000,0 0 28px rgba(57,255,20,.35);outline:none;border-color:var(--green)}
+.tile.soon a.main:hover,.tile.soon a.main:focus-visible,.tile.community a.main:hover,.tile.community a.main:focus-visible{border-color:var(--purple);box-shadow:9px 12px 0 #000,0 0 28px rgba(177,75,255,.4)}
 .sprite{width:64px;height:64px;margin:0 auto 6px;image-rendering:pixelated}
-.tile a:hover .sprite{animation:bob .6s steps(2) infinite}
+.tile a.main:hover .sprite{animation:bob .6s steps(2) infinite}
 .rip{font:10px "Press Start 2P",monospace;color:#8a90a0}
 .tile h2{font:15px/1.4 "Press Start 2P",monospace;margin:10px 0;color:var(--bone);word-break:break-word}
 .replaces{font:10px/1.6 "Press Start 2P",monospace;color:#aab;margin:4px 0}
@@ -47,7 +47,7 @@ h1{font:clamp(34px,9vw,92px)/1.15 "Press Start 2P",monospace;margin:24px 0}
 .tags span{font:9px "Press Start 2P",monospace;padding:6px 7px;border:2px solid var(--green);color:var(--green)}
 .tags span:last-child{border-color:#8a90a0;color:#c9cdd6}
 .status{font:11px "Press Start 2P",monospace;padding:10px;background:#000;color:var(--green);border:2px solid currentColor}
-.soon .status{color:var(--purple)}
+.soon .status{color:var(--purple)}.community .status{color:var(--orange)}
 .empty{text-align:center;font:12px/2 "Press Start 2P",monospace;color:var(--orange)}
 .ground{display:block;width:100%;height:60px;margin-top:40px}
 .foot{background:#0f2a14;text-align:center;padding:8px 20px 32px;font:10px/2 "Press Start 2P",monospace;color:#9fd79a}
@@ -56,9 +56,9 @@ h1{font:clamp(34px,9vw,92px)/1.15 "Press Start 2P",monospace;margin:24px 0}
 @keyframes flicker{0%,92%,96%{opacity:1}94%,98%{opacity:.25}}
 @keyframes bob{50%{transform:translateY(-4px)}}
 @media (max-width:600px){.moon{width:44px;right:4%}.top{justify-content:center}.prompt{padding-left:10px}.search input{padding:18px 10px}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.tile a:hover,.tile a:focus-visible{transform:none}}
-@media (max-width:600px){.search input{font-size:13px}}
-.banner{margin:12px auto 0;max-width:820px;text-align:center;font:12px/1.8 "Press Start 2P",monospace;color:#000;background:var(--green);padding:10px 14px;box-shadow:0 0 18px rgba(57,255,20,.6)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.tile a.main:hover,.tile a.main:focus-visible{transform:none}}
+.banner{margin:12px auto 0;max-width:820px;text-align:center;font:12px/1.8 "Press Start 2P",monospace;color:#000;background:var(--green);padding:12px 14px;box-shadow:0 0 18px rgba(57,255,20,.6);display:flex;gap:10px 16px;flex-wrap:wrap;align-items:center;justify-content:center}.banner[hidden]{display:none}
+.banner button{font:inherit;background:#000;color:var(--green);border:3px solid #000;padding:10px 14px;min-height:44px;cursor:pointer}.banner button:hover,.banner button:focus-visible{background:var(--bone);color:#000}
 .arcade{max-width:1000px;margin:64px auto 0;padding:0 20px;text-align:center}
 .arcade-h{font:clamp(20px,4vw,34px) "Press Start 2P",monospace;color:var(--red);text-shadow:0 0 10px var(--red)}
 .arcade-sub{color:#cfc9a8}
@@ -74,3 +74,77 @@ h1{font:clamp(34px,9vw,92px)/1.15 "Press Start 2P",monospace;margin:24px 0}
 .initials button,.game-actions button{font:12px "Press Start 2P",monospace;background:#000;color:var(--green);border:3px solid var(--green);padding:10px 14px;cursor:pointer}
 .initials button:hover,.game-actions button:hover,.initials button:focus-visible,.game-actions button:focus-visible{background:var(--green);color:#000}
 .initials[hidden],.game-actions button[hidden]{display:none}
+
+/* ---- game help, pad, responsive ---- */
+.arcade-how{font:clamp(12px,2.6vw,18px) "Press Start 2P",monospace;color:var(--green);text-shadow:0 0 8px rgba(57,255,20,.6);margin:10px 0 6px}
+.arcade-sub{max-width:760px;margin:0 auto 16px}
+.touch-only{display:none}
+@media (pointer:coarse){.touch-only{display:inline}.kbd-only{display:none}}
+.pad{display:none;gap:10px;justify-content:center;margin:14px auto 0;max-width:640px}
+@media (pointer:coarse){.pad{display:flex}}
+.pad button{flex:1;min-height:56px;min-width:0;padding:0 4px;font:14px "Press Start 2P",monospace;background:#000;color:var(--green);border:3px solid var(--green);touch-action:none;user-select:none;-webkit-user-select:none;cursor:pointer}
+#pause{flex:1.5!important;font-size:10px!important}.pad .jumpb{flex:2;color:var(--orange);border-color:var(--orange)}
+.pad button.on,.pad button:active{background:var(--green);color:#000}.pad .jumpb.on,.pad .jumpb:active{background:var(--orange)}
+.initials button,.game-actions button{min-height:44px}
+.initials input{min-height:44px}
+.game-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.game-actions button[hidden]{display:none}
+.cab-main{flex:0 1 640px;min-width:0;width:100%}.cab-side{flex:0 0 auto;min-width:220px}
+.tile a.main{min-height:44px}
+@media (max-width:900px){.cab{flex-direction:column;align-items:center}.cab-main{flex:none;max-width:640px}.cab-side{width:100%;max-width:640px;min-width:0}}
+@media (max-width:600px){
+ body{font-size:20px}
+ .top{padding:14px 16px;justify-content:center}
+ .hero{padding:32px 16px 16px}
+ .moon{width:40px;right:4%;top:4px}
+ .insert{font-size:10px;line-height:1.8;padding:0 36px}
+ h1{margin:16px 0;font-size:clamp(28px,9.5vw,44px)}
+ .sub{font-size:20px}
+ .search{box-shadow:0 0 0 3px #000,0 0 18px rgba(57,255,20,.5),inset 0 0 14px rgba(57,255,20,.2);border-width:3px}
+ .prompt{display:none}
+ .search input{font:clamp(18px,5.6vw,24px) "VT323",monospace;padding:14px 12px;min-height:56px}
+ .search input::placeholder{font:clamp(17px,5.3vw,22px) "VT323",monospace}
+ .count{font-size:10px}
+ .graveyard{padding:16px 16px 0}
+ .grid{gap:28px 0}
+ .tile a.main{padding:24px 16px 18px}
+ .tags span{font-size:10px}
+ .status{padding:14px 10px}
+ .arcade{margin-top:44px;padding:0 12px}
+ .banner{font-size:11px;margin:12px 12px 0}
+ .foot{font-size:10px;padding:8px 16px 28px}
+ .foot a{display:inline-block;padding:8px 4px}
+ .initials{font-size:10px;line-height:1.8}
+}
+@media (max-width:380px){.pad button{font-size:12px}.top{font-size:11px}}
+
+.top{align-items:center}
+.topnav{display:flex;gap:6px 18px;flex-wrap:wrap}
+.topnav a{color:var(--bone);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
+.topnav a:hover,.topnav a:focus-visible{color:var(--green);text-decoration:underline}
+.tile .repo{display:flex;align-items:center;justify-content:center;min-height:44px;margin:12px 0 0;font:10px "Press Start 2P",monospace;text-decoration:none;color:var(--green);border:3px solid var(--green);background:#000;padding:10px}
+a.repo:hover,a.repo:focus-visible{background:var(--green);color:#000;outline:none}
+.tile .repo.none{color:#8a90a0;border-color:#555c6b;border-style:dashed}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.chips button{font:10px "Press Start 2P",monospace;min-height:44px;padding:10px 14px;background:#000;color:var(--bone);border:3px solid #555c6b;cursor:pointer}
+.chips button[aria-pressed="true"]{border-color:var(--green);color:var(--green);box-shadow:0 0 12px rgba(57,255,20,.4)}
+.chips button:hover,.chips button:focus-visible{border-color:var(--bone);outline:none}
+.oss,.submit{max-width:900px;margin:64px auto 0;padding:0 20px;text-align:center}
+.sec-h{font:clamp(16px,3.6vw,30px)/1.4 "Press Start 2P",monospace;color:var(--purple);text-shadow:0 0 10px var(--purple);margin:0 0 12px}
+.sec-sub{color:#cfc9a8;max-width:700px;margin:0 auto 20px}
+.oss-cards{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:16px}
+.oss-cards li{border:3px solid #555c6b;background:linear-gradient(var(--stone2),var(--stone));padding:18px 14px;box-shadow:5px 5px 0 #000}
+.oss-ico{display:block;font:22px "Press Start 2P",monospace;color:var(--green);text-shadow:0 0 8px var(--green);margin-bottom:10px}
+.oss-cards h3{font:12px/1.5 "Press Start 2P",monospace;color:var(--bone);margin:0 0 8px}.oss-cards p{margin:0}
+.oss-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;font:11px "Press Start 2P",monospace;color:var(--green);border:3px solid var(--green);background:#000;text-decoration:none}
+.btn:hover,.btn:focus-visible{background:var(--green);color:#000;outline:none}
+.sform{display:flex;flex-direction:column;gap:6px;max-width:620px;margin:0 auto;text-align:left;border:4px solid var(--purple);background:#000;padding:20px;box-shadow:0 0 24px rgba(177,75,255,.35)}
+.sform label{font:10px/1.8 "Press Start 2P",monospace;color:var(--orange);margin-top:8px}
+.sform input,.sform textarea,.sform select{font:20px "VT323",monospace;background:#0a0d12;color:var(--green);border:3px solid #555c6b;padding:10px 12px;min-height:44px;width:100%;border-radius:0}
+.sform input:focus,.sform textarea:focus,.sform select:focus{border-color:var(--green);outline:none}
+.sform button{margin-top:16px;font:12px "Press Start 2P",monospace;min-height:52px;background:#000;color:var(--green);border:3px solid var(--green);cursor:pointer;padding:12px}
+.sform button:hover,.sform button:focus-visible{background:var(--green);color:#000;outline:none}
+html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:600px){.oss,.submit{margin-top:44px;padding:0 12px}.sform{padding:14px}.topnav{justify-content:center;font-size:10px}.chips button{flex:1 1 40%}}
+.foot a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}

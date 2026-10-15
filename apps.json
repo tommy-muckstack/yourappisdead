@@ -1,6 +1,46 @@
 [
-  {"name":"CalendlyIsDead","slug":"calendlyisdead","replaces":"Calendly","category":"Scheduling","blurb":"Booking links, event types, team round-robin and reminders.","status":"live","href":"/calendlyisdead","sprite":"ghost"},
-  {"name":"SuperhumanIsDead","slug":"superhumanisdead","replaces":"Superhuman","category":"Email","blurb":"Keyboard-first email with snippets, send later and AI.","status":"soon","href":"/superhumanisdead","sprite":"bat"},
-  {"name":"WisprFlowIsDead","slug":"wisprflowisdead","replaces":"Wispr Flow","category":"Voice dictation","blurb":"Hold-to-talk dictation that types anywhere on your Mac.","status":"soon","href":"/wisprflowisdead","sprite":"skull"},
-  {"name":"MiroIsDead","slug":"miroisdead","replaces":"Miro","category":"Whiteboard","blurb":"Infinite canvas with stickies, shapes, connectors and frames.","status":"soon","href":"/miroisdead","sprite":"pumpkin"}
+ {
+  "name": "CalendlyIsDead",
+  "slug": "calendlyisdead",
+  "replaces": "Calendly",
+  "category": "Scheduling",
+  "blurb": "Booking links, event types, team round-robin and reminders.",
+  "status": "live",
+  "href": "/calendlyisdead",
+  "sprite": "ghost",
+  "repo": "https://github.com/tommy-muckstack/calendlyisdead"
+ },
+ {
+  "name": "SuperhumanIsDead",
+  "slug": "superhumanisdead",
+  "replaces": "Superhuman",
+  "category": "Email",
+  "blurb": "Keyboard-first email with snippets, send later and AI.",
+  "status": "soon",
+  "href": "/superhumanisdead",
+  "sprite": "bat",
+  "repo": null
+ },
+ {
+  "name": "WisprFlowIsDead",
+  "slug": "wisprflowisdead",
+  "replaces": "Wispr Flow",
+  "category": "Voice dictation",
+  "blurb": "Hold-to-talk dictation that types anywhere on your Mac.",
+  "status": "soon",
+  "href": "/wisprflowisdead",
+  "sprite": "skull",
+  "repo": null
+ },
+ {
+  "name": "MiroIsDead",
+  "slug": "miroisdead",
+  "replaces": "Miro",
+  "category": "Whiteboard",
+  "blurb": "Infinite canvas with stickies, shapes, connectors and frames.",
+  "status": "soon",
+  "href": "/miroisdead",
+  "sprite": "pumpkin",
+  "repo": null
+ }
 ]

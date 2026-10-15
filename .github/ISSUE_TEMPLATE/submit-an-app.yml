@@ -1,0 +1,45 @@
+name: Submit an app to kill
+description: Nominate a paid app for an open-source clone.
+title: "[App request] "
+labels: ["app-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Tell us which subscription should die. Please don't paste secrets or private data; this issue is public.
+  - type: input
+    id: app-name
+    attributes:
+      label: App name
+      placeholder: Example Calendar Co
+    validations:
+      required: true
+  - type: input
+    id: app-url
+    attributes:
+      label: App URL
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why should it die?
+      description: What do you pay, and what would the free version need to do?
+    validations:
+      required: true
+  - type: input
+    id: github
+    attributes:
+      label: GitHub handle (optional)
+      placeholder: your-handle
+  - type: dropdown
+    id: build
+    attributes:
+      label: Want to build the clone?
+      options:
+        - No, just requesting it
+        - Yes, I want to build it
+        - Maybe, if I get help
+    validations:
+      required: true
