@@ -22,7 +22,7 @@ a{color:var(--green)}
 .topnav{display:flex;gap:4px 22px;flex-wrap:wrap}
 .topnav a{color:var(--ink2);text-decoration:none;font-size:14px;font-weight:500;display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
 .topnav a:hover,.topnav a:focus-visible{color:var(--ink)}
-.topnav a.gh{color:var(--ink);border:1px solid var(--line2);border-radius:999px;padding:0 14px;min-height:36px;font-weight:500}.topnav a.gh:hover{border-color:var(--green);color:var(--green)}
+.topnav a.gh{color:var(--ink);border:1px solid var(--line2);border-radius:999px;padding:0 14px 0 12px;min-height:36px;font-weight:500;gap:7px}.topnav a.gh:hover{border-color:var(--green);color:var(--green)}
 
 /* hero */
 .hero{position:relative;text-align:center;padding:56px 20px 8px;max-width:860px;margin:0 auto}
@@ -49,12 +49,11 @@ h1 .glow-red{color:var(--red)}h1 .glow-green{color:var(--ink)}
 .tile[hidden]{display:none}
 .tile{display:flex;flex-direction:column;transition:transform .18s ease}
 .tile:hover,.tile:focus-within{transform:translateY(-3px)}
-.tile a.main{position:relative;flex:1;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);text-align:center;
+.tile a.main{position:relative;flex:1 1 auto;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);text-align:center;
  padding:30px 20px 18px;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-bottom:0;
  border-radius:110px 110px 0 0;transition:border-color .18s ease,background .18s ease}
-.tile .foot{display:flex;flex-direction:column;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);overflow:hidden;background:var(--card)}
+.tile .tfoot{flex:none;display:flex;flex-direction:column;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);overflow:hidden;background:var(--card)}
 .tile .repo{display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;font:12px var(--sans);font-weight:500;text-decoration:none;color:var(--ink2);padding:0 8px}
-.tile .repo::before{content:"";width:6px;height:6px;background:currentColor;border-radius:1px;opacity:.6}
 a.repo:hover,a.repo:focus-visible{color:var(--green);outline:none}
 .tile .repo.none{color:var(--mute)}
 .tile .share{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;font:13px var(--sans);font-weight:600;text-decoration:none;color:var(--bg);background:var(--ink);padding:0 10px;margin:0 8px 8px;border-radius:10px}
@@ -90,7 +89,7 @@ a.share:hover,a.share:focus-visible{background:var(--green);outline:none}
 .oss-ico{display:block;font:14px var(--pixel);color:var(--green);margin-bottom:14px}
 .oss-cards li{display:flex;flex-direction:column}
 .oss-cards h3{font:600 16px/1.4 var(--sans);color:var(--ink);margin:0 0 6px}.oss-cards p{margin:0 0 14px;font-size:14px;color:var(--ink2);flex:1}
-.card-link{font-size:14px;font-weight:500;color:var(--green);text-decoration:none}.card-link::after{content:" →"}.card-link:hover{text-decoration:underline}
+.card-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;color:var(--green);text-decoration:none}.card-link::after{content:" →"}.card-link:hover{text-decoration:underline}
 .oss-facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:10px 24px;text-align:left;font-size:14px;color:var(--ink2)}.oss-facts strong{color:var(--ink);font-weight:600}
 .oss-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;font:500 14px var(--sans);color:var(--ink);border:1px solid var(--line2);border-radius:999px;background:var(--card);text-decoration:none}
@@ -137,7 +136,7 @@ a.share:hover,a.share:focus-visible{background:var(--green);outline:none}
 /* footer */
 .foot{text-align:center;padding:28px 20px 40px;color:var(--mute);font-size:13px;border-top:1px solid var(--line);margin-top:0}
 .foot p{margin:0 0 8px;max-width:720px;margin-inline:auto}
-.foot a{color:var(--ink2);display:inline-flex;align-items:center;min-height:32px;padding:0 4px}
+.foot a{color:var(--ink2);display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 4px}
 .foot a:hover{color:var(--green)}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.tile:hover,.tile:focus-within{transform:none}}
@@ -164,3 +163,4 @@ a.share:hover,a.share:focus-visible{background:var(--green);outline:none}
 #pause2{flex:1.2!important;font-size:8px!important}
 #game2{cursor:pointer}
 .cabwrap[hidden]{display:none}
+.gh-ico{flex:none;display:inline-block;vertical-align:-2px}
