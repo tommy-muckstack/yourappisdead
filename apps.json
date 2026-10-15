@@ -162,7 +162,7 @@
   "status": "soon",
   "href": "/canvaisdead",
   "sprite": "zombie",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/canvaisdead"
  },
  {
   "name": "TypeformIsDead",
@@ -173,7 +173,7 @@
   "status": "soon",
   "href": "/typeformisdead",
   "sprite": "mummy",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/typeformisdead"
  },
  {
   "name": "DocuSignIsDead",
@@ -195,7 +195,7 @@
   "status": "soon",
   "href": "/grammarlyisdead",
   "sprite": "frank",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/grammarlyisdead"
  },
  {
   "name": "GranolaIsDead",
@@ -206,7 +206,7 @@
   "status": "soon",
   "href": "/granolaisdead",
   "sprite": "slime",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/granolaisdead"
  },
  {
   "name": "CleanShotXIsDead",
@@ -217,6 +217,6 @@
   "status": "soon",
   "href": "/cleanshotxisdead",
   "sprite": "crow",
-  "repo": null
+  "repo": "https://github.com/tommy-muckstack/cleanshotxisdead"
  }
 ]
