@@ -9,6 +9,22 @@
     {
       "source": "/calendlyisdead/:path*",
       "destination": "https://calendlyisdead.vercel.app/calendlyisdead/:path*"
+    },
+    {
+      "source": "/wisprflowisdead",
+      "destination": "https://wisprflowisdead.vercel.app/wisprflowisdead"
+    },
+    {
+      "source": "/wisprflowisdead/:path*",
+      "destination": "https://wisprflowisdead.vercel.app/wisprflowisdead/:path*"
+    },
+    {
+      "source": "/miroisdead",
+      "destination": "https://miroisdead.vercel.app/miroisdead"
+    },
+    {
+      "source": "/miroisdead/:path*",
+      "destination": "https://miroisdead.vercel.app/miroisdead/:path*"
     }
   ],
   "redirects": [
