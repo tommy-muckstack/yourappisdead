@@ -148,3 +148,15 @@ a.repo:hover,a.repo:focus-visible{background:var(--green);color:#000;outline:non
 html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media (max-width:600px){.oss,.submit{margin-top:44px;padding:0 12px}.sform{padding:14px}.topnav{justify-content:center;font-size:10px}.chips button{flex:1 1 40%}}
 .foot a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+
+/* Mobile: compact tiles so a long graveyard (20+ apps) stays easy to scroll */
+@media (max-width:600px){
+ .grid{gap:22px 0}
+ .rip{display:none}
+ .sprite{width:52px;height:52px;margin-bottom:0}
+ .tile a.main{padding:20px 14px 14px}
+ .tile h2{margin:8px 0 4px}
+ .blurb{margin:6px 0}
+ .tags{margin:6px 0 10px}
+ .tile .repo{margin-top:8px}
+}
