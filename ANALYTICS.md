@@ -70,7 +70,7 @@ Reuse these exact keys so cross-app insights line up:
 ## 5. Privacy rules
 
 - No free text from users (search queries, form fields, initials) is ever sent. Lengths and enums only.
-- `person_profiles: 'identified_only'`: the hub never identifies anyone, so visitors stay anonymous. Sub-apps call `posthog.identify()` only after sign-in.
+- Identity, best effort without a login: `person_profiles: 'always'` so every visitor is a person in PostHog with their history, first referrer and GeoIP. The id is a first-party cookie + localStorage on yourappisdead.com, shared by the hub and every app, so one person is one id from the hub into the apps and across return visits on that browser. Apps call `posthog.identify(uid)` on sign-in, which merges the anonymous history and links devices. No browser fingerprinting (unreliable on Safari/Firefox/Brave, needs consent in the EU/UK). The dashboard's "Hub: approximate people" tile additionally bridges cleared cookies by counting distinct IP + OS + browser, server-side, as an estimate only.
 - Session replay is off at the SDK level on the hub.
 - Analytics is skipped on `localhost` and when the browser sends Do Not Track.
 

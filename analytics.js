@@ -14,7 +14,7 @@
     autocapture: false,
     capture_pageview: true,
     capture_pageleave: true,
-    person_profiles: 'identified_only',
+    person_profiles: 'always', // every visitor gets a person profile (geo, first referrer, first URL) so individuals are visible in PostHog
     disable_session_recording: true,
     persistence: 'localStorage+cookie',
   });
