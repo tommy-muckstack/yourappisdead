@@ -112,15 +112,18 @@
   const GAMES = { breaker, invaders, bird, snake };
 
   /* ---------- shared shell ---------- */
-  const share2 = $('share2');
-  function over() { st = 'over'; const best = bests[cur.id] | 0; saveBest(cur.id, score); share2.hidden = !(score > 0);
+  const share2 = $('share2'), share2li = $('share2li');
+  function over() { st = 'over'; const best = bests[cur.id] | 0; saveBest(cur.id, score); share2.hidden = share2li.hidden = !(score > 0);
     track('arcade_game_over', { game: cur.id, score, duration_s: Math.round((Date.now() - startedAt) / 1000), is_new_best: score > best }); }
-  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = true; startedAt = Date.now(); track('arcade_game_started', { game: cur.id, input: lastInput }); }
+  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = share2li.hidden = true; startedAt = Date.now(); track('arcade_game_started', { game: cur.id, input: lastInput }); }
   share2.addEventListener('click', () => {
     const url = `https://yourappisdead.com/#${cur.id}`;
     const text = cur.share(score) + ' Can you beat it?';
     track('arcade_score_shared', { game: cur.id, score, channel: 'x' });
     open(`https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener'); });
+  share2li.addEventListener('click', () => {
+    track('arcade_score_shared', { game: cur.id, score, channel: 'linkedin' });
+    open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://yourappisdead.com/#' + cur.id)}`, '_blank', 'noopener'); });
   const pauseBtn = $('pause2');
   const togglePause = () => { if (st === 'play') { st = 'pause'; pauseBtn.textContent = 'RESUME'; draw(); } else if (st === 'pause') { st = 'play'; pauseBtn.textContent = 'PAUSE'; kick(); } };
   const action = k => { if (st === 'pause') return togglePause(); if (st !== 'play') { if (k === 'action' || k === 'up') reset(); return; } cur.press(k); };
@@ -154,7 +157,7 @@
     if (id === 'slayer') { cabM.hidden = true; cabS.hidden = false; how.innerHTML = SLAYER_HOW; if (st === 'play') togglePause(); return; }
     cur = GAMES[id] || breaker; st = 'title'; score = 0; cur.reset(); pauseBtn.textContent = 'PAUSE';
     how.textContent = cur.how[0] + '. ' + cur.how[1].replace(/\s+·\s+/g, '. ').replace(/ {2,}/g, ', ') + '. P pauses.';
-    cabS.hidden = true; cabM.hidden = false; share2.hidden = true; draw(); };
+    cabS.hidden = true; cabM.hidden = false; share2.hidden = share2li.hidden = true; draw(); };
   tabs.forEach(b => b.addEventListener('click', () => { track('arcade_game_selected', { game: b.dataset.g }); select(b.dataset.g); (b.dataset.g === 'slayer' ? cv1 : cv).focus({ preventScroll: true }); }));
   function draw() { px(0, 0, W, H, BG); stars(t); cur.draw();
     txt('SCORE ' + String(score).padStart(5, '0'), 14, 8 + 16 * T, 10, GRN, 'left', 260); txt('BEST ' + String(bests[cur.id] | 0).padStart(5, '0'), 14, 12 + 32 * T, 10, PUR, 'left', 260);
