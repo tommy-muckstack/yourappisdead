@@ -11,15 +11,15 @@
   "repo": "https://github.com/tommy-muckstack/calendlyisdead"
  },
  {
-  "name": "SuperhumanIsDead",
-  "slug": "superhumanisdead",
-  "replaces": "Superhuman",
-  "category": "Email",
-  "blurb": "Keyboard-first email with snippets, send later and AI.",
-  "status": "soon",
-  "href": "/superhumanisdead",
-  "sprite": "bat",
-  "repo": "https://github.com/tommy-muckstack/superhumanisdead"
+  "name": "CanvaIsDead",
+  "slug": "canvaisdead",
+  "replaces": "Canva",
+  "category": "Design",
+  "blurb": "Drag-and-drop design editor with templates, text, shapes and export.",
+  "status": "live",
+  "href": "/canvaisdead",
+  "sprite": "zombie",
+  "repo": "https://github.com/tommy-muckstack/canvaisdead"
  },
  {
   "name": "WisprFlowIsDead",
@@ -154,15 +154,15 @@
   "repo": "https://github.com/tommy-muckstack/airtableisdead"
  },
  {
-  "name": "CanvaIsDead",
-  "slug": "canvaisdead",
-  "replaces": "Canva",
-  "category": "Design",
-  "blurb": "Drag-and-drop design editor with templates, text, shapes and export.",
-  "status": "live",
-  "href": "/canvaisdead",
-  "sprite": "zombie",
-  "repo": "https://github.com/tommy-muckstack/canvaisdead"
+  "name": "SuperhumanIsDead",
+  "slug": "superhumanisdead",
+  "replaces": "Superhuman",
+  "category": "Email",
+  "blurb": "Keyboard-first email with snippets, send later and AI.",
+  "status": "soon",
+  "href": "/superhumanisdead",
+  "sprite": "bat",
+  "repo": "https://github.com/tommy-muckstack/superhumanisdead"
  },
  {
   "name": "TypeformIsDead",
