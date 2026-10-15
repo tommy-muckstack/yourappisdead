@@ -57,8 +57,8 @@ function scene(rng) {
   o += `<rect y="${GY}" width="1200" height="160" fill="#0f2a14"/><rect y="${GY}" width="1200" height="8" fill="#1f5a27"/>`;
   for (let x = 0; x < 1200; x += 40) o += `<rect x="${x + (x / 40 % 3) * 9}" y="${GY + 22}" width="14" height="4" fill="#1f5a27"/>`;
   // left: reaper + tombstones
-  o += art(STONE, 40, GY - 100, 10) + art(CROSS, 150, GY - 80, 10);
-  o += art(REAPER, 250, GY - 160, 10);
+  o += art(STONE, 24, GY - 100, 10) + art(CROSS, 124, GY - 80, 10);
+  o += art(REAPER, 196, GY - 160, 10);
   // right: tombstones + fake SaaS icons (no text, no brands)
   o += icon(ICONROWS, 900, GY - 100, 10, '#4aa3ff') + icon(ICONROWS, 1010, GY - 100, 10, '#ff5fa2');
   o += icon(ICONROWS, 955, GY - 210, 10, '#ffd23f');
