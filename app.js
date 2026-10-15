@@ -10,12 +10,27 @@ const EPITAPHS = [
   (r, n) => `Gone but not forgotten: ${r}. Buried by ${n}. Open source, no monthly toll.`,
   (r, n) => `Pour one out for ${r}. ${n} is free, open source, and never sends an invoice.`,
 ];
-const hash = s => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
-const epitaph = a => { const id = hash(a.slug) % EPITAPHS.length; let t = EPITAPHS[id](a.replaces, a.name); if (a.status !== 'live') t += ' Coming soon.'; return { id, text: t }; };
-const appUrl = a => `https://yourappisdead.com${a.href}`;
-const xUrl = a => `https://x.com/intent/post?text=${encodeURIComponent(epitaph(a).text)}&url=${encodeURIComponent(appUrl(a))}`;
+// Closing line that sends people to the whole graveyard. Rotates too.
+const CLOSERS = [
+  'Pay your respects to the other dearly departed:',
+  'The rest of the graveyard is this way:',
+  'More subscriptions, six feet under:',
+  'Visit the graves of its friends:',
+  'See who else we buried:',
+];
+const HUB = 'https://yourappisdead.com';
+const appUrl = a => `${HUB}${a.href}`;
+// A different line every click: walk the lists starting at a random offset, never repeating until the list is exhausted.
+const seq = (n, start) => { let i = start; return () => { i = (i + 1) % n; return i; }; };
+const nextEp = {}, nextCl = seq(CLOSERS.length, Math.floor(Math.random() * CLOSERS.length));
+const compose = a => {
+  nextEp[a.slug] = nextEp[a.slug] || seq(EPITAPHS.length, Math.floor(Math.random() * EPITAPHS.length));
+  const id = nextEp[a.slug](), cid = nextCl();
+  let line = EPITAPHS[id](a.replaces, a.name); if (a.status !== 'live') line += ' Coming soon.';
+  return { id, cid, text: `${line}\n${appUrl(a)}\n\n${CLOSERS[cid]} ${HUB}` };
+};
+const xUrl = text => `https://x.com/intent/post?text=${encodeURIComponent(text)}`;
 const fbUrl = a => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(appUrl(a))}`;
-const FB = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>';
 const liUrl = a => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(appUrl(a))}`;
 const LI = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>';
 const GH = '<svg class="gh-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>';
@@ -41,7 +56,7 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
       ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH} Open Source on GitHub</a>` : `<span class="repo none">${GH} Repo coming soon</span>`}
       <div class="tfoot">
         <div class="shares">
-          <a class="share x" href="${esc(xUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on X">${X} Share on X</a>
+          <a class="share x" href="https://x.com/intent/post" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on X">${X} Share on X</a>
           <a class="share li" href="${esc(liUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on LinkedIn" title="Share on LinkedIn">${LI}</a>
           <a class="share fb" href="${esc(fbUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on Facebook" title="Share on Facebook">${FB}</a>
         </div>
@@ -62,7 +77,10 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
     const app = apps[tiles.indexOf(li)]; if (!app) return;
     if (a.classList.contains('main')) track('hub_app_opened', { app_slug: app.slug, app_status: app.status, position: tiles.indexOf(li) });
     else if (a.classList.contains('repo')) track('hub_app_repo_clicked', { app_slug: app.slug });
-    else if (a.classList.contains('share')) track('hub_app_shared', { app_slug: app.slug, channel: a.classList.contains('li') ? 'linkedin' : a.classList.contains('fb') ? 'facebook' : 'x', message_id: epitaph(app).id });
+    else if (a.classList.contains('share')) {
+      if (a.classList.contains('x')) { const m = compose(app); a.href = xUrl(m.text); track('hub_app_shared', { app_slug: app.slug, channel: 'x', message_id: m.id, closer_id: m.cid }); }
+      else track('hub_app_shared', { app_slug: app.slug, channel: a.classList.contains('li') ? 'linkedin' : 'facebook' });
+    }
   });
   q.addEventListener('keydown', e => { if (e.key === 'Enter') { const f = tiles.find(x => !x.hidden); f && f.querySelector('a.main').focus(); } });
   filter();

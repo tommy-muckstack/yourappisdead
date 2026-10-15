@@ -39,7 +39,8 @@ Reuse these exact keys so cross-app insights line up:
 | `app_status`   | string | `live`, `soon`, `community` |
 | `position`     | int    | index in a list, 0-based |
 | `channel`      | string | share destination: `x`, `linkedin`, `facebook` |
-| `message_id`   | int    | which share message template was used (index into the epitaph list in app.js) |
+| `message_id`   | int    | which share line was used (index into EPITAPHS in app.js) |
+| `closer_id`    | int    | which closing line sent them to the hub (index into CLOSERS in app.js) |
 | `target`       | string | where a link/CTA goes: `github`, `contributing`, `apps`, `arcade`, … |
 | `query_length` | int    | characters typed; never the query text |
 | `results_count`| int    | |
@@ -56,7 +57,7 @@ Reuse these exact keys so cross-app insights line up:
 | `hub_search_performed`       | `query_length`, `results_count` (debounced, fires once per pause in typing) |
 | `hub_app_opened`             | `app_slug`, `app_status`, `position` |
 | `hub_app_repo_clicked`       | `app_slug` |
-| `hub_app_shared`             | `app_slug`, `channel`, `message_id` |
+| `hub_app_shared`             | `app_slug`, `channel`, `message_id` + `closer_id` (X only) |
 | `hub_nav_clicked`            | `target` |
 | `hub_contribute_clicked`     | `target` (`contributing`, `all_repos`, `site_repo`) |
 | `hub_app_requested`          | `wants_to_build` (`no`, `yes`, `maybe`); never the form text |
