@@ -1,7 +1,7 @@
 // Pixel-art tombstone avatars (16x16). Original art, one char per pixel, "." = transparent.
 (() => {
-  const PAL = { K:'#05070a', W:'#f5f0c8', S:'#e8fff0', G:'#39ff14', g:'#1f9d0e', P:'#b14bff', p:'#6a1fb0',
-    O:'#ff8c1a', o:'#b85a00', R:'#ff2a3d', r:'#a01426', Y:'#ffe14a', B:'#2de2ff', b:'#1a8fb0', N:'#ff6fb5',
+  const PAL = { K:'#05070a', W:'#f5f0c8', S:'#e8fff0', G:'#7fd68c', g:'#2f8f44', P:'#a596ff', p:'#5e4fc4',
+    O:'#e6a04a', o:'#a85f1a', R:'#ef5f68', r:'#9a2a33', Y:'#ffe14a', B:'#2de2ff', b:'#1a8fb0', N:'#ff6fb5',
     E:'#8a90a0', D:'#7a4a21', T:'#d9c7a0', F:'#c9d98a' };
   const ART = {
     ghost: [
