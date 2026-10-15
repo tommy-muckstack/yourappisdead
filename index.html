@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YourAppIsDead — the open-source SaaS marketplace</title>
+<meta name="description" content="An open-source marketplace of free replacements for the SaaS you pay for every month. Every app is open source. So is this site. Anyone can contribute.">
+<!--og--><meta property="og:title" content="SaaS is dead | YourAppIsDead"><meta property="og:description" content="The open-source marketplace of free SaaS replacements. Every app and this site are open source; anyone can contribute."><meta property="og:image" content="https://yourappisdead.com/api/og?score=0&amp;name=YAD"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:title" content="SaaS is dead | YourAppIsDead"><meta name="twitter:card" content="summary_large_image"><!--/og-->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/SpaceGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/PressStart2P.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/site.css?v=8">
+</head>
+<body>
+<a class="skip" href="#apps">Skip to apps</a>
+<header class="top">
+  <span class="logo">YOURAPP<span class="red">IS</span>DEAD</span>
+  <nav class="topnav" aria-label="Sections"><a href="#apps" data-track="hub_nav_clicked" data-target="apps">Apps</a><a href="#arcade" data-track="hub_nav_clicked" data-target="arcade">Games</a><a href="#open-source" data-track="hub_nav_clicked" data-target="contribute">Contribute</a><a href="#submit" data-track="hub_nav_clicked" data-target="request">Request an app</a><a class="gh" href="https://github.com/tommy-muckstack/yourappisdead" target="_blank" rel="noopener" data-track="hub_nav_clicked" data-target="github"><svg class="gh-ico" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a></nav>
+</header>
+<main>
+  <div id="banner" class="banner" hidden role="status"><span id="bantxt"></span> <button id="beat" type="button">BEAT THIS SCORE ▶</button></div>
+  <section class="hero">
+    <svg class="moon" viewBox="0 0 16 16" aria-hidden="true" shape-rendering="crispEdges"><path fill="#f5f0c8" d="M5 1h6v1h2v2h1v2h1v4h-1v2h-1v2h-2v1H5v-1H3v-2H2v-2H1V6h1V4h1V2h2z"/><path fill="#d8d09a" d="M5 4h2v2H5zM10 8h2v2h-2zM6 10h1v1H6z"/></svg>
+    <p class="insert">THE OPEN-SOURCE SAAS MARKETPLACE</p>
+    <h1>SaaS <span class="glow-red">is dead.</span></h1>
+    <p class="sub">Free, open-source replacements for the apps you rent every month. Every app is open source. So is this site. Anyone can contribute.</p>
+    <form class="search" role="search" onsubmit="return false">
+      <label for="q" class="sr">Search apps</label>
+      <span class="prompt" aria-hidden="true">&gt;</span>
+      <input id="q" type="search" placeholder="Search to see if your app is dead" autocomplete="off" aria-controls="grid" aria-describedby="count">
+    </form>
+    <p id="count" class="count" aria-live="polite"></p>
+  </section>
+  <section id="apps" class="graveyard" aria-label="Apps">
+    <ul id="grid" class="grid"></ul>
+    <p id="empty" class="empty" hidden>NO SOULS FOUND. <a href="https://github.com/tommy-muckstack">SUMMON ONE ON GITHUB</a></p>
+  </section>
+  <section id="open-source" class="oss" aria-labelledby="oss-h">
+    <h2 id="oss-h" class="sec-h">Everything here is open source.</h2>
+    <p class="sec-sub">YourAppIsDead is a marketplace of open-source SaaS replacements. Every app has a public repo under a permissive license, and so does this site. Read the code, run it yourself, fork it, or send a pull request.</p>
+    <ul class="oss-cards">
+      <li><span class="oss-ico" aria-hidden="true">01</span><h3>Build a new clone</h3><p>Pick a subscription people are tired of paying for, build the free version, and list it here. The contributing guide covers naming, licensing and what a listing needs.</p><a class="card-link" href="https://github.com/tommy-muckstack/yourappisdead/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener" data-track="hub_contribute_clicked" data-target="contributing">Read the contributing guide</a></li>
+      <li><span class="oss-ico" aria-hidden="true">02</span><h3>Improve an existing app</h3><p>Every tile links to its repo. Fix a bug, add the feature you miss from the paid version, or improve the docs. Issues and pull requests are open on all of them.</p><a class="card-link" href="https://github.com/tommy-muckstack?q=isdead" target="_blank" rel="noopener" data-track="hub_contribute_clicked" data-target="all_repos"><svg class="gh-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Browse all repos</a></li>
+      <li><span class="oss-ico" aria-hidden="true">03</span><h3>Improve this site</h3><p>The marketplace itself is a small static site with no build step. Add a listing to apps.json, fix copy, or make the graveyard better.</p><a class="card-link" href="https://github.com/tommy-muckstack/yourappisdead" target="_blank" rel="noopener" data-track="hub_contribute_clicked" data-target="site_repo"><svg class="gh-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> This site on GitHub</a></li>
+    </ul>
+    <ul class="oss-facts" aria-label="Principles">
+      <li><strong>Free forever.</strong> The hosted versions on this site are free, with no paywalled features.</li>
+      <li><strong>Permissive licenses.</strong> Take it, change it, self-host it, sell support for it.</li>
+      <li><strong>Original assets.</strong> Lookalike layouts, our own fonts and art. Never copied logos or code.</li>
+    </ul>
+  </section>
+  <section id="submit" class="submit" aria-labelledby="sub-h">
+    <h2 id="sub-h" class="sec-h">Request an app to kill.</h2>
+    <p class="sec-sub">Name the subscription you want dead, or tell us you want to build the clone yourself. This opens a pre-filled issue on GitHub that you can edit before posting. Nothing you type here is stored by this site. You need a free GitHub account.</p>
+    <form id="submitform" class="sform">
+      <label for="f-app">APP NAME</label><input id="f-app" name="app" required maxlength="80" autocomplete="off">
+      <label for="f-url">APP URL</label><input id="f-url" name="url" type="url" required placeholder="https://" maxlength="300" autocomplete="off">
+      <label for="f-why">WHY SHOULD IT DIE?</label><textarea id="f-why" name="why" required rows="4" maxlength="1500"></textarea>
+      <label for="f-gh">GITHUB HANDLE (OPTIONAL)</label><input id="f-gh" name="gh" placeholder="@you" maxlength="40" autocomplete="off">
+      <label for="f-build">WANT TO BUILD THE CLONE?</label>
+      <select id="f-build" name="build"><option>No, just requesting it</option><option>Yes, I want to build it</option><option>Maybe, if I get help</option></select>
+      <button type="submit">Open GitHub issue</button>
+    </form>
+  </section>
+  <section id="arcade" class="arcade" aria-labelledby="arcade-h">
+    <h2 id="arcade-h" class="arcade-h">Arcade</h2>
+    <p class="arcade-how">ARROW KEYS AND SPACE. THAT IS IT.</p>
+    <div id="gametabs" class="chips gametabs" role="group" aria-label="Choose a game">
+      <button type="button" data-g="slayer" aria-pressed="true">SAAS SLAYER</button><button type="button" data-g="breaker" aria-pressed="false">PAYWALL BREAKER</button><button type="button" data-g="invaders" aria-pressed="false">INVOICE INVADERS</button><button type="button" data-g="bird" aria-pressed="false">CHURN BIRD</button><button type="button" data-g="snake" aria-pressed="false">RENEWAL SNAKE</button>
+    </div>
+    <p id="gamehow" class="arcade-sub" aria-live="polite"><span class="kbd-only">Move with ← → (or A/D), jump with ↑ or Space, pause with P.</span><span class="touch-only">Use the pad below, or tap the left/right half of the screen to move and swipe up to jump.</span> Land on an app's head to slay it. Touch one from the side and it's game over. Watch for barriers once your score passes 1500: they cap your jump, so time your hops.</p>
+    <div id="cab-slayer" class="cabwrap">
+      <div class="cab">
+        <div class="cab-main">
+          <canvas id="game" width="640" height="320" aria-label="SaaS Slayer arcade game. Jump on apps to slay them." tabindex="0"></canvas>
+          <div class="pad" id="pad">
+            <button type="button" data-k="left" aria-label="Move left">◀</button>
+            <button type="button" data-k="right" aria-label="Move right">▶</button>
+            <button type="button" data-k="jump" class="jumpb" aria-label="Jump">JUMP</button>
+            <button type="button" id="pause" aria-label="Pause or resume">PAUSE</button>
+          </div>
+        </div>
+        <div class="cab-side">
+          <h3>HIGH SCORES</h3>
+          <ol id="board" class="board"></ol>
+          <p class="fine2">Top 10 worldwide.</p>
+        </div>
+      </div>
+      <form id="initials" class="initials" hidden>
+        <label for="ini">NEW HIGH SCORE! ENTER INITIALS</label>
+        <input id="ini" maxlength="3" pattern="[A-Za-z]{1,3}" autocomplete="off" required>
+        <button type="submit">SAVE</button>
+      </form>
+      <p class="game-actions"><button id="share" class="x" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Share my score on X</button> <button id="shareli" class="li" type="button" hidden aria-label="Share my score on LinkedIn" title="Share on LinkedIn"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></button> <button id="sharefb" class="fb" type="button" hidden aria-label="Share my score on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></button> <button id="savepng" type="button" hidden>Save image</button></p>
+    </div>
+    <div id="cab-more" class="cabwrap" hidden>
+      <div class="cab">
+        <div class="cab-main">
+          <canvas id="game2" width="640" height="320" aria-label="Mini arcade game. Choose a game above." tabindex="0"></canvas>
+          <div class="pad pad2" id="pad2">
+            <button type="button" data-k="left" aria-label="Left">◀</button>
+            <button type="button" data-k="up" aria-label="Up">▲</button>
+            <button type="button" data-k="down" aria-label="Down">▼</button>
+            <button type="button" data-k="right" aria-label="Right">▶</button>
+            <button type="button" data-k="action" class="jumpb" aria-label="Action">GO</button>
+            <button type="button" id="pause2" aria-label="Pause or resume">PAUSE</button>
+          </div>
+        </div>
+        <div class="cab-side">
+          <h3>HIGH SCORES</h3>
+          <ol id="board2" class="board"></ol>
+          <p class="fine2">Top 10 worldwide.</p>
+        </div>
+      </div>
+      <form id="initials2" class="initials" hidden>
+        <label for="ini2">TOP 10! ENTER INITIALS</label>
+        <input id="ini2" maxlength="3" pattern="[A-Za-z]{1,3}" autocomplete="off" required>
+        <button type="submit">SAVE</button>
+      </form>
+      <p class="game-actions"><button id="share2" class="x" type="button" hidden><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Share my score on X</button> <button id="share2li" class="li" type="button" hidden aria-label="Share my score on LinkedIn" title="Share on LinkedIn"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></button> <button id="share2fb" class="fb" type="button" hidden aria-label="Share my score on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></button></p>
+      <p class="fine2">Your personal best is saved on this device.</p>
+    </div>
+  </section>
+  <svg class="ground" viewBox="0 0 64 6" preserveAspectRatio="none" aria-hidden="true" shape-rendering="crispEdges"><path fill="#0f2a14" d="M0 2h6v-1h5v1h9v-1h7v1h12v-1h6v1h19v4H0z"/></svg>
+</main>
+<footer class="foot">
+  <p>Game over for subscriptions. Every app is Apache-2.0 licensed on <a href="https://github.com/tommy-muckstack"><svg class="gh-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>.</p>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<noscript><style>.grid{display:none}</style><p class="empty">Apps: <a href="/calendlyisdead">CalendlyIsDead</a> · <a href="/superhumanisdead">SuperhumanIsDead</a> · <a href="/wisprflowisdead">WisprFlowIsDead</a> · <a href="/miroisdead">MiroIsDead</a> · <a href="/loomisdead">LoomIsDead</a> · <a href="/linktreeisdead">LinktreeIsDead</a> · <a href="/notionisdead">NotionIsDead</a> · <a href="/trelloisdead">TrelloIsDead</a> · <a href="/bitlyisdead">BitlyIsDead</a> · <a href="/onepasswordisdead">1PasswordIsDead</a> · <a href="/otterisdead">OtterIsDead</a> · <a href="/linearisdead">LinearIsDead</a> · <a href="/wetransferisdead">WeTransferIsDead</a> · <a href="/airtableisdead">AirtableIsDead</a> · <a href="/canvaisdead">CanvaIsDead</a> · <a href="/typeformisdead">TypeformIsDead</a> · <a href="/docusignisdead">DocuSignIsDead</a> · <a href="/grammarlyisdead">GrammarlyIsDead</a> · <a href="/granolaisdead">GranolaIsDead</a> · <a href="/cleanshotxisdead">CleanShotXIsDead</a></p></noscript>
+<script src="/analytics.js?v=1" defer></script>
+<script src="/sprites.js" defer></script>
+<script src="/app.js?v=11" defer></script>
+<script src="/game.js?v=5" defer></script>
+<script src="/games.js?v=7" defer></script>
+</body>
+</html>
