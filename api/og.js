@@ -95,9 +95,9 @@ function siteScene(rng, n) {
   for (let x = 0; x < 1200; x += 40) o += `<rect x="${x + (x / 40 % 3) * 9}" y="${GY + 24}" width="14" height="4" fill="#1f5a27"/>`;
   // back row (small, dim) then front row of engraved stones
   for (let i = 0; i < 9; i++) { const x = 30 + i * 132 + (i % 2) * 20; o += art(STONE, x, GY - 150, 7).replace(/#555c6b/g, '#3b414d').replace(/#3b414d/g, '#2b2f38'); }
-  for (let i = 0; i < n; i++) { const x = 28 + i * 166; o += art(STONE2, x, GY - 156, 13); o += `<rect x="${x + 6}" y="${GY - 4}" width="144" height="6" fill="#1f5a27"/>`; }
-  o += art(REAPER, 1100, GY - 112, 7);
-  return o;
+  for (let i = 0; i < n; i++) { const x = 24 + i * 156; o += art(STONE2, x, GY - 144, 12); o += `<rect x="${x + 6}" y="${GY - 4}" width="132" height="6" fill="#1f5a27"/>`; }
+  o += art(REAPER, 1112, GY - 80, 5);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" shape-rendering="crispEdges">${o}</svg>`;
 }
 export default async function handler(req) {
   const u = new URL(req.url);
@@ -110,7 +110,7 @@ export default async function handler(req) {
     const names = apps.filter(a => a.status === 'live').map(a => String(a.replaces).toUpperCase().replace(/\.AI$/, '')).filter(x => x.length <= 9).slice(0, 7);
     const n = names.length || 7, GY = 480;
     const bg2 = 'data:image/svg+xml;base64,' + b64(siteScene(mulberry(11), n));
-    const stones = names.map((nm, i) => d({ position: 'absolute', left: 28 + i * 166, top: GY - 118, width: 156, flexDirection: 'column', alignItems: 'center' }, [
+    const stones = names.map((nm, i) => d({ position: 'absolute', left: 24 + i * 156, top: GY - 108, width: 144, flexDirection: 'column', alignItems: 'center' }, [
       d({ fontSize: 11, color: '#8a90a0' }, 'R.I.P.'),
       d({ fontSize: nm.length > 7 ? 11 : 13, color: '#f5f0c8', marginTop: 10 }, nm),
     ]));
