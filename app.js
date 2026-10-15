@@ -38,8 +38,8 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
         <p class="tags"><span>${esc(a.category)}</span></p>
         <span class="status">${(STATUS[a.status]||STATUS.soon)[0]}</span>
       </a>
+      ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH} Open Source on GitHub</a>` : `<span class="repo none">${GH} Repo coming soon</span>`}
       <div class="tfoot">
-        ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH} Open Source on GitHub</a>` : `<span class="repo none">${GH} Repo coming soon</span>`}
         <div class="shares">
           <a class="share x" href="${esc(xUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on X">${X} Share on X</a>
           <a class="share li" href="${esc(liUrl(a))}" target="_blank" rel="noopener" aria-label="Share ${esc(a.name)} on LinkedIn" title="Share on LinkedIn">${LI}</a>

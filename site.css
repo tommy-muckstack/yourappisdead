@@ -50,10 +50,10 @@ h1 .glow-red{color:var(--red)}h1 .glow-green{color:var(--ink)}
 .tile{display:flex;flex-direction:column;transition:transform .18s ease}
 .tile:hover,.tile:focus-within{transform:translateY(-3px)}
 .tile a.main{position:relative;flex:1 1 auto;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);text-align:center;
- padding:30px 20px 18px;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-bottom:0;
+ padding:30px 20px 8px;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-bottom:0;
  border-radius:110px 110px 0 0;transition:border-color .18s ease,background .18s ease}
-.tile .tfoot{flex:none;display:flex;flex-direction:column;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);overflow:hidden;background:var(--card)}
-.tile .repo{display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;font:12px var(--sans);font-weight:500;text-decoration:none;color:var(--ink2);padding:0 8px}
+.tile .tfoot{flex:none;display:flex;flex-direction:column;border:1px solid var(--line);border-top:0;padding-top:6px;border-radius:0 0 var(--r) var(--r);overflow:hidden;background:var(--card)}
+.tile .repo{display:flex;align-items:center;justify-content:center;gap:7px;min-height:36px;font:12px var(--sans);font-weight:500;text-decoration:none;color:var(--ink2);padding:0 8px;background:var(--card);border:1px solid var(--line);border-top:0;border-bottom:0}
 a.repo:hover,a.repo:focus-visible{color:var(--green);outline:none}
 .tile .repo.none{color:var(--mute)}
 .tile .shares{display:grid;grid-template-columns:1fr 44px 44px;gap:6px;margin:0 8px 8px}
