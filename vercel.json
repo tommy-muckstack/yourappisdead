@@ -33,6 +33,126 @@
     {
       "source": "/superhumanisdead/:path*",
       "destination": "https://superhumanisdead.vercel.app/superhumanisdead/:path*"
+    },
+    {
+      "source": "/canvaisdead",
+      "destination": "https://canvaisdead.vercel.app/canvaisdead"
+    },
+    {
+      "source": "/canvaisdead/:path*",
+      "destination": "https://canvaisdead.vercel.app/canvaisdead/:path*"
+    },
+    {
+      "source": "/typeformisdead",
+      "destination": "https://typeformisdead.vercel.app/typeformisdead"
+    },
+    {
+      "source": "/typeformisdead/:path*",
+      "destination": "https://typeformisdead.vercel.app/typeformisdead/:path*"
+    },
+    {
+      "source": "/docusignisdead",
+      "destination": "https://docusignisdead.vercel.app/docusignisdead"
+    },
+    {
+      "source": "/docusignisdead/:path*",
+      "destination": "https://docusignisdead.vercel.app/docusignisdead/:path*"
+    },
+    {
+      "source": "/grammarlyisdead",
+      "destination": "https://grammarlyisdead.vercel.app/grammarlyisdead"
+    },
+    {
+      "source": "/grammarlyisdead/:path*",
+      "destination": "https://grammarlyisdead.vercel.app/grammarlyisdead/:path*"
+    },
+    {
+      "source": "/granolaisdead",
+      "destination": "https://granolaisdead.vercel.app/granolaisdead"
+    },
+    {
+      "source": "/granolaisdead/:path*",
+      "destination": "https://granolaisdead.vercel.app/granolaisdead/:path*"
+    },
+    {
+      "source": "/cleanshotxisdead",
+      "destination": "https://cleanshotxisdead.vercel.app/cleanshotxisdead"
+    },
+    {
+      "source": "/cleanshotxisdead/:path*",
+      "destination": "https://cleanshotxisdead.vercel.app/cleanshotxisdead/:path*"
+    },
+    {
+      "source": "/loomisdead",
+      "destination": "https://loomisdead.vercel.app/loomisdead"
+    },
+    {
+      "source": "/loomisdead/:path*",
+      "destination": "https://loomisdead.vercel.app/loomisdead/:path*"
+    },
+    {
+      "source": "/linktreeisdead",
+      "destination": "https://linktreeisdead.vercel.app/linktreeisdead"
+    },
+    {
+      "source": "/linktreeisdead/:path*",
+      "destination": "https://linktreeisdead.vercel.app/linktreeisdead/:path*"
+    },
+    {
+      "source": "/trelloisdead",
+      "destination": "https://trelloisdead.vercel.app/trelloisdead"
+    },
+    {
+      "source": "/trelloisdead/:path*",
+      "destination": "https://trelloisdead.vercel.app/trelloisdead/:path*"
+    },
+    {
+      "source": "/bitlyisdead",
+      "destination": "https://bitlyisdead.vercel.app/bitlyisdead"
+    },
+    {
+      "source": "/bitlyisdead/:path*",
+      "destination": "https://bitlyisdead.vercel.app/bitlyisdead/:path*"
+    },
+    {
+      "source": "/wetransferisdead",
+      "destination": "https://wetransferisdead.vercel.app/wetransferisdead"
+    },
+    {
+      "source": "/wetransferisdead/:path*",
+      "destination": "https://wetransferisdead.vercel.app/wetransferisdead/:path*"
+    },
+    {
+      "source": "/notionisdead",
+      "destination": "https://notionisdead.vercel.app/notionisdead"
+    },
+    {
+      "source": "/notionisdead/:path*",
+      "destination": "https://notionisdead.vercel.app/notionisdead/:path*"
+    },
+    {
+      "source": "/otterisdead",
+      "destination": "https://otterisdead.vercel.app/otterisdead"
+    },
+    {
+      "source": "/otterisdead/:path*",
+      "destination": "https://otterisdead.vercel.app/otterisdead/:path*"
+    },
+    {
+      "source": "/linearisdead",
+      "destination": "https://linearisdead.vercel.app/linearisdead"
+    },
+    {
+      "source": "/linearisdead/:path*",
+      "destination": "https://linearisdead.vercel.app/linearisdead/:path*"
+    },
+    {
+      "source": "/airtableisdead",
+      "destination": "https://airtableisdead.vercel.app/airtableisdead"
+    },
+    {
+      "source": "/airtableisdead/:path*",
+      "destination": "https://airtableisdead.vercel.app/airtableisdead/:path*"
     }
   ],
   "redirects": [
