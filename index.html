@@ -1,11 +1,45 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/style.css"><link rel="icon" href="/favicon.svg"><title>YourAppIsDead: free, open-source replacements for the apps you pay for</title><meta name="description" content="The IsDead series: free, open-source clones of popular paid apps."></head><body><main>
-<nav><a class="brand" href="/"><svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="10" width="52" height="46" rx="10" fill="#14211d"/><path d="M20 4v12M44 4v12" stroke="#14211d" stroke-width="6" stroke-linecap="round"/><path d="M22 30l8 8M30 30l-8 8M36 30l8 8M44 30l-8 8" stroke="#f6f3ec" stroke-width="4" stroke-linecap="round"/><path d="M24 48q8-5 16 0" stroke="#e8692c" stroke-width="4" fill="none" stroke-linecap="round"/></svg> YourAppIsDead</a><a class="btn" href="https://github.com/tommy-muckstack">GitHub</a></nav>
-<h1>Your app is dead.<br>Long live the free one.</h1>
-<p class="lede">The IsDead series rebuilds the software you pay for every month as free, open-source apps. No plans, no seat limits, no paywalls.</p>
-<div class="grid">
-<a class="card" href="/calendlyisdead"><span class="tag">Live</span><h2>CalendlyIsDead</h2><p>Scheduling links, team round robin, routing forms, reminders and embeds. Free forever.</p></a>
-<a class="card" href="/superhumanisdead"><span class="tag soon">Coming soon</span><h2>SuperhumanIsDead</h2><p>A blazing-fast, keyboard-first email client with AI, without the monthly bill.</p></a>
-<a class="card" href="/wisprflowisdead"><span class="tag soon">Coming soon</span><h2>WisprFlowIsDead</h2><p>Voice dictation that types anywhere on your computer, free and open source.</p></a>
-</div>
-<footer>Open source under Apache-2.0. Not affiliated with Calendly, Superhuman or Wispr Flow.</footer>
-</main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YourAppIsDead — SaaS is dead. Free, open-source replacements.</title>
+<meta name="description" content="Free, open-source replacements for the SaaS you pay for every month. Calendly, Superhuman, Wispr Flow and more.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/PressStart2P.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/arcade.css">
+</head>
+<body>
+<div class="crt" aria-hidden="true"></div>
+<a class="skip" href="#apps">Skip to apps</a>
+<header class="top">
+  <span class="logo">YOURAPP<span class="red">IS</span>DEAD</span>
+  <span class="credits">CREDITS 00 · FREE PLAY</span>
+</header>
+<main>
+  <section class="hero">
+    <svg class="moon" viewBox="0 0 16 16" aria-hidden="true" shape-rendering="crispEdges"><path fill="#f5f0c8" d="M5 1h6v1h2v2h1v2h1v4h-1v2h-1v2h-2v1H5v-1H3v-2H2v-2H1V6h1V4h1V2h2z"/><path fill="#d8d09a" d="M5 4h2v2H5zM10 8h2v2h-2zM6 10h1v1H6z"/></svg>
+    <p class="insert flicker">INSERT COIN TO CANCEL SUBSCRIPTION</p>
+    <h1><span class="glow-green">SAAS</span> <span class="glow-red">IS DEAD</span></h1>
+    <p class="sub">Free, open-source clones of the apps you rent every month.<br>No seats. No upsells. No monthly toll.</p>
+    <form class="search" role="search" onsubmit="return false">
+      <label for="q" class="sr">Search apps</label>
+      <span class="prompt" aria-hidden="true">&gt;</span>
+      <input id="q" type="search" placeholder="WHICH APP DO YOU WANT DEAD?" autocomplete="off" aria-controls="grid" aria-describedby="count">
+    </form>
+    <p id="count" class="count" aria-live="polite"></p>
+  </section>
+  <section id="apps" class="graveyard" aria-label="Apps">
+    <ul id="grid" class="grid"></ul>
+    <p id="empty" class="empty" hidden>NO SOULS FOUND. <a href="https://github.com/tommy-muckstack">SUMMON ONE ON GITHUB</a></p>
+  </section>
+  <svg class="ground" viewBox="0 0 64 6" preserveAspectRatio="none" aria-hidden="true" shape-rendering="crispEdges"><path fill="#0f2a14" d="M0 2h6v-1h5v1h9v-1h7v1h12v-1h6v1h19v4H0z"/></svg>
+</main>
+<footer class="foot">
+  <p>GAME OVER FOR SUBSCRIPTIONS · ALL APPS MIT-LICENSED · <a href="https://github.com/tommy-muckstack">GITHUB</a></p>
+  <p class="fine">Not affiliated with Calendly, Superhuman, Wispr Flow or any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<noscript><style>.grid{display:none}</style><p class="empty">Apps: <a href="/calendlyisdead">CalendlyIsDead</a> · <a href="/superhumanisdead">SuperhumanIsDead</a> · <a href="/wisprflowisdead">WisprFlowIsDead</a></p></noscript>
+<script src="/app.js" defer></script>
+</body>
+</html>
