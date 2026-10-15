@@ -1,10 +1,11 @@
 /* YourAppIsDead: quiet graveyard. Pixel art + a modern sans. */
 @font-face{font-family:"Press Start 2P";src:url(/fonts/PressStart2P.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Space Grotesk";src:url(/fonts/SpaceGrotesk.woff2) format("woff2");font-weight:300 700;font-display:swap}
 :root{
  --bg:#0c0e12;--bg2:#111419;--card:#151920;--card2:#1a1f27;--line:#262c36;--line2:#343c48;
  --ink:#ece7d8;--ink2:#b6b1a3;--mute:#7c8290;
  --green:#7fd68c;--green-dim:rgba(127,214,140,.14);--red:#ef5f68;--purple:#a596ff;--purple-dim:rgba(165,150,255,.14);--amber:#e6b35a;
- --pixel:"Press Start 2P",monospace;--sans:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ --pixel:"Press Start 2P",monospace;--sans:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
  --r:14px}
 *{box-sizing:border-box}
 html{background:var(--bg);scroll-behavior:smooth}
@@ -27,7 +28,7 @@ a{color:var(--green)}
 .hero{position:relative;text-align:center;padding:56px 20px 8px;max-width:860px;margin:0 auto}
 .moon{position:absolute;right:4%;top:22px;width:44px;opacity:.85}
 .insert{font:10px var(--pixel);color:var(--amber);letter-spacing:.06em;margin:0 0 22px}
-h1{font:800 clamp(44px,8.5vw,96px)/1 var(--sans);letter-spacing:-.045em;margin:0 0 20px;color:var(--ink)}
+h1{font:700 clamp(42px,8vw,92px)/.98 var(--sans);letter-spacing:-.035em;margin:0 0 20px;color:var(--ink)}
 h1 .glow-red{color:var(--red)}h1 .glow-green{color:var(--ink)}
 .sub{font-size:clamp(17px,2.2vw,20px);color:var(--ink2);margin:0 auto 32px;max-width:560px}
 .search{display:flex;align-items:center;max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line2);border-radius:999px;
@@ -64,7 +65,7 @@ a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);o
 @keyframes idle{0%,62%{transform:translateY(0)}63%,100%{transform:translateY(-2px)}}
 @keyframes bob{50%{transform:translateY(-4px)}}
 .rip{font:8px var(--pixel);color:var(--mute);letter-spacing:.1em}
-.tile h2{font:600 19px/1.25 var(--sans);letter-spacing:-.01em;margin:8px 0 4px;color:var(--ink);word-break:break-word}
+.tile h2{font:600 18px/1.25 var(--sans);letter-spacing:-.015em;margin:8px 0 4px;color:var(--ink);word-break:break-word}
 .replaces{font:9px var(--pixel);color:var(--mute);margin:0 0 10px;letter-spacing:.04em}
 .replaces strong{color:var(--red);font-weight:400}
 .blurb{margin:0 0 16px;flex:1;font-size:14px;color:var(--ink2)}
@@ -79,7 +80,7 @@ a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);o
 
 /* sections */
 .oss,.submit{max-width:900px;margin:88px auto 0;padding:0 24px;text-align:center}
-.sec-h{font:800 clamp(26px,4vw,38px)/1.15 var(--sans);letter-spacing:-.03em;color:var(--ink);margin:0 0 12px}
+.sec-h{font:700 clamp(26px,4vw,38px)/1.15 var(--sans);letter-spacing:-.025em;color:var(--ink);margin:0 0 12px}
 .sec-sub{color:var(--ink2);max-width:600px;margin:0 auto 28px;font-size:16px}
 .oss-cards{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:14px}
 .oss-cards li{border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:22px 18px;text-align:left}
@@ -103,7 +104,7 @@ a.repo:hover,a.repo:focus-visible{color:var(--green);border-color:var(--line2);o
 .banner{margin:16px auto 0;max-width:640px;text-align:center;font:10px/1.8 var(--pixel);color:var(--ink);background:var(--card);border:1px solid rgba(127,214,140,.45);border-radius:var(--r);padding:12px 14px;display:flex;gap:10px 16px;flex-wrap:wrap;align-items:center;justify-content:center}.banner[hidden]{display:none}
 .banner button{font:inherit;background:var(--green);color:#0c0e12;border:0;border-radius:999px;padding:10px 14px;min-height:40px;cursor:pointer}
 .arcade{max-width:1000px;margin:96px auto 0;padding:0 24px;text-align:center}
-.arcade-h{font:800 clamp(26px,4vw,38px)/1.15 var(--sans);letter-spacing:-.03em;color:var(--ink);margin:0}
+.arcade-h{font:700 clamp(26px,4vw,38px)/1.15 var(--sans);letter-spacing:-.025em;color:var(--ink);margin:0}
 .arcade-how{font:10px var(--pixel);color:var(--green);margin:12px 0 8px;letter-spacing:.06em}
 .arcade-sub{color:var(--ink2);max-width:640px;margin:0 auto 20px;font-size:14px}
 .cab{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
