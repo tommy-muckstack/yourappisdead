@@ -20,7 +20,8 @@
   "status": "live",
   "href": "/canvaisdead",
   "sprite": "zombie",
-  "repo": "https://github.com/tommy-muckstack/canvaisdead"
+  "repo": "https://github.com/tommy-muckstack/canvaisdead",
+  "app": "/canvaisdead/app"
  },
  {
   "name": "WisprFlowIsDead",
@@ -42,7 +43,8 @@
   "status": "live",
   "href": "/calendlyisdead",
   "sprite": "ghost",
-  "repo": "https://github.com/tommy-muckstack/calendlyisdead"
+  "repo": "https://github.com/tommy-muckstack/calendlyisdead",
+  "app": "/calendlyisdead/app"
  },
  {
   "name": "GranolaIsDead",
@@ -53,7 +55,8 @@
   "status": "live",
   "href": "/granolaisdead",
   "sprite": "slime",
-  "repo": "https://github.com/tommy-muckstack/granolaisdead"
+  "repo": "https://github.com/tommy-muckstack/granolaisdead",
+  "app": "/granolaisdead/app"
  },
  {
   "name": "DocuSignIsDead",
@@ -64,7 +67,8 @@
   "status": "live",
   "href": "/docusignisdead",
   "sprite": "vampire",
-  "repo": "https://github.com/tommy-muckstack/docusignisdead"
+  "repo": "https://github.com/tommy-muckstack/docusignisdead",
+  "app": "/docusignisdead/app"
  },
  {
   "name": "CleanShotXIsDead",
@@ -75,7 +79,8 @@
   "status": "live",
   "href": "/cleanshotxisdead",
   "sprite": "crow",
-  "repo": "https://github.com/tommy-muckstack/cleanshotxisdead"
+  "repo": "https://github.com/tommy-muckstack/cleanshotxisdead",
+  "app": "/cleanshotxisdead/app"
  },
  {
   "name": "SuperhumanIsDead",
@@ -97,7 +102,8 @@
   "status": "live",
   "href": "/loomisdead",
   "sprite": "eyeball",
-  "repo": "https://github.com/tommy-muckstack/loomisdead"
+  "repo": "https://github.com/tommy-muckstack/loomisdead",
+  "app": "/loomisdead/app"
  },
  {
   "name": "LinktreeIsDead",
@@ -108,7 +114,8 @@
   "status": "live",
   "href": "/linktreeisdead",
   "sprite": "spider",
-  "repo": "https://github.com/tommy-muckstack/linktreeisdead"
+  "repo": "https://github.com/tommy-muckstack/linktreeisdead",
+  "app": "/linktreeisdead/app"
  },
  {
   "name": "NotionIsDead",
@@ -119,7 +126,8 @@
   "status": "live",
   "href": "/notionisdead",
   "sprite": "cat",
-  "repo": "https://github.com/tommy-muckstack/notionisdead"
+  "repo": "https://github.com/tommy-muckstack/notionisdead",
+  "app": "/notionisdead/app"
  },
  {
   "name": "TrelloIsDead",
@@ -130,7 +138,8 @@
   "status": "live",
   "href": "/trelloisdead",
   "sprite": "zombie",
-  "repo": "https://github.com/tommy-muckstack/trelloisdead"
+  "repo": "https://github.com/tommy-muckstack/trelloisdead",
+  "app": "/trelloisdead/app"
  },
  {
   "name": "BitlyIsDead",
@@ -141,7 +150,8 @@
   "status": "live",
   "href": "/bitlyisdead",
   "sprite": "slime",
-  "repo": "https://github.com/tommy-muckstack/bitlyisdead"
+  "repo": "https://github.com/tommy-muckstack/bitlyisdead",
+  "app": "/bitlyisdead/app"
  },
  {
   "name": "1PasswordIsDead",
@@ -152,7 +162,8 @@
   "status": "live",
   "href": "/onepasswordisdead",
   "sprite": "vampire",
-  "repo": "https://github.com/tommy-muckstack/onepasswordisdead"
+  "repo": "https://github.com/tommy-muckstack/onepasswordisdead",
+  "app": "/onepasswordisdead/app"
  },
  {
   "name": "OtterIsDead",
@@ -163,7 +174,8 @@
   "status": "live",
   "href": "/otterisdead",
   "sprite": "jelly",
-  "repo": "https://github.com/tommy-muckstack/otterisdead"
+  "repo": "https://github.com/tommy-muckstack/otterisdead",
+  "app": "/otterisdead/app"
  },
  {
   "name": "LinearIsDead",
@@ -174,7 +186,8 @@
   "status": "live",
   "href": "/linearisdead",
   "sprite": "imp",
-  "repo": "https://github.com/tommy-muckstack/linearisdead"
+  "repo": "https://github.com/tommy-muckstack/linearisdead",
+  "app": "/linearisdead/app"
  },
  {
   "name": "WeTransferIsDead",
@@ -185,7 +198,8 @@
   "status": "live",
   "href": "/wetransferisdead",
   "sprite": "ghost2",
-  "repo": "https://github.com/tommy-muckstack/wetransferisdead"
+  "repo": "https://github.com/tommy-muckstack/wetransferisdead",
+  "app": "/wetransferisdead/app"
  },
  {
   "name": "AirtableIsDead",
@@ -196,7 +210,8 @@
   "status": "live",
   "href": "/airtableisdead",
   "sprite": "witch",
-  "repo": "https://github.com/tommy-muckstack/airtableisdead"
+  "repo": "https://github.com/tommy-muckstack/airtableisdead",
+  "app": "/airtableisdead/app"
  },
  {
   "name": "TypeformIsDead",
@@ -207,7 +222,8 @@
   "status": "live",
   "href": "/typeformisdead",
   "sprite": "mummy",
-  "repo": "https://github.com/tommy-muckstack/typeformisdead"
+  "repo": "https://github.com/tommy-muckstack/typeformisdead",
+  "app": "/typeformisdead/app"
  },
  {
   "name": "GrammarlyIsDead",
@@ -218,6 +234,7 @@
   "status": "live",
   "href": "/grammarlyisdead",
   "sprite": "frank",
-  "repo": "https://github.com/tommy-muckstack/grammarlyisdead"
+  "repo": "https://github.com/tommy-muckstack/grammarlyisdead",
+  "app": "/grammarlyisdead/app"
  }
 ]
