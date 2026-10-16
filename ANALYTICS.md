@@ -49,6 +49,7 @@ Reuse these exact keys so cross-app insights line up:
 | `duration_s`   | int    | seconds in a session/round |
 | `is_new_best`  | bool   | |
 | `input`        | string | `keyboard`, `touch` |
+| `ads_blocked`  | bool   | super property on the hub once checked: the browser couldn't reach AdSense (ad blocker, DNS filter) |
 
 ## 4. Hub events (implemented in this repo)
 
@@ -61,6 +62,9 @@ Reuse these exact keys so cross-app insights line up:
 | `hub_nav_clicked`            | `target` |
 | `hub_contribute_clicked`     | `target` (`contributing`, `all_repos`, `site_repo`) |
 | `hub_app_requested`          | `wants_to_build` (`no`, `yes`, `maybe`); never the form text |
+| `hub_consent_link_clicked`   | `target` (`settings` = Privacy & cookie settings, `optout` = Do Not Sell or Share) |
+| `hub_consent_updated`        | `gdpr_applies`, `ads_storage` (TCF purpose 1), `ads_personalized` (purposes 3+4); fired when a visitor completes Google's consent message |
+| `hub_ads_checked`            | `ads_blocked`; once per browser session |
 | `arcade_game_selected`       | `game` |
 | `arcade_game_started`        | `game`, `input` |
 | `arcade_game_over`           | `game`, `score`, `duration_s`, `is_new_best` |
@@ -72,6 +76,7 @@ Reuse these exact keys so cross-app insights line up:
 - No free text from users (search queries, form fields, initials) is ever sent. Lengths and enums only.
 - Identity, best effort without a login: `person_profiles: 'always'` so every visitor is a person in PostHog with their history, first referrer and GeoIP. The id is a first-party cookie + localStorage on yourappisdead.com, shared by the hub and every app, so one person is one id from the hub into the apps and across return visits on that browser. Apps call `posthog.identify(uid)` on sign-in, which merges the anonymous history and links devices. No browser fingerprinting (unreliable on Safari/Firefox/Brave, needs consent in the EU/UK). The dashboard's "Hub: approximate people" tile additionally bridges cleared cookies by counting distinct IP + OS + browser, server-side, as an estimate only.
 - Session replay is off at the SDK level on the hub.
+- Ads: AdSense (Auto ads) runs on the hub only, with consent handled by Google's own messages. Ad revenue lives in AdSense, not PostHog; PostHog only records whether ads can load (`ads_blocked`) and the consent outcome, never TCF strings or vendor lists.
 - Analytics is skipped on `localhost` and when the browser sends Do Not Track.
 
 ## 6. Adding PostHog to a sub-app (checklist)

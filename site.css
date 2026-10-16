@@ -143,6 +143,17 @@ a.share.li:hover,a.share.li:focus-visible,a.share.fb:hover,a.share.fb:focus-visi
 .foot p{margin:0 0 8px;max-width:720px;margin-inline:auto}
 .foot a{color:var(--ink2);display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 4px}
 .foot a:hover{color:var(--green)}
+.footlinks{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 10px;margin:0 auto 8px;max-width:720px}
+.footlinks button{font:inherit;color:var(--ink2);background:none;border:0;cursor:pointer;min-height:32px;padding:0 4px;text-decoration:underline}
+.footlinks button:hover,.footlinks button:focus-visible{color:var(--green)}
+
+/* about / contact / privacy */
+.legal{max-width:720px;margin:0 auto;padding:48px 16px 24px;line-height:1.65;color:var(--ink2)}
+.legal h1{color:var(--ink);font-size:32px;margin:0 0 4px}
+.legal h2{color:var(--ink);font-size:19px;margin:32px 0 8px}
+.legal a{color:var(--green)}
+.legal .back{display:inline-block;margin-bottom:24px;color:var(--mute);text-decoration:none}
+.legal ul{padding-left:20px}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.tile:hover,.tile:focus-within{transform:none}}
 @media (max-width:600px){

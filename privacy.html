@@ -6,15 +6,7 @@
 <title>Privacy — YourAppIsDead</title>
 <meta name="description" content="What YourAppIsDead collects, why, and the choices you have.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/site.css?v=9">
-<style>
-.legal{max-width:720px;margin:0 auto;padding:48px 16px 24px;line-height:1.65;color:var(--ink2)}
-.legal h1{color:var(--ink);font-size:32px;margin:0 0 4px}
-.legal h2{color:var(--ink);font-size:19px;margin:32px 0 8px}
-.legal a{color:var(--green)}
-.legal .back{display:inline-block;margin-bottom:24px;color:var(--mute);text-decoration:none}
-.legal ul{padding-left:20px}
-</style>
+<link rel="stylesheet" href="/site.css?v=10">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
      crossorigin="anonymous"></script>
 </head>
@@ -26,11 +18,23 @@
 
   <p>YourAppIsDead is an open-source hub for free replacements of paid apps. This page covers the hub at yourappisdead.com. Each app linked from here is its own open-source project; its repository describes what it stores.</p>
 
-  <h2>Analytics</h2>
-  <p>We use <a href="https://posthog.com/privacy">PostHog</a> to count visits and see which apps and games people use. It records pages viewed, clicks on app tiles and share buttons, game scores, and the approximate location, browser and device derived from your request. It sets a first-party cookie so repeat visits count as one visitor. We don't record your screen, we don't ask for your name or email, and analytics is skipped entirely if your browser sends Do Not Track.</p>
-
   <h2>Advertising</h2>
-  <p>The hub may show ads served by Google AdSense to help cover hosting. Google and its partners use cookies to serve ads based on your visits to this and other sites. You can turn off personalized ads at <a href="https://adssettings.google.com">Google Ad Settings</a>, or opt out of many third-party ad vendors at <a href="https://www.aboutads.info/choices/">aboutads.info</a>. Google's use of advertising data is described in <a href="https://policies.google.com/technologies/ads">How Google uses information from sites that use its services</a>. Visitors in the EEA, the UK and Switzerland are asked for consent before personalized ads are shown.</p>
+  <p>The hub shows ads served by Google AdSense to help cover hosting. Google and its partners use cookies and similar technologies to serve and measure ads, including personalized ads based on your visits to this and other sites. Google's use of advertising data is described in <a href="https://policies.google.com/technologies/ads">How Google uses information from sites that use its services</a>.</p>
+  <ul>
+    <li><strong>EEA, UK and Switzerland:</strong> you're asked for consent before cookies are used for personalized ads.</li>
+    <li><strong>United States:</strong> where state law gives you the right, you can opt out of the sale or sharing of your personal information for ads.</li>
+  </ul>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>Change your consent choices any time with the <strong>Privacy &amp; cookie settings</strong> link at the bottom of every page.</li>
+    <li>Opt out of the sale or sharing of your personal information with the <strong>Do Not Sell or Share My Personal Information</strong> link at the bottom of every page.</li>
+    <li>Turn off personalized ads from Google at <a href="https://adssettings.google.com">Google Ad Settings</a>.</li>
+    <li>Opt out of many third-party ad vendors at <a href="https://www.aboutads.info/choices/">aboutads.info</a>.</li>
+  </ul>
+
+  <h2>Analytics</h2>
+  <p>We use <a href="https://posthog.com/privacy">PostHog</a> to count visits and see which apps and games people use. It records pages viewed, clicks on app tiles, share and privacy links, game scores, whether ads can load in your browser, the consent choice you make in Google's message (not the details behind it), and the approximate location, browser and device derived from your request. It sets a first-party cookie so repeat visits count as one visitor. We don't record your screen, we don't ask for your name or email, and analytics is skipped entirely if your browser sends Do Not Track.</p>
 
   <h2>Leaderboards</h2>
   <p>If you submit a game score, we store the name you type and the score. Your IP address is held for about a minute to rate-limit submissions, then discarded. Game best scores are also kept in your own browser's local storage.</p>
@@ -40,13 +44,19 @@
 
   <h2>What we don't do</h2>
   <ul>
-    <li>We don't sell your data.</li>
+    <li>We don't sell your data for money.</li>
     <li>We don't fingerprint your browser.</li>
     <li>We don't require an account to use the hub.</li>
   </ul>
 
-  <h2>Questions</h2>
-  <p>Open an issue on the <a href="https://github.com/tommy-muckstack/yourappisdead/issues">GitHub repository</a>. Since the site is open source, you can also read exactly what it does in the code.</p>
+  <h2>Contact</h2>
+  <p>Questions about this policy? See the <a href="/contact">contact page</a>. Since the site is open source, you can also read exactly what it does in the <a href="https://github.com/tommy-muckstack/yourappisdead">code</a>.</p>
 </main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=3" defer></script>
+<script src="/consent.js?v=1" defer></script>
 </body>
 </html>

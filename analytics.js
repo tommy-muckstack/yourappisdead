@@ -20,5 +20,27 @@
   });
   posthog.register({ product: 'yourappisdead', surface: 'hub', platform: 'web' });
   window.yad.track = (e, p) => posthog.capture(e, p);
+
+  // Ads: can this browser reach AdSense at all? Checked once per session; ads_blocked rides on later events
+  // so traffic can be split into visitors who can and can't see ads.
+  let checked = false;
+  try { checked = sessionStorage.getItem('yad.adcheck') === '1'; sessionStorage.setItem('yad.adcheck', '1'); } catch {}
+  if (!checked) {
+    fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474', { method: 'HEAD', mode: 'no-cors' })
+      .then(() => false, () => true)
+      .then(blocked => { posthog.register({ ads_blocked: blocked }); posthog.capture('hub_ads_checked', { ads_blocked: blocked }); });
+  }
+
+  // Google's GDPR consent message speaks TCF v2. Record the choice when a visitor makes one; the CMP only
+  // loads for visitors it applies to, so give up quietly if it never appears.
+  const watchConsent = (tries = 0) => {
+    if (typeof window.__tcfapi !== 'function') { if (tries < 30) setTimeout(() => watchConsent(tries + 1), 1000); return; }
+    window.__tcfapi('addEventListener', 2, (d, ok) => {
+      if (!ok || d.eventStatus !== 'useractioncomplete') return;
+      const c = (d.purpose && d.purpose.consents) || {};
+      posthog.capture('hub_consent_updated', { gdpr_applies: !!d.gdprApplies, ads_storage: !!c[1], ads_personalized: !!(c[3] && c[4]) });
+    });
+  };
+  watchConsent();
   q.forEach(([e, p]) => posthog.capture(e, p));
 })();
