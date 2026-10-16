@@ -104,3 +104,21 @@ The native Mac app sends the same super properties plus `app_version`, `app_buil
 | `app_editor_text_copied`       | `chars` (count only) |
 | `app_editor_background_removed`| |
 | `app_shared`                   | `channel` (`cloud`) |
+
+## 8. LinearIsDead events (`product: linearisdead`, `platform: web`)
+
+`identify(uid)` only for signed-in Firebase accounts; guests and the demo account stay anonymous (`account_type` super property).
+
+| event                     | properties |
+|---------------------------|------------|
+| `landing_cta_clicked`     | `target` (`nav_login`, `nav_signup`, `footer_get_started`) |
+| `app_signed_in`           | `method` (`email`, `google`) |
+| `app_signed_up`           | `method` (`email`, `google`) |
+| `app_issue_created`       | `priority` (0–4), `has_project`, `has_assignee` |
+| `app_issue_updated`       | `field` (`status`, `priority`, `assignee`, `labels`, `projectId`, `cycleId`, `estimate`, `title`, `description`), `count` |
+| `app_issues_deleted`      | `count` |
+| `app_comment_added`       | |
+| `app_project_created`     | |
+| `app_cycle_rolled_over`   | `count` (issues moved) |
+| `app_command_menu_opened` | |
+| `app_layout_changed`      | `layout` (`list`, `board`) |
