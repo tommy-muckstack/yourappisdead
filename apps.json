@@ -96,12 +96,11 @@
   "slug": "loomisdead",
   "replaces": "Loom",
   "category": "Screen recording",
-  "blurb": "Record your screen in the browser and get a share link.",
+  "blurb": "Free Mac app: record your screen and camera, share a link.",
   "status": "live",
   "href": "/loomisdead",
   "sprite": "eyeball",
-  "repo": "https://github.com/tommy-muckstack/loomisdead",
-  "app": "/loomisdead/app"
+  "repo": "https://github.com/tommy-muckstack/loomisdead"
  },
  {
   "name": "LinktreeIsDead",
