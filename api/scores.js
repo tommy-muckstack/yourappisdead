@@ -16,10 +16,10 @@ async function top(game) {
   const out = []; for (let i = 0; i < raw.length; i += 2) out.push({ n: String(raw[i]).split('#')[0], s: Number(raw[i + 1]) });
   return out;
 }
-// Loose plausibility caps so a hand-crafted POST can't post 999999. Mirrors how each game actually scores.
 // Ticket of the server-side start time; play time is bounded by the server clock, not the client's claim.
 const ipOf = req => (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'anon';
 async function limited(key, max) { const n = await redis('INCR', key); if (n === 1) await redis('EXPIRE', key, 60); return n > max; }
+// Loose plausibility caps so a hand-crafted POST can't post 999999. Mirrors how each game actually scores.
 function plausible(game, score, slain, dur) {
   if (game === 'slayer') return score <= slain * 100 + dur * 12 + 10;
   if (game === 'breaker') return score <= dur * 60 + 200;   // bricks are 10-40 each, +100 per level
