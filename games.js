@@ -5,7 +5,9 @@
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches, COARSE = matchMedia('(pointer: coarse)').matches;
   const $ = id => document.getElementById(id);
   const track = (e, p) => window.yad && window.yad.track(e, p);
-  let startedAt = 0, lastInput = 'keyboard';
+  let startedAt = 0, lastInput = 'keyboard', run = null;
+  // Server-side run ticket so the leaderboard can bound play time by its own clock.
+  const startRun = game => fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ game, start: true }) }).then(r => r.ok ? r.json() : null).then(j => j && j.run).catch(() => null);
   const INK = '#ece7d8', GRN = '#7fd68c', RED = '#ef5f68', PUR = '#a596ff', AMB = '#e6b35a', BG = '#07040f';
   const FAKES = [['SYNERGIX','#4aa3ff'],['DASHLY','#ff5fa2'],['TIKTRAK','#ffd23f'],['SEATSY','#7cf'],['PIPELYNK','#9b7bff'],
     ['FORMULO','#e6a04a'],['CHURNIO','#5cf2b5'],['UPSELLR','#ef5f68'],['LOGINZ','#c0ff4a'],['INVOYCE','#f0a']];
@@ -119,12 +121,13 @@
   const qualifies = s => { const l = tops[cur.id]; return !!l && s > 0 && (l.length < 10 || s > l[l.length - 1].s); };
   form2.addEventListener('submit', e => { e.preventDefault(); const n = ini2.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3); if (!n) return; form2.hidden = true; cv.focus({ preventScroll: true });
     track('arcade_score_saved', { game: cur.id, score });
-    fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ game: cur.id, name: n, score, duration: Math.round((Date.now() - startedAt) / 1000) }) })
-      .then(r => r.ok ? r.json() : null).then(j => { if (j && j.top) { tops[cur.id] = j.top; renderBoard(); } }).catch(() => {}); });
+    const game = cur.id, body = { game, name: n, score, duration: Math.round((Date.now() - startedAt) / 1000) };
+    Promise.resolve(run).then(id => id ? fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, run: id }) }) : null)
+      .then(r => r && r.ok ? r.json() : null).then(j => { if (j && j.top) { tops[game] = j.top; if (cur.id === game) renderBoard(); } }).catch(() => {}); });
   function over() { st = 'over'; const best = bests[cur.id] | 0; saveBest(cur.id, score); share2.hidden = share2li.hidden = share2fb.hidden = !(score > 0);
     if (qualifies(score)) { form2.hidden = false; ini2.value = ''; ini2.focus({ preventScroll: true }); }
     track('arcade_game_over', { game: cur.id, score, duration_s: Math.round((Date.now() - startedAt) / 1000), is_new_best: score > best }); }
-  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = share2li.hidden = share2fb.hidden = true; form2.hidden = true; startedAt = Date.now(); track('arcade_game_started', { game: cur.id, input: lastInput }); }
+  function reset() { score = 0; st = 'play'; cur.reset(); pauseBtn.textContent = 'PAUSE'; share2.hidden = share2li.hidden = share2fb.hidden = true; form2.hidden = true; startedAt = Date.now(); run = startRun(cur.id); track('arcade_game_started', { game: cur.id, input: lastInput }); }
   share2.addEventListener('click', () => {
     const url = `https://yourappisdead.com/#${cur.id}`;
     const text = cur.share(score) + ' Can you beat it?';

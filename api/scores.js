@@ -1,8 +1,9 @@
 // Global leaderboards. Upstash Redis (Vercel marketplace) via REST, one sorted set per game.
 // GET  /api/scores?game=slayer            -> { top: [{ n, s }] }
-// POST /api/scores { game, name, score, slain?, duration } -> { ok, rank, top }
+// POST /api/scores { game, start: true }                    -> { run }  (server-side start time, single use)
+// POST /api/scores { game, run, name, score, slain?, duration } -> { ok, rank, top }
 const GAMES = { slayer: 1, breaker: 1, invaders: 1, bird: 1, snake: 1 };
-const TOP = 10, KEEP = 100;
+const TOP = 10, KEEP = 100, RUN_TTL = 7200;
 const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
 const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 
@@ -16,6 +17,9 @@ async function top(game) {
   return out;
 }
 // Loose plausibility caps so a hand-crafted POST can't post 999999. Mirrors how each game actually scores.
+// Ticket of the server-side start time; play time is bounded by the server clock, not the client's claim.
+const ipOf = req => (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'anon';
+async function limited(key, max) { const n = await redis('INCR', key); if (n === 1) await redis('EXPIRE', key, 60); return n > max; }
 function plausible(game, score, slain, dur) {
   if (game === 'slayer') return score <= slain * 100 + dur * 12 + 10;
   if (game === 'breaker') return score <= dur * 60 + 200;   // bricks are 10-40 each, +100 per level
@@ -33,12 +37,23 @@ export default async function handler(req, res) {
     if (req.method === 'GET') return res.status(200).json({ top: await top(game) });
     if (req.method !== 'POST') return res.status(405).end();
     const b = req.body || {};
+    const ip = ipOf(req);
+    if (b.start) {
+      if (await limited(`rls:${ip}`, 40)) return res.status(429).json({ error: 'slow down' });
+      const run = crypto.randomUUID();
+      await redis('SET', `run:${run}`, `${game}|${Date.now()}`, 'EX', RUN_TTL);
+      return res.status(200).json({ run });
+    }
     const name = String(b.name || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
-    const score = Math.floor(Number(b.score)), slain = Math.floor(Number(b.slain) || 0), dur = Math.max(0, Math.floor(Number(b.duration) || 0));
-    if (!name || !(score > 0) || score > 999999 || !plausible(game, score, slain, dur)) return res.status(400).json({ error: 'rejected' });
-    const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'anon';
-    const hits = await redis('INCR', `rl:${ip}`); if (hits === 1) await redis('EXPIRE', `rl:${ip}`, 60);
-    if (hits > 12) return res.status(429).json({ error: 'slow down' });
+    const score = Math.floor(Number(b.score)), slain = Math.floor(Number(b.slain) || 0);
+    if (!name || !(score > 0) || score > 999999 || !/^[0-9a-f-]{36}$/.test(String(b.run || ''))) return res.status(400).json({ error: 'rejected' });
+    if (await limited(`rl:${ip}`, 12)) return res.status(429).json({ error: 'slow down' });
+    const ticket = await redis('GETDEL', `run:${b.run}`); // single use
+    const [tGame, t0] = String(ticket || '').split('|');
+    if (tGame !== game) return res.status(400).json({ error: 'rejected' });
+    const elapsed = (Date.now() - Number(t0)) / 1000;
+    const dur = Math.max(0, Math.min(Math.floor(Number(b.duration) || 0), Math.floor(elapsed)));
+    if (!plausible(game, score, slain, dur)) return res.status(400).json({ error: 'rejected' });
     const member = `${name}#${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
     await redis('ZADD', `scores:${game}`, score, member);
     await redis('ZREMRANGEBYRANK', `scores:${game}`, 0, -(KEEP + 1));
