@@ -14,6 +14,17 @@ Register these once at init with `posthog.register()`:
 
 Pageviews are PostHog's built-in `$pageview`. Autocapture is **off** everywhere; every event below is explicit.
 
+**The cookie is shared.** Every app is served from yourappisdead.com, and PostHog keeps super properties in one persisted
+store per origin and token, so whatever one app registers rides along on the next app's events. At init every app must
+(1) `unregister` the legacy keys `app`, `app_family`, `base_path`, `suite_id`, `app_id`, `schema_version`, `source`,
+`site_id`, `environment`, then (2) `register` its own `product`/`surface`/`platform`, and (3) re-register them after
+`reset()` (sign-out), which wipes them. Never register any other super property except `env` and `account_type`. A
+per-event `surface` must use the same values (`landing`/`app`), since it overrides the super property.
+
+All web apps use the same publishable key (Vercel env `NEXT_PUBLIC_POSTHOG_KEY` + `NEXT_PUBLIC_POSTHOG_HOST`, set on every
+IsDead Vercel project) and proxy through `/<slug>/ingest`. A drop-in Next.js implementation is in
+linktreeisdead `lib/analytics/` (`taxonomy.ts`, `posthog.tsx`).
+
 ## 2. Event names
 
 `<area>_<object>_<action>`, snake_case, past tense for the action. Keep the object a noun and the action a verb that already happened.
