@@ -92,10 +92,42 @@ Reuse these exact keys so cross-app insights line up:
 
 ## 6. Adding PostHog to a sub-app (checklist)
 
-1. Init with the shared token and `https://us.i.posthog.com`, `autocapture: false`, `person_profiles: 'identified_only'`.
-2. `posthog.register({ product: '<slug>', surface: 'app' | 'landing', platform: '<runtime>' })` right after init.
-3. Use `app_*` / `landing_*` names from section 2 and the keys from section 3.
-4. Add a row to this file for any new event name before shipping it.
+Copy linktreeisdead `lib/analytics/` (Next.js) — it already does all of this:
+
+1. Init with the shared token through the app's own proxy (`/<slug>/ingest` → `us.i.posthog.com`), `autocapture: false`,
+   `capture_pageview: false` (send `$pageview` per route), `disable_session_recording`, `capture_heatmaps: false`,
+   `capture_performance: false`, `person_profiles: 'always'` (same as the hub).
+2. Unregister the legacy keys, then `register({ product: '<slug>', surface: 'landing' | 'app', platform: '<runtime>' })`; re-register after `reset()`.
+3. `before_send: scrub` — every key ending in `url`/`referrer`/`pathname` (top level and in `$set`/`$set_once`, also nested
+   under `properties`) keeps origin + path only, secret path segments are masked to `:id`, and `title` is dropped.
+4. Use `app_*` / `landing_*` names from section 2 and the keys from section 3. Never name an event property `source`, `app`,
+   `app_id`, `site_id` or `environment` (legacy super-property keys).
+5. List the app's events in its own `docs/ANALYTICS.md`, and add the app to the index below.
+
+### Sub-app index (event tables live in each repo's `docs/ANALYTICS.md`)
+
+| product | web surfaces (`app`) | masked paths | notable events |
+|---|---|---|---|
+| airtableisdead | `/app` | — | `app_table_*`, `app_record_*`, `app_view_created`, `app_csv_*` |
+| bitlyisdead | `/app`, `/p`, `/s`, `/api/qr` | — | `app_link_*`, `app_qr_*`, `app_page_*`, `app_campaign_created` (kit in `lib/telemetry/`) |
+| calendlyisdead | everything but `/`, `/pricing`, `/login`, `/signup` | `/booking`, `/pay`, `/invite`, `/meet`, `/poll`, `/f` | `app_event_type_*`, `app_booking_*`, `app_poll_*` (kit in `lib/posthog/`) |
+| canvaisdead | `/app` | design ids | `app_design_*`, `app_template_applied` — opt-in consent: loads only after the visitor allows analytics |
+| cleanshotxisdead | `/app`, `/s` | `/s/:id` | `landing_download_clicked`, `app_capture_taken`, `app_shot_viewed`; Mac: section 7 |
+| docusignisdead | `/app`, `/sign` | `/sign/:id` | `app_envelope_*`, `app_document_signed` / `_declined` |
+| granolaisdead | — (site only) | — | `landing_download_clicked`; Mac app has its own Swift events |
+| grammarlyisdead | `/app` | — | `app_document_*`, `app_suggestion_*` |
+| linearisdead | `/app` | — | section 8 |
+| linktreeisdead | `/app`, `/u`, `/go`, `/s` | editor ids | `app_block_*`, `app_theme_applied`, `app_profile_*` |
+| loomisdead | `/v` | `/v/:id` | `landing_download_clicked`, `app_recording_*`, `app_reaction_added` |
+| miroisdead | `/app`, `/b` | board ids | `app_board_*`, `app_shared` |
+| notionisdead | `/app` | page ids (`/app/:id`) | `app_page_*`, `app_shared` |
+| onepasswordisdead | `/app` | everything under `/app` | `app_vault_*`, `app_item_*` (`item_kind` only — no counts or contents) |
+| otterisdead | `/app` | — | `app_recording_started`, `app_conversation_*` |
+| superhumanisdead | — (site only) | — | `landing_cta_clicked`, sign-in events |
+| trelloisdead | `/app` | `/app/join`, `/app/b`, `/app/w` | `app_board_created`, `app_card_*`, `app_list_created` |
+| typeformisdead | `/app`, `/f` | form ids | `app_form_*`, `app_form_response_submitted` |
+| wetransferisdead | `/app`, `/t` | `/t/:id` | `app_transfer_*`, `app_shared` |
+| wisprflowisdead | `/demo`, `/app` | — | `landing_download_clicked`, `app_dictation_*` |
 
 ## 7. Mac app events (cleanshotxisdead, `platform: mac`)
 
