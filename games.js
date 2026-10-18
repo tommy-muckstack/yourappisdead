@@ -186,7 +186,15 @@
   fit(); new ResizeObserver(() => { fit(); if (st !== 'play') draw(); }).observe(cv);
   new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (!vis && st === 'play') togglePause(); kick(); }).observe(cv);
   cur = breaker; cur.reset();
-  const h = location.hash.slice(1); select(h in GAMES ? h : 'slayer');
+  // Deep links (#breaker…) and Slayer score shares (?score=, #game) pick the game; otherwise rotate a random one
+  // to the front, never the same as last visit.
+  const h = location.hash.slice(1), LAST = 'yad.arcade.first';
+  let first = h in GAMES ? h : (new URLSearchParams(location.search).has('score') || h === 'game') ? 'slayer' : null;
+  if (!first) { let last = null; try { last = localStorage.getItem(LAST); } catch {}
+    const pool = tabs.map(b => b.dataset.g).filter(g => g !== last); first = pool[Math.floor(Math.random() * pool.length)];
+    try { localStorage.setItem(LAST, first); } catch {} }
+  const firstTab = tabs.find(b => b.dataset.g === first); firstTab.parentNode.prepend(firstTab);
+  select(first);
   if (h in GAMES) addEventListener('load', () => setTimeout(() => $('arcade').scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }), 50));
   document.fonts?.ready.then(draw); kick();
 })();
