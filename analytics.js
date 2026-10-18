@@ -18,6 +18,7 @@
     capture_pageleave: true,
     person_profiles: 'always', // every visitor gets a person profile (geo, first referrer, first URL) so individuals are visible in PostHog
     disable_session_recording: true,
+    capture_heatmaps: false, capture_performance: false, capture_dead_clicks: false, capture_exceptions: false, disable_surveys: true,
     persistence: 'localStorage+cookie',
     // Every IsDead app runs on this origin and shares the persisted super properties, so clear what sub-apps (or their
     // older taxonomies) left behind before the first pageview goes out, then set the hub's own.
@@ -39,12 +40,14 @@
 
   // Ads: can this browser reach AdSense at all? Checked once per session; ads_blocked rides on later events
   // so traffic can be split into visitors who can and can't see ads.
-  let checked = false;
-  try { checked = sessionStorage.getItem('yad.adcheck') === '1'; sessionStorage.setItem('yad.adcheck', '1'); } catch {}
+  // Sub-apps unregister ads_blocked (it's hub-only), so the hub re-registers the session's result on every load.
+  let checked = false, known = null;
+  try { checked = sessionStorage.getItem('yad.adcheck') === '1'; known = sessionStorage.getItem('yad.adblocked'); sessionStorage.setItem('yad.adcheck', '1'); } catch {}
+  if (known === '1' || known === '0') posthog.register({ ads_blocked: known === '1' });
   if (!checked) {
     fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474', { method: 'HEAD', mode: 'no-cors' })
       .then(() => false, () => true)
-      .then(blocked => { posthog.register({ ads_blocked: blocked }); posthog.capture('hub_ads_checked', { ads_blocked: blocked }); });
+      .then(blocked => { try { sessionStorage.setItem('yad.adblocked', blocked ? '1' : '0'); } catch {} posthog.register({ ads_blocked: blocked }); posthog.capture('hub_ads_checked', { ads_blocked: blocked }); });
   }
 
   // Google's GDPR consent message speaks TCF v2. Record the choice when a visitor makes one; the CMP only

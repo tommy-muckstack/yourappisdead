@@ -17,8 +17,8 @@ Pageviews are PostHog's built-in `$pageview`. Autocapture is **off** everywhere;
 **The cookie is shared.** Every app is served from yourappisdead.com, and PostHog keeps super properties in one persisted
 store per origin and token, so whatever one app registers rides along on the next app's events. At init every app must
 (1) `unregister` the legacy keys `app`, `app_family`, `base_path`, `suite_id`, `app_id`, `schema_version`, `source`,
-`site_id`, `environment`, then (2) `register` its own `product`/`surface`/`platform`, and (3) re-register them after
-`reset()` (sign-out), which wipes them. Never register any other super property except `env` and `account_type`. A
+`site_id`, `environment`, `ads_blocked` (hub-only; the hub re-registers it), `account_type` (each app sets its own), then (2) `register` its own `product`/`surface`/`platform`, and (3) re-register them after
+`reset()` (sign-out), which wipes them. Never register any other super property except `env` and `account_type` (and the hub's `ads_blocked`). A
 per-event `surface` must use the same values (`landing`/`app`), since it overrides the super property.
 
 All web apps use the same publishable key (Vercel env `NEXT_PUBLIC_POSTHOG_KEY` + `NEXT_PUBLIC_POSTHOG_HOST`, set on every
