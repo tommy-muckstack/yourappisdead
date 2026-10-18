@@ -24,9 +24,10 @@
     // Privacy: URL properties keep origin + path only (query strings can carry search text), and page titles are dropped.
     before_send: e => {
       const clean = v => (typeof v === 'string' && v !== '$direct' ? v.split(/[?#]/)[0] : v);
-      for (const bag of [e && e.properties, e && e.$set, e && e.$set_once]) {
-        if (!bag) continue;
-        for (const k of ['$current_url', '$referrer', '$initial_current_url', '$initial_referrer', '$pathname', '$initial_pathname', '$session_entry_url', '$session_entry_pathname']) if (k in bag) bag[k] = clean(bag[k]);
+      // every url/referrer/pathname key posthog-js adds ($session_entry_url, $initial_referrer, …), top level and nested
+      const props = e && e.properties;
+      for (const bag of [props, e && e.$set, e && e.$set_once, props && props.$set, props && props.$set_once]) {
+        if (bag && typeof bag === 'object') for (const k of Object.keys(bag)) if (/(url|referrer|pathname)$/i.test(k)) bag[k] = clean(bag[k]);
       }
       if (e && e.properties) delete e.properties.title;
       return e;
