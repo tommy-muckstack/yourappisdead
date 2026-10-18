@@ -21,6 +21,16 @@
     persistence: 'localStorage+cookie',
     // Every IsDead app runs on this origin and shares the persisted super properties, so clear what sub-apps (or their
     // older taxonomies) left behind before the first pageview goes out, then set the hub's own.
+    // Privacy: URL properties keep origin + path only (query strings can carry search text), and page titles are dropped.
+    before_send: e => {
+      const clean = v => (typeof v === 'string' && v !== '$direct' ? v.split(/[?#]/)[0] : v);
+      for (const bag of [e && e.properties, e && e.$set, e && e.$set_once]) {
+        if (!bag) continue;
+        for (const k of ['$current_url', '$referrer', '$initial_current_url', '$initial_referrer', '$pathname']) if (k in bag) bag[k] = clean(bag[k]);
+      }
+      if (e && e.properties) delete e.properties.title;
+      return e;
+    },
     loaded: ph => { LEGACY_PROPS.forEach(k => ph.unregister(k)); ph.register(HUB_PROPS); },
   });
   posthog.register(HUB_PROPS);
