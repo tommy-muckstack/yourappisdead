@@ -22,6 +22,8 @@
   const save = l => { try { localStorage.setItem(KEY, JSON.stringify(l.slice(0, 10))); } catch {} };
   let seen = false; try { seen = !!localStorage.getItem(SEEN); } catch {}
   const markSeen = () => { seen = true; try { localStorage.setItem(SEEN, '1'); } catch {} };
+  // Server-side run ticket so the leaderboard can bound play time by its own clock.
+  const startRun = game => fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ game, start: true }) }).then(r => r.ok ? r.json() : null).then(j => j && j.run).catch(() => null);
   let gtop = null; // global top 10 from /api/scores, null until loaded (or if unavailable)
   const render = () => { const l = gtop || load(); boardEl.innerHTML = (l.length ? l : [{n:'YAD',s:500},{n:'RIP',s:250},{n:'BOO',s:100}])
       .map(e => `<li>${e.n.replace(/[^A-Z]/g,'')} ${String(e.s|0).padStart(6,'0')}</li>`).join(''); };
@@ -51,7 +53,7 @@
 
   const reset = () => { Object.assign(S, { st: 'play', frames: 0, score: 0, slain: 0, enemies: [], blocks: [], parts: [], spawn: 60, bspawn: 0, bump: 0, msg: '', msgT: 0, firstBlock: true, firstRun: !seen });
     Object.assign(hero, { x: 80, y: G, vx: 0, vy: 0 }); form.hidden = true; shareBtn.hidden = true; shareLi.hidden = true; shareFb.hidden = true; saveBtn.hidden = true; S.name = null; pauseBtn.textContent = 'PAUSE';
-    S.startedAt = Date.now(); track('arcade_game_started', { game: 'slayer', input: COARSE ? 'touch' : 'keyboard' }); };
+    S.startedAt = Date.now(); S.run = startRun('slayer'); track('arcade_game_started', { game: 'slayer', input: COARSE ? 'touch' : 'keyboard' }); };
   const pauseBtn = $('pause');
   const togglePause = () => { if (S.st === 'play') { S.st = 'pause'; pauseBtn.textContent = 'RESUME'; draw(); } else if (S.st === 'pause') { S.st = 'play'; pauseBtn.textContent = 'PAUSE'; kick(); } };
   const jump = () => { if (S.st === 'pause') return togglePause(); if (S.st !== 'play') return reset(); if (hero.y >= G) hero.vy = -9.5; };
@@ -103,8 +105,9 @@
   form.addEventListener('submit', e => { e.preventDefault(); const n = clean(ini.value); if (!n) return;
     const l = load(); l.push({ n, s: S.score, d: Date.now() }); l.sort((a, b) => b.s - a.s); save(l); form.hidden = true; S.name = n; cv.focus();
     track('arcade_score_saved', { game: 'slayer', score: S.score });
-    fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ game: 'slayer', name: n, score: S.score, slain: S.slain, duration: Math.round(S.frames / 60) }) })
-      .then(r => r.ok ? r.json() : null).then(j => { if (j && j.top) gtop = j.top; render(); }).catch(render); });
+    const score = S.score, slain = S.slain, duration = Math.round(S.frames / 60);
+    Promise.resolve(S.run).then(run => run ? fetch('/api/scores', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ game: 'slayer', run, name: n, score, slain, duration }) }) : null)
+      .then(r => r && r.ok ? r.json() : null).then(j => { if (j && j.top) gtop = j.top; render(); }).catch(render); });
   shareBtn.addEventListener('click', () => {
     const n = S.name || (load()[0]?.n) || 'YAD';
     const url = `https://yourappisdead.com/?score=${S.score}&name=${n}&slain=${S.slain}#game`;

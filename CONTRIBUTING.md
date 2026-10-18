@@ -35,7 +35,8 @@ Open a PR that adds an entry to `apps.json`:
 
 - `status`: `live`, `soon` (coming soon) or `community` (built by the community).
 - `repo`: the URL of the **public** repo, or `null` to show "REPO COMING SOON". Only link repos that are already public.
+- Routing (`vercel.json`) is added by a maintainer once your app is deployed: two rewrites to `https://<slug>.vercel.app/<slug>`. Every app shares the yourappisdead.com origin, so CI (`node scripts/check-config.mjs`) rejects rewrites or redirects to any other host.
 - `sprite` (optional): one of `ghost`, `ghost2`, `skull`, `bat`, `pumpkin`, `zombie`, `spider`, `cat`, `mummy`, `vampire`, `eyeball`, `frank`, `slime`, `witch`, `imp`, `crow`, `jelly`. Leave it out and one is picked from your slug, avoiding repeats next to its neighbours. Want a new sprite? Add a 16x16 grid to `sprites.js`.
 
 ## Pull requests
-Keep them small and focused, fill in the PR template, and be nice (see [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)). By contributing you agree your work is licensed under the MIT licence.
+Keep them small and focused, fill in the PR template, and be nice (see [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)). By contributing to this repo you agree your work is licensed under the Apache-2.0 licence (see [LICENSE](LICENSE)); each clone's own repo uses MIT.

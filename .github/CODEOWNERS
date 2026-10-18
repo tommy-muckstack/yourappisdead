@@ -1,0 +1,6 @@
+# Changes here decide what is served on yourappisdead.com, so the maintainer reviews them.
+/vercel.json              @tommy-muckstack
+/middleware.js            @tommy-muckstack
+/api/                     @tommy-muckstack
+/scripts/check-config.mjs @tommy-muckstack
+/.github/                 @tommy-muckstack
