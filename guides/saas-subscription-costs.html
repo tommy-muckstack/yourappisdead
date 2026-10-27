@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to audit your SaaS subscriptions — YourAppIsDead</title>
+<meta name="description" content="A practical method to list every subscription, find unused seats, compare annual and monthly billing with worked math, and cancel without losing your data.">
+<link rel="canonical" href="https://yourappisdead.com/guides/saas-subscription-costs">
+<meta property="og:title" content="How to audit your SaaS subscriptions"><meta property="og:description" content="A practical method to list every subscription, find unused seats, compare annual and monthly billing with worked math, and cancel without losing your data."><meta property="og:url" content="https://yourappisdead.com/guides/saas-subscription-costs"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/guides">Guides</a> › Subscription audit</p>
+<h1>How to audit your SaaS subscriptions</h1>
+<p class="meta">Updated October 26, 2026 · about 5 min read</p>
+<p class="lede">Subscriptions are easy to start and easy to forget. An audit is a short, repeatable process: find every recurring charge, check who actually uses each tool, fix the billing terms, and cancel cleanly. This guide works for a freelancer with ten subscriptions or a company with a few hundred.</p>
+
+<h2>Why it is worth an afternoon</h2>
+<p>People tend to underestimate what they spend. In a 2022 survey of 1,000 US consumers commissioned by C+R Research, respondents first guessed they spent about $86 a month on subscriptions; when asked category by category, the average came to $219, <a href="https://www.nbcwashington.com/news/business/money-report/consumers-spend-an-average-133-more-each-month-on-subscriptions-than-they-realize-study-shows/3067565/">as reported by NBC</a>. Businesses show the same pattern at a larger scale. Zylo, a company that sells SaaS management software, reported in its <a href="https://zylo.com/news/2025-saas-management-index">2025 SaaS Management Index</a> that SaaS spend averaged $4,830 per employee and that organizations wasted an average of $21 million a year on unused licenses. Its <a href="https://zylo.com/2026-saas-management-index">2026 edition</a> puts the average company portfolio at 305 applications. Those figures come from large organizations and from a vendor with an interest in the problem, so treat them as a sign of direction rather than a forecast for your own budget. Your audit will give you your real numbers.</p>
+
+<h2>Step 1: Build the list</h2>
+<p>You cannot cut what you cannot see. Pull recurring charges from every place they hide:</p>
+<ul>
+<li><strong>Card and bank statements</strong> for the last 13 months. Thirteen, not twelve, so annual renewals show up.</li>
+<li><strong>App store subscriptions</strong> on phones and computers, which bill through Apple or Google rather than the vendor.</li>
+<li><strong>Email search</strong> for words such as "receipt", "invoice", "renewal", "trial" and "your plan".</li>
+<li><strong>Expense reports</strong>, because tools bought on personal cards and reimbursed are often missing from central lists.</li>
+<li><strong>Single sign-on and admin consoles</strong>, which show apps people log into even when someone else pays.</li>
+<li><strong>Password managers</strong>, which often reveal accounts nobody remembered creating.</li>
+</ul>
+<p>Put everything into one spreadsheet with these columns: tool, what it is for, owner, billing cycle, renewal date, price per seat, seats paid, seats active, cancellation notice period, and where the data would go if you left.</p>
+
+<h2>Step 2: Find unused and duplicate seats</h2>
+<p>Most admin consoles show a last-active date per user. Pick a cut-off, such as 60 or 90 days, and mark anyone inactive past it. Then look for three common sources of waste:</p>
+<ul>
+<li><strong>Leavers and role changes.</strong> Accounts that were never removed when someone left or moved teams.</li>
+<li><strong>Overlap.</strong> Two tools doing the same job, such as two whiteboards, two form builders or two file-transfer services, often because different teams chose separately.</li>
+<li><strong>Tier creep.</strong> Everyone on the premium plan when only a few people use the premium features.</li>
+</ul>
+<p>Before removing a seat, ask the person. Some tools are used rarely but at critical moments, such as an e-signature account used only at contract time.</p>
+
+<h2>Step 3: Do the per-seat math</h2>
+<p>Here is a worked example. <strong>All numbers below are hypothetical</strong>, chosen to make the arithmetic easy to follow; they do not describe any real product's pricing.</p>
+<p>Imagine a team tool priced at $12 per seat per month on monthly billing, or $10 per seat per month if paid annually. The team pays monthly for 25 seats, but the admin console shows only 18 people active in the last 60 days.</p>
+<div class="tw"><table>
+<thead><tr><th>Scenario (hypothetical)</th><th>Calculation</th><th>Cost per year</th></tr></thead>
+<tbody>
+<tr><td>Today: 25 seats, monthly</td><td>25 × $12 × 12</td><td>$3,600</td></tr>
+<tr><td>Remove 7 unused seats, stay monthly</td><td>18 × $12 × 12</td><td>$2,592</td></tr>
+<tr><td>18 seats, switch to annual</td><td>18 × $10 × 12</td><td>$2,160</td></tr>
+</tbody>
+</table></div>
+<p>Removing unused seats saves $1,008 a year. Switching the remaining seats to annual saves another $432, for a total of $1,440, or 40% of the original bill. Notice that the first, boring step is worth more than the billing switch.</p>
+
+<h3>Annual versus monthly</h3>
+<p>Annual billing is cheaper only if your headcount holds. Annual plans usually commit you to the seats you buy for the whole term. Continue the example: suppose that after three months the team shrinks to 14 people.</p>
+<ul>
+<li>On the annual plan you still pay for 18 seats: $2,160.</li>
+<li>On monthly billing you pay 18 seats for 3 months and 14 for 9: (18 × $12 × 3) + (14 × $12 × 9) = $648 + $1,512 = $2,160.</li>
+</ul>
+<p>That is the break-even point. If the team shrinks further or sooner, monthly wins; if it holds steady, annual wins. A practical rule: go annual for tools whose seat count is stable and that you are confident you will keep for the year, and stay monthly for anything you are trialling, expect to replace, or where headcount is uncertain.</p>
+
+<h3>Replacing versus right-sizing</h3>
+<p>When a free alternative covers the job, include the cost of switching. Continuing the hypothetical, if moving the team to a free tool takes 30 hours of work and you value that time at $40 an hour, the one-off cost is $1,200. Against the $2,160 annual price, you come out ahead in the first year by $960, and by the full amount in later years, assuming the free tool needs little ongoing maintenance. If it needs self-hosting, add that time too; our <a href="/guides/self-hosting-open-source-saas">self-hosting guide</a> lists what is involved.</p>
+
+<h2>Step 4: Decide, tool by tool</h2>
+<p>For each line in the spreadsheet, pick one of four outcomes:</p>
+<ol>
+<li><strong>Keep</strong> as is, because it is used, fairly priced and important.</li>
+<li><strong>Right-size</strong> by removing seats or dropping a tier.</li>
+<li><strong>Replace</strong> with a cheaper or free tool that covers the job. Our <a href="/guides/free-saas-alternatives">category guide to free alternatives</a> is a starting point.</li>
+<li><strong>Cancel</strong> because nobody needs it.</li>
+</ol>
+<p>Be fair to the paid tools. A product that saves several people an hour a week is usually worth its price. The goal is to stop paying for things you do not use, not to replace everything.</p>
+
+<h2>Step 5: Cancel cleanly</h2>
+<p>Cancelling badly can cost more than the subscription. Work through this list for each tool:</p>
+<ul>
+<li>Check the renewal date and notice period. Some contracts require notice weeks before renewal.</li>
+<li>Export your data in an open format: CSV for tables, Markdown or HTML for documents, original files for uploads, signed PDFs with their audit trails for agreements.</li>
+<li>Download invoices you may need for accounting.</li>
+<li>Find what depends on it: integrations, embedded forms, booking links on your website, short links printed on materials, single sign-on connections.</li>
+<li>Set up redirects or replacements before the old links stop working.</li>
+<li>Transfer ownership of anything shared, such as files or boards owned by the account you are closing.</li>
+<li>Downgrade to a free tier if one exists, rather than deleting, when you might need read access later.</li>
+<li>Get written confirmation of cancellation and keep it.</li>
+<li>Check the next statement to confirm the charge has stopped.</li>
+</ul>
+
+<h2>Step 6: Make it a habit</h2>
+<p>An audit decays quickly. Keep the spreadsheet, give each tool a named owner, put renewal dates in a shared calendar with a reminder a month ahead, and repeat the review every quarter or at least twice a year. Add a short rule for new purchases: anyone starting a subscription adds it to the list, with the date they will decide whether to keep it.</p>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/guides/free-saas-alternatives">Free alternatives to the SaaS tools most teams pay for</a></li>
+<li><a href="/guides/choosing-open-source-software">How to judge an open-source app before you rely on it</a></li>
+<li><a href="/guides/self-hosting-open-source-saas">How to self-host an open-source SaaS app</a></li>
+<li><a href="/alternatives">All alternatives</a></li>
+</ul>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>
