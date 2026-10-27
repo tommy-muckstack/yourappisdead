@@ -207,7 +207,7 @@
   "slug": "wetransferisdead",
   "replaces": "WeTransfer",
   "category": "File transfer",
-  "blurb": "Send big files with no signup and no limits.",
+  "blurb": "Send files by link with expiry dates, passwords and zip downloads. No signup.",
   "status": "live",
   "href": "/wetransferisdead",
   "sprite": "ghost2",
