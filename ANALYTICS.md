@@ -69,6 +69,7 @@ Reuse these exact keys so cross-app insights line up:
 | `hub_search_performed`       | `query_length`, `results_count` (debounced, fires once per pause in typing) |
 | `hub_app_opened`             | `app_slug`, `app_status`, `position` |
 | `hub_app_repo_clicked`       | `app_slug` |
+| `hub_app_guide_clicked`      | `app_slug` |
 | `hub_app_shared`             | `app_slug`, `channel`, `message_id` + `closer_id` (X only) |
 | `hub_nav_clicked`            | `target` |
 | `hub_contribute_clicked`     | `target` (`contributing`, `all_repos`, `site_repo`) |
