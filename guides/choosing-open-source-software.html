@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to judge an open-source app before you rely on it — YourAppIsDead</title>
+<meta name="description" content="Check an open-source app before trusting it: permissive vs copyleft licenses, project activity, security audits, data export, hosting and support options.">
+<link rel="canonical" href="https://yourappisdead.com/guides/choosing-open-source-software">
+<meta property="og:title" content="How to judge an open-source app before you rely on it"><meta property="og:description" content="Check an open-source app before trusting it: permissive vs copyleft licenses, project activity, security audits, data export, hosting and support options."><meta property="og:url" content="https://yourappisdead.com/guides/choosing-open-source-software"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/guides">Guides</a> › Judging open source</p>
+<h1>How to judge an open-source app before you rely on it</h1>
+<p class="meta">Updated October 26, 2026 · about 5 min read</p>
+<p class="lede">"Open source" tells you the code is public and the license lets you use it. It does not tell you whether the project is maintained, secure, or a safe home for your data. Before you move real work into any open-source app, including the ones on this site, spend twenty minutes checking six things: the license, project activity, security, data export, hosting, and support.</p>
+
+<h2>1. The license: what you are allowed to do</h2>
+<p>A license is the legal permission to use, change and share the code. Without one, public code is not actually open source. Most licenses fall into two families.</p>
+
+<h3>Permissive licenses</h3>
+<p>Permissive licenses, such as <strong>MIT</strong>, <strong>Apache-2.0</strong> and the <strong>BSD</strong> licenses, let you use, modify and redistribute the code, including in commercial and closed-source products, as long as you keep the copyright and license notices. Apache-2.0 adds an explicit patent grant from contributors and asks you to note significant changes, which some organizations prefer. For someone who just wants to run a tool, permissive licenses impose almost no obligations.</p>
+
+<h3>Copyleft licenses</h3>
+<p>Copyleft licenses, such as the <strong>GPL</strong> family, also let you use and modify the code, but if you distribute a modified version you must release your changes under the same license. The <strong>AGPL</strong> extends this to software offered over a network: if you modify an AGPL web app and let other people use it, you must offer them your modified source. Copyleft is not a problem for ordinary users running the software unchanged. It matters if you plan to modify the code and offer it to others, or to combine it with code under a different license.</p>
+
+<h3>Watch for "source-available"</h3>
+<p>Some projects publish code under licenses that restrict commercial use or competing services. Those can be perfectly reasonable, but they are not open source in the usual sense, and the restrictions may affect you. Always read the actual LICENSE file rather than a badge or a marketing page.</p>
+<div class="tw"><table>
+<thead><tr><th>Question</th><th>Permissive (MIT, Apache-2.0, BSD)</th><th>Copyleft (GPL, AGPL)</th></tr></thead>
+<tbody>
+<tr><td>Can I use it for free, including at work?</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Can I modify it for internal use?</td><td>Yes</td><td>Yes (AGPL: share changes if others use it over a network)</td></tr>
+<tr><td>Must I publish my changes if I distribute it?</td><td>No, keep the notices</td><td>Yes, under the same license</td></tr>
+<tr><td>Can I mix it into closed-source software?</td><td>Generally yes</td><td>Generally no</td></tr>
+</tbody>
+</table></div>
+<p>This is a plain-language summary, not legal advice. If licensing affects a product you sell, ask a lawyer.</p>
+
+<h2>2. Project activity: is anyone home?</h2>
+<p>Open the repository and look at:</p>
+<ul>
+<li><strong>Recent commits and releases.</strong> Steady activity over months is a good sign. A burst of work followed by silence is a warning.</li>
+<li><strong>Issues.</strong> Are bugs acknowledged and closed? How long do they sit without a reply?</li>
+<li><strong>Contributors.</strong> A project maintained by one person can be excellent, but it depends on that person. Several active contributors reduce the risk of it stalling.</li>
+<li><strong>Age.</strong> Older projects have had more time for bugs to be found. Newer projects may move faster but have rougher edges.</li>
+<li><strong>Tests and documentation.</strong> A test suite and a README that explains setup and limitations show care.</li>
+</ul>
+
+<h2>3. Security: has anyone checked?</h2>
+<p>Public code can be inspected, but that does not mean anyone has. Look for:</p>
+<ul>
+<li>A <strong>security policy</strong> (often <code>SECURITY.md</code>) explaining how to report problems privately.</li>
+<li><strong>Independent audits</strong>, especially for anything holding passwords, financial data or personal information. Ask whether the audit report is published and how recent it is.</li>
+<li><strong>Clear threat models</strong>: honest projects say what they do not protect against.</li>
+<li><strong>Dependency hygiene</strong>: a lockfile, and evidence that dependencies are updated.</li>
+<li><strong>Secret handling</strong>: no keys committed to the repository, and configuration kept in environment variables.</li>
+</ul>
+
+<h2>4. Data export: can you leave?</h2>
+<p>The best protection against any software, paid or free, is being able to take your data with you. Check that you can export everything in an open format (CSV, JSON, Markdown, standard PDF or the original files), that the export is complete rather than partial, and that you can import it back. Then actually try it once. Also find out <em>where</em> data lives: on a server, in a cloud database, or only in your browser, where clearing site data can delete it.</p>
+
+<h2>5. Self-hosted or hosted?</h2>
+<p>Many open-source apps can be used two ways. A <strong>hosted</strong> version run by the project is convenient, but you rely on the project to keep it running and to treat your data well. A <strong>self-hosted</strong> copy gives you control, but you take on updates, backups and uptime yourself. Our <a href="/guides/self-hosting-open-source-saas">self-hosting guide</a> covers what that involves. The open license is what makes both options possible: if a hosted service disappears, the code does not.</p>
+
+<h2>6. Support: who helps when it breaks?</h2>
+<p>Paid products usually come with a support team and a service-level agreement. Open-source projects usually offer an issue tracker and documentation, sometimes a community forum, and occasionally paid support from the maintainers or a company. Decide in advance what happens if the tool fails on a deadline. For a personal side project, waiting for a fix may be fine. For anything customers depend on, it may not be.</p>
+
+<h2>Applying this honestly to the IsDead apps</h2>
+<p>It would be odd to publish this checklist and not run our own apps through it. Here is a fair assessment.</p>
+<ul>
+<li><strong>License: strong.</strong> Each repository has a LICENSE file. Nearly all use Apache-2.0; SuperhumanIsDead uses MIT. Both are permissive. Bundled fonts are under the Open Font License.</li>
+<li><strong>Activity and maturity: young.</strong> These are new projects. Several READMEs describe their app as a work in progress, and none has years of production use behind it. Expect rough edges, and check each repository's history yourself.</li>
+<li><strong>Security: varies, and mostly unaudited.</strong> 1PasswordIsDead states plainly that it is experimental and has not been independently audited, and its security notes list what it does not protect against. We would not recommend it as the only place for important passwords. No other IsDead app claims an independent audit either.</li>
+<li><strong>Data export: mostly good, with a caveat.</strong> Many apps export to open formats (Markdown from NotionIsDead, CSV from AirtableIsDead and TypeformIsDead, JSON and CSV from LinearIsDead, SVG and JSON from MiroIsDead). But several store data only in your browser, with no sync, so regular exports are essential.</li>
+<li><strong>Hosting: both options.</strong> Many apps run on yourappisdead.com and every web app can be self-hosted from its repository, though some need extra setup, such as object storage, before they work well outside a local machine.</li>
+<li><strong>Support: community only.</strong> There is no support desk or uptime guarantee. Help comes through each repository's issues.</li>
+</ul>
+<p>In short: the IsDead apps are a good fit for low-risk, single-purpose jobs, for learning, and for trying a free alternative before you cancel a subscription. For anything critical, use them alongside a backup, or choose a more established tool until they mature. The <a href="/guides/how-isdead-apps-are-built">guide to how the apps are built</a> explains their setup in more detail.</p>
+
+<h2>A 20-minute checklist</h2>
+<ul>
+<li>Read the LICENSE file and note whether it is permissive or copyleft</li>
+<li>Check the date of the last commit and last release</li>
+<li>Skim open issues and how quickly maintainers reply</li>
+<li>Read the README's known gaps</li>
+<li>Look for a security policy and any audit reports</li>
+<li>Export some test data and import it back</li>
+<li>Decide whether you will use the hosted version or self-host</li>
+<li>Write down your plan if the project stops being maintained</li>
+</ul>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/guides/how-isdead-apps-are-built">How each IsDead app is built</a></li>
+<li><a href="/guides/self-hosting-open-source-saas">How to self-host an open-source SaaS app</a></li>
+<li><a href="/guides/free-saas-alternatives">Free alternatives to the SaaS tools most teams pay for</a></li>
+<li><a href="/alternatives/1password">1PasswordIsDead write-up</a></li>
+</ul>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>

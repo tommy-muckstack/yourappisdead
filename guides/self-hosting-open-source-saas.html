@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to self-host an open-source SaaS app — YourAppIsDead</title>
+<meta name="description" content="Step-by-step guide to self-hosting an open-source web app: environment variables, database, sign-in, email, backups, updates, custom domains and real costs.">
+<link rel="canonical" href="https://yourappisdead.com/guides/self-hosting-open-source-saas">
+<meta property="og:title" content="How to self-host an open-source SaaS app"><meta property="og:description" content="Step-by-step guide to self-hosting an open-source web app: environment variables, database, sign-in, email, backups, updates, custom domains and real costs."><meta property="og:url" content="https://yourappisdead.com/guides/self-hosting-open-source-saas"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/guides">Guides</a> › Self-hosting</p>
+<h1>How to self-host an open-source SaaS app</h1>
+<p class="meta">Updated October 26, 2026 · about 6 min read</p>
+<p class="lede">Self-hosting means running your own copy of an app: your server or hosting account, your database, your domain. It gives you control over your data and removes per-seat fees, but it makes you the operator. This guide covers the practical steps in a vendor-neutral way, using the IsDead apps as worked examples because their READMEs spell out exactly what they need.</p>
+
+<h2>1. Read the README before anything else</h2>
+<p>A good README tells you three things: how to run the app locally, which environment variables it needs in production, and what is not built yet. Read all three. The "known gaps" section matters most, because it tells you whether the app can do your job today. Several IsDead READMEs, for example, say plainly that data is stored in the browser and that a server-side store is still to come.</p>
+<p>Also check the license file. Permissive licenses such as Apache-2.0 and MIT let you run and modify the code with few conditions; our <a href="/guides/choosing-open-source-software">guide to judging open-source apps</a> explains the differences.</p>
+
+<h2>2. Fork, clone and run it locally</h2>
+<p>Fork the repository so you have your own copy to deploy from, then clone it and run it on your machine first. Most IsDead web apps are Next.js projects and start the same way:</p>
+<ul>
+<li><code>npm install</code> (or <code>npm ci</code> for an exact install from the lockfile)</li>
+<li><code>npm run dev</code>, then open the local URL, which includes the app's base path, such as <code>/trelloisdead</code></li>
+<li><code>npm test</code> and <code>npm run typecheck</code> to confirm your copy is healthy</li>
+</ul>
+<p>Many apps include a demo account that works locally without any keys, and some fall back to an embedded or file-based store. CalendlyIsDead, for instance, runs an embedded Postgres in development and prints booking emails to the server log. Use that to explore before you create any accounts.</p>
+
+<h2>3. Set environment variables, and keep them secret</h2>
+<p>Configuration lives in environment variables, not in code. Typical ones are a database connection string, a secret for signing session cookies, API keys for email and payments, and the public URL of the app. The IsDead web apps commonly use:</p>
+<ul>
+<li><code>NEXT_PUBLIC_FIREBASE_*</code> and <code>FIREBASE_SERVICE_ACCOUNT_JSON</code> for sign-in and, in some apps, storage</li>
+<li><code>AUTH_SECRET</code> for signing guest and session cookies</li>
+<li><code>DATABASE_URL</code> for apps that use Postgres, such as CalendlyIsDead</li>
+<li><code>APP_URL</code> so the app can build absolute links in emails and OAuth callbacks</li>
+</ul>
+<p>Rules that apply everywhere: never commit secrets to Git, generate long random values for signing secrets, use separate keys for development and production, and set them in your host's environment settings. Variables prefixed with <code>NEXT_PUBLIC_</code> are exposed to the browser, so only put non-secret values there.</p>
+
+<h2>4. Choose where the data lives</h2>
+<p>This is the decision that most affects reliability. Serverless hosts usually give your app a temporary disk that disappears between requests or deploys, so anything written to local files can vanish. The IsDead READMEs are explicit about this: TypeformIsDead warns that its JSON-file store works locally but not on Vercel, and WeTransferIsDead notes that production needs object storage for file bytes.</p>
+<div class="tw"><table>
+<thead><tr><th>Storage pattern</th><th>Example apps</th><th>What you need to host it</th></tr></thead>
+<tbody>
+<tr><td>Postgres</td><td>CalendlyIsDead</td><td>A managed or self-run Postgres database; <code>npm run db:migrate</code> applies the schema</td></tr>
+<tr><td>Firestore</td><td>TrelloIsDead, MiroIsDead, DocuSignIsDead</td><td>A Firebase project and a service account key</td></tr>
+<tr><td>Object storage for large files</td><td>LoomIsDead (Vercel Blob)</td><td>A storage bucket and token; uploads go straight to it</td></tr>
+<tr><td>Browser only</td><td>NotionIsDead, LinearIsDead, AirtableIsDead</td><td>Nothing server-side, but data stays on one device</td></tr>
+</tbody>
+</table></div>
+<p>If an app supports both a file store and a database, use the database in production.</p>
+
+<h2>5. Set up authentication</h2>
+<p>Every IsDead web app signs people in through Firebase Authentication with email and password or Google. If you self-host, create your own Firebase project, enable those providers, add your domain to the project's authorized domains, and fill in the Firebase variables. Without them the apps show "Sign-in not configured" on the login page. If you add third-party sign-in or calendar connections, register the exact callback URLs, including the base path, with each provider; a mismatch is the most common cause of OAuth errors.</p>
+
+<h2>6. Set up email sending</h2>
+<p>Apps that send email need a transactional email provider and a verified sending domain. CalendlyIsDead and DocuSignIsDead both use Resend when an API key is set, and simply log messages otherwise. Whatever provider you use, add the SPF and DKIM DNS records it gives you, send from a domain you control, and test that messages reach a real inbox rather than spam.</p>
+
+<h2>7. Know your host's limits</h2>
+<p>Read the limits of your hosting platform before you trust it with files or long jobs. Vercel caps function request bodies at 4.5 MB, which is why LoomIsDead uploads recordings straight to blob storage and the hosted WeTransferIsDead rejects large uploads. Scheduled work needs a scheduler: CalendlyIsDead sends reminder workflows from a cron job every five minutes, protected by a <code>CRON_SECRET</code>.</p>
+
+<h2>8. Add a custom domain</h2>
+<p>Point a domain or subdomain at your deployment using the DNS records your host provides, and wait for HTTPS certificates to be issued. If the app runs under a sub-path, as every IsDead app does (Next.js <code>basePath</code>), keep the path consistent in <code>APP_URL</code>, OAuth callbacks and webhooks. Some features depend on owning the whole host: BitlyIsDead verifies custom short domains by DNS, but routing them needs a self-hosted copy.</p>
+
+<h2>9. Back up, and test the restore</h2>
+<p>A backup you have never restored is a hope, not a backup. Schedule exports from your database (for Postgres, <code>pg_dump</code> or your provider's point-in-time recovery; for Firestore, its managed export) and keep a copy somewhere separate from the host. For browser-only apps, use the built-in exports: Markdown from NotionIsDead, JSON and CSV from LinearIsDead, a backup file from CanvaIsDead, and an encrypted backup from 1PasswordIsDead. Try restoring into a fresh copy at least once.</p>
+
+<h2>10. Plan for updates</h2>
+<p>Add the original repository as an upstream remote, then periodically fetch and merge its changes into your fork. Run the tests and type checks before you deploy, deploy to a preview environment first if your host supports it, and read the commit history for anything that touches the database schema or environment variables. Keep your own changes small and well separated so merges stay easy.</p>
+
+<h2>11. Count the real cost</h2>
+<p>Self-hosting removes subscription fees but adds infrastructure: hosting, a database, email sending, file storage, a domain, and your time. Many providers have free tiers that cover a small team, but limits and prices change, so check each provider's current pricing page rather than relying on a figure you read somewhere. The largest cost is usually attention: someone has to notice when something breaks.</p>
+
+<h2>What about the desktop apps?</h2>
+<p>The Mac apps (GranolaIsDead, WisprFlowIsDead, CleanShotXIsDead, LoomIsDead's recorder and SuperhumanIsDead) have no server for you to host. You download them or build them from source with the scripts in each repo. SuperhumanIsDead asks you for your own Google OAuth client, since Google does not let apps share one. Distributing your own build to other people requires an Apple Developer ID for signing and notarization.</p>
+
+<h2>Self-hosting checklist</h2>
+<ul>
+<li>Read the README's gaps section and the LICENSE file</li>
+<li>Fork, run locally, and pass <code>npm test</code></li>
+<li>Create production secrets; store them only in the host's settings</li>
+<li>Choose a durable database; avoid local files on serverless hosts</li>
+<li>Set up your own auth project and register exact callback URLs</li>
+<li>Verify an email sending domain with SPF and DKIM</li>
+<li>Check request size, timeout and cron limits</li>
+<li>Connect a custom domain with HTTPS</li>
+<li>Schedule backups and do a test restore</li>
+<li>Add an upstream remote and a routine for updates</li>
+<li>Write down what it costs each month, including your time</li>
+</ul>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/guides/how-isdead-apps-are-built">How each IsDead app is built</a></li>
+<li><a href="/guides/choosing-open-source-software">How to judge an open-source app before you rely on it</a></li>
+<li><a href="/guides/free-saas-alternatives">Free alternatives to the SaaS tools most teams pay for</a></li>
+<li><a href="/alternatives/calendly">CalendlyIsDead write-up</a></li>
+</ul>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>

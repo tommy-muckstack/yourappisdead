@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Calendly alternative: CalendlyIsDead (open source) — YourAppIsDead</title>
+<meta name="description" content="CalendlyIsDead is a free, open-source Calendly alternative: booking pages, calendar sync, round robin, reminders and payments. Features, costs, how to switch.">
+<link rel="canonical" href="https://yourappisdead.com/alternatives/calendly">
+<meta property="og:title" content="Free Calendly alternative: CalendlyIsDead (open source)"><meta property="og:description" content="CalendlyIsDead is a free, open-source Calendly alternative: booking pages, calendar sync, round robin, reminders and payments. Features, costs, how to switch."><meta property="og:url" content="https://yourappisdead.com/alternatives/calendly"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/alternatives">Alternatives</a> › Calendly</p>
+<h1>Free Calendly alternative: CalendlyIsDead</h1>
+<p class="meta">Last reviewed October 26, 2026 · License: Apache-2.0 · <a href="https://github.com/tommy-muckstack/calendlyisdead">Source on GitHub</a></p>
+<p class="lede">CalendlyIsDead is a free, open-source scheduling app. You publish a booking page, invitees pick a slot that is checked against your real calendars, and the meeting is added to your calendar with a confirmation email. It handles one-on-one, group and team scheduling, and you can use the hosted copy or run it on your own servers.</p>
+<div class="cta"><a class="pri" href="/calendlyisdead/app">Open CalendlyIsDead</a><a href="https://github.com/tommy-muckstack/calendlyisdead">View the code</a></div>
+
+<h2>What Calendly does, and what CalendlyIsDead covers</h2>
+<p>Calendly exists to end the "does Tuesday work?" email chain. You set the hours you are available, create event types such as a 30-minute intro call, and share a link. Invitees only see times that are free on your connected calendars. Around that core, Calendly sells team scheduling, lead routing, reminders, payments and reporting, and it has added meeting notes and AI features on top.</p>
+<p>CalendlyIsDead rebuilds the scheduling part. Each event type has a duration, location, buffer time before and after, minimum notice, a booking window, optional daily and weekly caps, custom questions for the invitee and an optional page to redirect to after booking. Availability is a weekly schedule with date overrides and a time zone. The app reads busy times from Google Calendar, Outlook or Microsoft 365, and iCloud (over CalDAV). You choose which calendars count as conflicts and which one receives new bookings. Invitees get an email with an <code>.ics</code> file and links to reschedule or cancel.</p>
+<p>For teams, there are collective events where everyone must be free, round robin that spreads meetings evenly or by priority, managed event types that are copied into each member's account with locked fields, and group events with a seat limit. Workflows send email or SMS reminders and follow-ups. Routing forms ask a few questions and send people to the right event type, a URL or a message. You also get meeting polls, single-use links, embeddable widgets, brand colors and logos, and an analytics page. A separate email assistant reads a pasted email thread and drafts a reply with booking links. It never sends mail on its own.</p>
+
+<h2>Feature comparison</h2>
+<div class="tw"><table>
+<thead><tr><th>Feature</th><th>Calendly</th><th>CalendlyIsDead</th></tr></thead>
+<tbody>
+<tr><td>Booking page and event types</td><td>Yes (Free plan: one event type)</td><td>Yes, no limit on event types</td></tr>
+<tr><td>Google, Outlook and iCloud calendars</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Several calendars checked for conflicts</td><td>Paid plans</td><td>Yes</td></tr>
+<tr><td>Buffers, minimum notice, daily limits</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Round robin and collective events</td><td>Teams plan</td><td>Yes</td></tr>
+<tr><td>Managed event types</td><td>Teams plan</td><td>Yes</td></tr>
+<tr><td>Routing forms</td><td>Teams plan</td><td>Yes</td></tr>
+<tr><td>Email and SMS reminders</td><td>Paid plans</td><td>Partial: SMS needs your own Twilio account when self-hosting</td></tr>
+<tr><td>Zoom and Google Meet links</td><td>Yes</td><td>Partial: Zoom needs your own Zoom app keys when self-hosting</td></tr>
+<tr><td>Take payment for a booking</td><td>Paid plans</td><td>Yes, through your own Stripe account</td></tr>
+<tr><td>Analytics</td><td>Teams plan</td><td>Yes</td></tr>
+<tr><td>CRM and Zapier integrations</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>SSO and SAML</td><td>Enterprise</td><td>Not yet</td></tr>
+<tr><td>Meeting notetaker</td><td>Paid add-on</td><td>Not yet</td></tr>
+</tbody></table></div>
+
+<h2>What it costs</h2>
+<p>As of October 2026, <a href="https://calendly.com/pricing">Calendly's pricing page</a> lists a Free plan limited to one event type and one calendar connection, Standard at $10 per seat per month and Teams at $16 per seat per month (the discounted rates shown for yearly billing), and Enterprise starting at $15,000 a year. A five-person team on Teams pays $960 a year.</p>
+<p>The hosted CalendlyIsDead at yourappisdead.com costs nothing and has no paid tiers. If you self-host, you pay your own infrastructure: a Postgres database, a host for a Next.js app, and an email provider. Optional services add their own usage costs, such as Twilio per SMS and Stripe's normal card fees on paid bookings.</p>
+
+<h2>How to switch from Calendly</h2>
+<ol>
+<li>Write down each Calendly event type: name, URL slug, length, location, questions, buffers and limits. There is no importer, so you will recreate them by hand.</li>
+<li>Sign in to CalendlyIsDead and open Calendars. Connect Google, Outlook or iCloud, tick the calendars to check for conflicts, and pick the one new bookings go to.</li>
+<li>Set your weekly hours and time zone under Availability, and add date overrides for holidays or travel.</li>
+<li>Create your event types. Reusing the same slugs makes it easy to swap links later.</li>
+<li>Rebuild any reminders under Workflows and any qualification questions under Routing forms.</li>
+<li>Replace the links on your website and email signature. For embeds, generate a new snippet in the Embed section of the app.</li>
+<li>Keep Calendly running until meetings already booked there have happened. Those bookings are not moved over, and their reschedule links still point at Calendly.</li>
+</ol>
+
+<h2>Running it yourself</h2>
+<p>The app is built with Next.js, Postgres through Drizzle (Neon in production, an embedded PGlite database locally) and Firebase Authentication for sign-in, and it is set up for Vercel. To try it, run <code>npm install</code> and then <code>npm run dev</code>. You get a seeded demo host and a booking page at <code>/demo/30min</code> without any keys, and booking emails are printed to the server log until you set <code>RESEND_API_KEY</code>.</p>
+<p>For production you set <code>DATABASE_URL</code>, <code>AUTH_SECRET</code>, the Firebase variables, OAuth clients for Google and Microsoft calendars, and <code>CRON_SECRET</code> for the job that sends workflow messages every five minutes. <code>npm run db:migrate</code> applies the schema. Unit and integration tests run with <code>npm test</code>, browser tests with <code>npm run e2e</code>.</p>
+
+<h2>Limitations</h2>
+<ul>
+<li>No import from Calendly, and existing Calendly bookings stay there.</li>
+<li>When self-hosting, every integration needs your own credentials: Google and Microsoft OAuth apps, a Zoom server-to-server app, Stripe, Twilio and Resend. Without them the app falls back to stand-ins such as a labelled demo meeting room, a simulated checkout and SMS that is only logged.</li>
+<li>No notetaker, CRM integrations, Zapier, outgoing webhooks or SSO.</li>
+<li>The email assistant only drafts replies. It uses a built-in parser unless you supply your own API key for an OpenAI-compatible model.</li>
+<li>Support is through GitHub issues, with no service-level agreement.</li>
+</ul>
+
+<h2>FAQ</h2>
+<details><summary>Do my invitees need an account?</summary><p>No. People booking a meeting just open your link, pick a time and enter their name and email. Only hosts sign in.</p></details>
+<details><summary>Can I import my event types from Calendly?</summary><p>Not yet. You recreate them, which usually takes a few minutes per event type if you note the settings first.</p></details>
+<details><summary>Does it work with Outlook and Microsoft 365?</summary><p>Yes. It connects through a Microsoft app registration to read busy times and write new bookings. iCloud works through an Apple app-specific password.</p></details>
+<details><summary>Can I charge for meetings?</summary><p>Yes. Set a price on an event type and connect your own Stripe account. The slot is held for 30 minutes while the invitee pays, and confirmations only go out once payment completes. The money goes straight to your Stripe account.</p></details>
+<details><summary>Is the hosted version really free?</summary><p>Yes. Every feature that exists is available to everyone. If you self-host, the only costs are your own hosting and any paid services you connect.</p></details>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/alternatives/typeform">Free Typeform alternative</a></li>
+<li><a href="/alternatives/docusign">Free DocuSign alternative</a></li>
+<li><a href="/alternatives/granola">Free Granola alternative</a></li>
+<li><a href="/guides/self-hosting-open-source-saas">Guide: self-hosting open-source SaaS</a></li>
+</ul>
+<p class="meta">YourAppIsDead isn't affiliated with Calendly, LLC. "Calendly" is a trademark of its owner and is used here only to describe what this project replaces.</p>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>

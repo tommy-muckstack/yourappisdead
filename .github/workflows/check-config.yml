@@ -14,4 +14,5 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/check-config.mjs
+      - run: node scripts/render-static.mjs --check
       - run: node --check api/scores.js && node --check game.js && node --check games.js

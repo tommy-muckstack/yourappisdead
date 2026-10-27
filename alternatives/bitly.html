@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Bitly alternative: BitlyIsDead (open source) — YourAppIsDead</title>
+<meta name="description" content="BitlyIsDead is a free, open-source Bitly alternative with short links, styled QR Codes, analytics, campaigns and an API. How it compares and how to switch.">
+<link rel="canonical" href="https://yourappisdead.com/alternatives/bitly">
+<meta property="og:title" content="Free Bitly alternative: BitlyIsDead (open source)"><meta property="og:description" content="BitlyIsDead is a free, open-source Bitly alternative with short links, styled QR Codes, analytics, campaigns and an API. How it compares and how to switch."><meta property="og:url" content="https://yourappisdead.com/alternatives/bitly"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/alternatives">Alternatives</a> › Bitly</p>
+<h1>Free Bitly alternative: BitlyIsDead</h1>
+<p class="meta">Last reviewed October 26, 2026 · License: Apache-2.0 · <a href="https://github.com/tommy-muckstack/bitlyisdead">Source on GitHub</a></p>
+<p class="lede">BitlyIsDead is a free, open-source link shortener with QR Codes, click analytics, link-in-bio pages and UTM campaigns. It has no monthly link quota, and it includes an API. The main trade-offs are a longer short-link address on the hosted version, a cap of 300 links per account, and custom domains that only route on a self-hosted copy.</p>
+<div class="cta"><a class="pri" href="/bitlyisdead/app">Open BitlyIsDead</a><a href="https://github.com/tommy-muckstack/bitlyisdead">View the code</a></div>
+
+<h2>What Bitly does, and what BitlyIsDead covers</h2>
+<p>Bitly turns long URLs into short ones and tells you who clicked them. Over time it has grown into a connections platform: branded short domains, QR Codes, link-in-bio pages, campaign tracking, mobile deep links and an API. Its plans are mainly divided by how many links and QR Codes you can create each month and how much analytics detail you see.</p>
+<p>BitlyIsDead rebuilds those core pieces. When you create a link you can set a title, a custom back-half, tags, an expiry date, UTM parameters through a builder with a live preview, and a QR Code in the same step. The links list has tag, date, type and expiry filters, a hidden view, sorting by date or clicks, and bulk actions. You can change a link's title, destination and tags later.</p>
+<p>The QR builder offers templates, square, rounded or dot patterns, corner styles, colors, frames with text and an uploaded logo, and downloads as PNG, SVG or JPEG. Scans are counted separately from clicks. Pages is a simple link-in-bio builder with themes, link, heading and text blocks, and a public address that counts views and button clicks. Campaigns group links under shared UTM values and roll up their analytics.</p>
+<p>Analytics can be viewed for 7, 30 or 90 days or a custom range, broken down by top links, referrers, devices, browsers, countries and cities, and exported to CSV. Location comes from the country and city headers the hosting platform adds, not from storing visitor IP addresses. Known crawlers and link-preview bots are counted separately. Every feature is also available through a JSON API using tokens you create in Settings.</p>
+
+<h2>Feature comparison</h2>
+<div class="tw"><table>
+<thead><tr><th>Feature</th><th>Bitly</th><th>BitlyIsDead</th></tr></thead>
+<tbody>
+<tr><td>Short links with custom back-halves</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Link quota</td><td>5 a month free, 100 to 3,000 on paid plans</td><td>No monthly quota; 300 links per account in total</td></tr>
+<tr><td>Styled QR Codes</td><td>Yes, quota by plan</td><td>Yes</td></tr>
+<tr><td>Click analytics with referrers, devices and locations</td><td>Detail depends on plan</td><td>Yes</td></tr>
+<tr><td>UTM builder</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Edit a link's destination</td><td>Paid plans</td><td>Yes</td></tr>
+<tr><td>Link-in-bio pages</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Campaigns</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Custom short domain</td><td>Paid plans</td><td>Partial: DNS verification works, routing only on a self-hosted copy</td></tr>
+<tr><td>API</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Bulk CSV upload</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Mobile deep links</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Teams, groups and SSO</td><td>Higher plans</td><td>Not yet</td></tr>
+</tbody></table></div>
+
+<h2>What it costs</h2>
+<p>As of October 2026, <a href="https://bitly.com/pages/pricing">Bitly's pricing page</a> lists a Free plan with 5 links and 2 QR Codes a month; Core at $10 a month, billed annually only, with 100 links and 5 QR Codes a month; Growth at $29 a month billed annually ($348 a year) with 500 links and 10 QR Codes; and Premium at $199 a month billed annually ($2,388 a year) with 3,000 links and 200 QR Codes. Enterprise pricing is custom. Monthly billing, where offered, costs more.</p>
+<p>The hosted BitlyIsDead is free, with no plan or upgrade that takes payment. Self-hosting costs your own hosting and Firebase usage, plus a domain if you want a short custom one.</p>
+
+<h2>How to switch from Bitly</h2>
+<ol>
+<li>Make a list of the Bitly links you still use, with their destinations and back-halves. Export it from Bitly if your plan allows, or copy it from the dashboard.</li>
+<li>In BitlyIsDead, go to Settings, then API, and create a token. Because there's no CSV upload, the quickest way to move many links is a short script that sends one <code>POST</code> per link to the <code>/links</code> endpoint with <code>url</code>, <code>title</code>, <code>backHalf</code> and <code>tags</code>. For a handful, use the Create form.</li>
+<li>Set up campaigns with your usual UTM values so new links pick them up automatically.</li>
+<li>Generate new QR Codes for anything you print from now on. Codes already printed with bit.ly addresses keep going through Bitly and can't be pointed elsewhere.</li>
+<li>If you self-host and want a branded short domain, add it under Domains, create the TXT and CNAME records shown, and click Verify.</li>
+<li>Keep your Bitly account while old bit.ly links are still in circulation, since those links remain under Bitly's control.</li>
+</ol>
+
+<h2>Running it yourself</h2>
+<p>BitlyIsDead is a Next.js app using Firebase Authentication and Firestore. Without Firebase settings it runs on local JSON files with a demo account and guest sessions, which is handy for testing. Run <code>npm ci</code>, then <code>NODE_OPTIONS=--unhandled-rejections=warn npm run dev</code>, and open <code>http://localhost:3000/bitlyisdead</code>. For production set the <code>NEXT_PUBLIC_FIREBASE_*</code> variables, <code>FIREBASE_SERVICE_ACCOUNT_JSON</code> and <code>AUTH_SECRET</code>. Short links redirect with a 307 status and a no-store header so every visit is counted. Only public http and https destinations are accepted; private network addresses, embedded credentials and other short links are refused.</p>
+
+<h2>Limitations</h2>
+<ul>
+<li>On the hosted version, short links look like <code>yourappisdead.com/bitlyisdead/s/&lt;code&gt;</code>, which is much longer than a bit.ly link.</li>
+<li>Each account can hold 300 links, 50 pages, 100 campaigns and 20 domains.</li>
+<li>Custom domains only route on a self-hosted deployment.</li>
+<li>No bulk CSV upload, mobile deep links, teams, SSO, saved UTM templates or bulk QR Code creation.</li>
+<li>Each click rewrites the link's stored record, which the README notes won't scale to extremely busy links without changes.</li>
+<li>Location reports rely on headers from the hosting platform, so they depend on where you deploy.</li>
+</ul>
+
+<h2>FAQ</h2>
+<details><summary>Is there a monthly limit on new links?</summary><p>No. There's a total of 300 links per account; delete old ones to make room. Clicks and scans are not limited.</p></details>
+<details><summary>Can I keep my existing bit.ly links?</summary><p>They keep working on Bitly as long as Bitly serves them, but they can't be moved. Create new short links here and use them going forward.</p></details>
+<details><summary>Do I need an account to try it?</summary><p>No. The app opens a guest workspace, and anything you create moves to your account when you sign in.</p></details>
+<details><summary>Does it track visitors' IP addresses?</summary><p>No. Country and city come from headers the hosting platform attaches to each request; the IP address itself isn't stored.</p></details>
+<details><summary>Is there an API?</summary><p>Yes. Create a token under Settings and call the JSON endpoints for links, QR Codes, pages, campaigns and search. The <code>/developers</code> page lists them.</p></details>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/alternatives/linktree">Free Linktree alternative</a></li>
+<li><a href="/alternatives/typeform">Free Typeform alternative</a></li>
+<li><a href="/alternatives/wetransfer">Free WeTransfer alternative</a></li>
+<li><a href="/guides/how-isdead-apps-are-built">Guide: how the IsDead apps are built</a></li>
+</ul>
+<p class="meta">YourAppIsDead isn't affiliated with Bitly, Inc. "Bitly" is a trademark of its owner and is used here only to describe what this project replaces.</p>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>

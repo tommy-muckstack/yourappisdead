@@ -38,8 +38,9 @@ const GH = '<svg class="gh-ico" viewBox="0 0 16 16" width="14" height="14" aria-
 const STATUS = { live: ['OPEN APP →', 'LIVE'], soon: ['COMING SOON', 'COMING SOON'], community: ['COMMUNITY-BUILT', 'COMMUNITY'] };
 const safePath = h => /^\/[a-z0-9][a-z0-9-]*(\/app)?$/.test(String(h)) ? h : '#';
 const safeRepo = r => /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/.test(String(r)) ? r : null;
+const safeGuide = g => /^\/alternatives\/[a-z0-9-]+$/.test(String(g)) ? g : null;
 fetch('/apps.json').then(r => r.json()).then(apps => {
-  apps = apps.map(a => ({ ...a, href: safePath(a.app || a.href), repo: safeRepo(a.repo), status: ['live', 'soon', 'community'].includes(a.status) ? a.status : 'soon' }));
+  apps = apps.map(a => ({ ...a, href: safePath(a.app || a.href), repo: safeRepo(a.repo), guide: safeGuide(a.guide), status: ['live', 'soon', 'community'].includes(a.status) ? a.status : 'soon' }));
   const grid = document.getElementById('grid'), q = document.getElementById('q'),
         count = document.getElementById('count'), empty = document.getElementById('empty');
   const sprites = TOMB.assign(apps);
@@ -54,6 +55,7 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
         <p class="tags"><span>${esc(a.category)}</span></p>
         <span class="status">${(STATUS[a.status]||STATUS.soon)[0]}</span>
       </a>
+      ${a.guide ? `<a class="repo guide" href="${esc(a.guide)}">Read the full write-up →</a>` : ''}
       ${a.repo ? `<a class="repo" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH} Open Source on GitHub</a>` : `<span class="repo none">${GH} Repo coming soon</span>`}
       <div class="tfoot">
         <div class="shares">
@@ -77,6 +79,7 @@ fetch('/apps.json').then(r => r.json()).then(apps => {
     const a = e.target.closest('a'); if (!a) return; const li = a.closest('.tile'); if (!li) return;
     const app = apps[tiles.indexOf(li)]; if (!app) return;
     if (a.classList.contains('main')) track('hub_app_opened', { app_slug: app.slug, app_status: app.status, position: tiles.indexOf(li) });
+    else if (a.classList.contains('guide')) track('hub_app_guide_clicked', { app_slug: app.slug });
     else if (a.classList.contains('repo')) track('hub_app_repo_clicked', { app_slug: app.slug });
     else if (a.classList.contains('share')) {
       if (a.classList.contains('x')) { const m = compose(app); a.href = xUrl(m.text); track('hub_app_shared', { app_slug: app.slug, channel: 'x', message_id: m.id, closer_id: m.cid }); }

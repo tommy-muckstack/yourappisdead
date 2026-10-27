@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Superhuman alternative: SuperhumanIsDead (open source) — YourAppIsDead</title>
+<meta name="description" content="SuperhumanIsDead is a free, MIT-licensed Gmail client for Mac with Superhuman-style shortcuts, snooze, send later and AI drafts using your own API key.">
+<link rel="canonical" href="https://yourappisdead.com/alternatives/superhuman">
+<meta property="og:title" content="Free Superhuman alternative: SuperhumanIsDead (open source)"><meta property="og:description" content="SuperhumanIsDead is a free, MIT-licensed Gmail client for Mac with Superhuman-style shortcuts, snooze, send later and AI drafts using your own API key."><meta property="og:url" content="https://yourappisdead.com/alternatives/superhuman"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/alternatives">Alternatives</a> › Superhuman</p>
+<h1>Free Superhuman alternative: SuperhumanIsDead</h1>
+<p class="meta">Last reviewed October 26, 2026 · License: MIT · <a href="https://github.com/tommy-muckstack/superhumanisdead">Source on GitHub</a></p>
+<p class="lede">SuperhumanIsDead is a free, open-source desktop email client for Gmail that copies Superhuman's keyboard-driven way of working: a split inbox, single-key triage, snooze, send later and AI-written drafts. It runs on your Mac with no server of its own, and it talks to Gmail and your chosen AI provider using credentials you create yourself.</p>
+<div class="cta"><a class="pri" href="/superhumanisdead">Get SuperhumanIsDead</a><a href="https://github.com/tommy-muckstack/superhumanisdead">View the code</a></div>
+
+<h2>What Superhuman does, and what SuperhumanIsDead covers</h2>
+<p>Superhuman made its name as an email app you drive almost entirely from the keyboard. You move through conversations with <code>j</code> and <code>k</code>, clear them with <code>e</code>, snooze them with <code>h</code>, and reach every other command through a <code>⌘K</code> palette. Around that core it adds split inboxes, reminders, scheduled sending, snippets, a calendar pane and, more recently, AI writing and summaries. Mail is now sold as part of a wider Superhuman suite that also includes Grammarly, Docs and the Go assistant.</p>
+<p>SuperhumanIsDead rebuilds the Mail part of that experience as an Electron app written in TypeScript and React. The shortcut map follows Superhuman's closely, including the <code>g</code> navigation chords, <code>⇧E</code> to un-archive, <code>#</code> for trash, inline <code>;name</code> snippets and <code>⌘⇧L</code> for send later. The Important / Other split uses Gmail's own categories, and an optional "Sort this list with AI" command reclassifies the loaded page and remembers your corrections on your machine.</p>
+<p>The AI features (summarize a thread, draft a reply, write from a prompt, ask questions about your mail) work with Anthropic's API or any OpenAI-compatible endpoint, which includes OpenAI, xAI, OpenRouter and a local model served by Ollama or LM Studio. Without a key, every non-AI feature still works.</p>
+
+<h2>Feature comparison</h2>
+<div class="tw"><table>
+<thead><tr><th>Feature</th><th>Superhuman</th><th>SuperhumanIsDead</th></tr></thead>
+<tbody>
+<tr><td>Keyboard-first triage and <code>⌘K</code> palette</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Split inbox</td><td>Yes</td><td>Partial: Important / Other from Gmail categories, plus optional AI sorting</td></tr>
+<tr><td>Snooze and remind if no reply</td><td>Yes</td><td>Yes (the app must be running to resurface mail)</td></tr>
+<tr><td>Send later and undo send</td><td>Yes</td><td>Yes (queued locally; the app must be running)</td></tr>
+<tr><td>Snippets</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>AI summaries and drafts</td><td>Yes</td><td>Yes, with your own Anthropic or OpenAI-compatible key</td></tr>
+<tr><td>Calendar</td><td>Yes</td><td>Partial: Google Calendar day and week views with quick event creation</td></tr>
+<tr><td>Read statuses</td><td>Yes</td><td>Partial: off by default, needs a tracking server you host</td></tr>
+<tr><td>Multiple accounts</td><td>Yes</td><td>Yes (Gmail accounts, <code>Ctrl+1</code>–<code>9</code>)</td></tr>
+<tr><td>Outlook / Microsoft 365 accounts</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Mobile and web apps</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Team sharing and CRM views</td><td>Yes</td><td>Not yet</td></tr>
+</tbody>
+</table></div>
+
+<h2>What it costs</h2>
+<p>As of October 2026, Superhuman's <a href="https://superhuman.com/plans">plans page</a> includes Mail starting with the Business plan, at $33 per member per month billed annually or $40 billed monthly. The Free and Pro tiers cover Grammarly, Docs and Go but not Mail. Enterprise is priced on request.</p>
+<p>SuperhumanIsDead costs nothing to download or use. The only possible running cost is AI: if you plug in a paid API key, your provider bills you per request, usually a small amount for occasional summaries and drafts. Pointing it at a local model costs nothing beyond your own hardware.</p>
+
+<h2>How to switch from Superhuman</h2>
+<ol>
+<li>Install Node 22 and npm on your Mac, clone the repository and run <code>./scripts/setup.sh</code>. Start the app with <code>npm run dev</code>, or build a disk image with <code>npm run dist:mac</code>. The README documents building from source rather than linking a prebuilt, notarized download.</li>
+<li>Click "Try the sample inbox" first if you want to learn the shortcuts on fake mail before connecting your account.</li>
+<li>Create your own Google OAuth client: make a project in Google Cloud Console, enable the Gmail API, configure an External consent screen with the <code>gmail.modify</code> scope, add your address as a test user, and create a "Desktop app" client ID. The calendar features also request the <code>calendar.events</code> scope, so enable the Google Calendar API in the same project if you want them.</li>
+<li>Paste the client ID and secret into the setup screen and sign in. Google will warn that the app is unverified, because it is your own test app.</li>
+<li>Optionally add an AI key in setup. Nothing needs importing: your mail, labels and drafts already live in Gmail. Snippets and snoozes you created in Superhuman have to be recreated.</li>
+</ol>
+
+<h2>Running it yourself</h2>
+<p>The code is split into an Electron main process (OAuth loopback sign-in, encrypted settings, Gmail and AI proxies, the snooze and send-later scheduler), a sandboxed preload bridge, pure shared modules with unit tests, and the React interface. Run <code>npm test</code> and <code>npm run typecheck</code> to check a change. To sign and notarize your own build, set <code>CSC_NAME</code> or <code>CSC_LINK</code> before <code>npm run dist:mac</code>.</p>
+<p>Tokens and API keys are encrypted with the macOS keychain through Electron's <code>safeStorage</code>. Mail goes only to Google, and to your AI provider when you trigger an AI action. Message bodies render in a sandboxed frame with remote images blocked.</p>
+
+<h2>Limitations</h2>
+<ul>
+<li>Gmail only. There is no Outlook, iCloud or IMAP support.</li>
+<li>Mac only, with no mobile or web client, and builds are unsigned unless you add your own Apple signing identity.</li>
+<li>Snooze, reminders and send later run inside the app, so they fire only while it is open.</li>
+<li>Google OAuth clients left in "Testing" mode issue refresh tokens that expire after about a week, so expect to sign in again periodically.</li>
+<li>No shared team features, CRM panels or admin controls.</li>
+</ul>
+
+<h2>FAQ</h2>
+<details><summary>Do I need a Superhuman account?</summary><p>No. The app connects straight to your Gmail account using an OAuth client you create in Google Cloud.</p></details>
+<details><summary>Does my email pass through a SuperhumanIsDead server?</summary><p>No. There is no project server. The app on your Mac calls Gmail directly, and calls your AI provider only when you ask for an AI action.</p></details>
+<details><summary>Can I use it without AI?</summary><p>Yes. Leave the key blank and everything except summaries, drafts, Ask AI and AI sorting works normally.</p></details>
+<details><summary>Can I run the AI part locally?</summary><p>Yes. Choose the OpenAI-compatible provider and point the base URL at a local server such as Ollama.</p></details>
+<details><summary>Why does Google call the app unverified?</summary><p>Because the OAuth client belongs to you and hasn't been through Google's review. That is expected for a personal client.</p></details>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/alternatives/grammarly">Free Grammarly alternative</a></li>
+<li><a href="/alternatives/calendly">Free Calendly alternative</a></li>
+<li><a href="/alternatives/granola">Free Granola alternative</a></li>
+<li><a href="/guides/self-hosting-open-source-saas">Guide: self-hosting open-source SaaS</a></li>
+</ul>
+<p class="meta">YourAppIsDead isn't affiliated with the makers of Superhuman. "Superhuman" is a trademark of its owner and is used here only to describe what this project replaces.</p>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>
