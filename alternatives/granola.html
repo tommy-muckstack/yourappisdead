@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Granola alternative: GranolaIsDead (open source) — YourAppIsDead</title>
+<meta name="description" content="GranolaIsDead is a free, open-source Mac app for bot-free meeting notes: on-device transcription, AI-enhanced notes and templates, with no account or limits.">
+<link rel="canonical" href="https://yourappisdead.com/alternatives/granola">
+<meta property="og:title" content="Free Granola alternative: GranolaIsDead (open source)"><meta property="og:description" content="GranolaIsDead is a free, open-source Mac app for bot-free meeting notes: on-device transcription, AI-enhanced notes and templates, with no account or limits."><meta property="og:url" content="https://yourappisdead.com/alternatives/granola"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/alternatives">Alternatives</a> › Granola</p>
+<h1>Free Granola alternative: GranolaIsDead</h1>
+<p class="meta">Last reviewed October 26, 2026 · License: Apache-2.0 · <a href="https://github.com/tommy-muckstack/granolaisdead">Source on GitHub</a></p>
+<p class="lede">GranolaIsDead is a free, open-source Mac app for meeting notes. It records your microphone and your Mac's audio without sending a bot into the call, transcribes on the device, and turns your rough notes plus the transcript into structured notes. There's no account and no subscription.</p>
+<div class="cta"><a class="pri" href="/granolaisdead">Get GranolaIsDead</a><a href="https://github.com/tommy-muckstack/granolaisdead">View the code</a></div>
+
+<h2>What Granola does, and what GranolaIsDead covers</h2>
+<p>Granola is an AI notepad for meetings. It listens to your computer's audio rather than joining the call, so it works with any meeting app and the other people don't see a recorder in the participant list. You jot a few notes while you talk; afterwards Granola combines them with the transcript into a tidy summary, using templates for common meeting types. You can then chat with the meeting, share notes with your team and push them into tools like Slack or Notion.</p>
+<p>GranolaIsDead copies the personal side of that workflow as a native SwiftUI app. It captures your microphone as "Me" and system audio as "Them" through a Core Audio process tap, and shows a live transcript as people talk. Transcription uses the Parakeet model on the Neural Engine via FluidAudio; the roughly 600 MB model downloads once.</p>
+<p>When the meeting ends, your own lines stay in full ink and generated lines appear in gray, with checkboxes for action items. Ten templates cover meetings such as one-to-ones, stand-ups, hiring, sales calls and board meetings. The app writes notes with your own Claude or OpenAI key if you've added one, otherwise with Apple's on-device model on macOS 26 with Apple Intelligence, and otherwise with a basic extractive fallback that runs on any supported Mac.</p>
+
+<h2>Feature comparison</h2>
+<div class="tw"><table>
+<thead><tr><th>Feature</th><th>Granola</th><th>GranolaIsDead</th></tr></thead>
+<tbody>
+<tr><td>Records without a meeting bot</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Live transcript</td><td>Yes</td><td>Yes (Me / Them labels)</td></tr>
+<tr><td>On-device transcription</td><td>No</td><td>Yes</td></tr>
+<tr><td>AI-enhanced notes from your jottings</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Note templates</td><td>Yes</td><td>Yes (ten built in)</td></tr>
+<tr><td>Chat with one meeting or all of them</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Calendar "coming up" list</td><td>Yes</td><td>Yes, via macOS Calendar</td></tr>
+<tr><td>Meeting detection prompts</td><td>Yes</td><td>Yes (Zoom, Meet, Teams, FaceTime, Slack, Webex)</td></tr>
+<tr><td>Unlimited meeting history</td><td>Paid plans only</td><td>Yes</td></tr>
+<tr><td>Export notes</td><td>Yes</td><td>Partial: copy or export as Markdown</td></tr>
+<tr><td>Team sharing and workspaces</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Integrations (Slack, Notion, CRM)</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Mobile apps</td><td>Yes (iOS, Android)</td><td>Not yet</td></tr>
+</tbody>
+</table></div>
+
+<h2>What it costs</h2>
+<p>As of October 2026, Granola's <a href="https://www.granola.ai/pricing">pricing page</a> lists three plans: Basic is free but keeps only 30 days of meeting history, Business is $14 per user per month and adds unlimited history, integrations and API access, and Enterprise is $35 per user per month with SSO and admin controls.</p>
+<p>GranolaIsDead is free and keeps notes for as long as you keep the files. If you choose to use a Claude or OpenAI key for better notes, the provider charges you for what you use; the Apple on-device and fallback engines cost nothing.</p>
+
+<h2>How to switch from Granola</h2>
+<ol>
+<li>Check your Mac runs macOS 14.2 or later. Apple silicon and Intel are both supported.</li>
+<li>Download the signed, notarized DMG from the project page, open it and drag GranolaIsDead to Applications.</li>
+<li>Grant Microphone access, then "System Audio Recording Only" in System Settings → Privacy &amp; Security → Screen &amp; System Audio Recording. Full screen recording isn't required.</li>
+<li>Allow Calendar access if you want the "coming up" list and reminders, and notifications for the meeting prompts.</li>
+<li>Optionally add a Claude or OpenAI key under Settings → AI. Keys are stored in your Mac's Keychain.</li>
+<li>Export anything you want to keep from Granola yourself. There's no importer, so old notes stay where they are.</li>
+</ol>
+
+<h2>Running it yourself</h2>
+<p>The repository has two parts. <code>mac/</code> is the Swift app: run <code>./scripts/run-dev.sh</code> to build and launch it and <code>swift test</code> for the chunker, parser, echo filter and fallback enhancer tests. The rest is a small Next.js marketing site (<code>npm install</code>, <code>npm run dev</code>). Notes are saved as JSON in <code>~/Library/Application Support/GranolaIsDead/notes</code>, and recordings are deleted after 14 days. Updates arrive through Sparkle.</p>
+
+<h2>Limitations</h2>
+<ul>
+<li>Mac only (no Windows or mobile apps), single user. No accounts, cloud sync, shared workspaces or integrations.</li>
+<li>Speakers are split into "Me" and "Them", not identified by name.</li>
+<li>The transcriber is called with English as its language, so other languages aren't a supported path.</li>
+<li>Note quality depends on the engine. The extractive fallback is basic; the best results need macOS 26 with Apple Intelligence or your own API key. With an API key, your notes and transcript are sent to that provider.</li>
+<li>The app sends anonymous usage events (no note content) to the project's analytics; you can turn this off in Settings.</li>
+</ul>
+
+<h2>FAQ</h2>
+<details><summary>Will the other people in the call know it's recording?</summary><p>No bot joins, so nothing appears in the participant list. Ask for consent before recording anyone; in many places it's required.</p></details>
+<details><summary>Does my audio go to the cloud?</summary><p>Transcription happens on your Mac. Only if you add a Claude or OpenAI key does text go to that provider, when notes are generated or you chat.</p></details>
+<details><summary>Does it work with Zoom, Meet and Teams?</summary><p>Yes. It records system audio, so it works with any app, and it can prompt you when common meeting apps start using the microphone.</p></details>
+<details><summary>Where are my notes stored?</summary><p>As JSON files in your user Library folder. You can back them up or copy them like any other files.</p></details>
+<details><summary>Is there a meeting history limit?</summary><p>No. Notes stay until you delete them. Audio files are removed after 14 days.</p></details>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/alternatives/otter">Free Otter alternative</a></li>
+<li><a href="/alternatives/wispr-flow">Free Wispr Flow alternative</a></li>
+<li><a href="/alternatives/notion">Free Notion alternative</a></li>
+<li><a href="/guides/saas-subscription-costs">Guide: what SaaS subscriptions really cost</a></li>
+</ul>
+<p class="meta">YourAppIsDead isn't affiliated with Granola, Inc. "Granola" is a trademark of its owner and is used here only to describe what this project replaces.</p>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>

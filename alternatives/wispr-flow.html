@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Wispr Flow alternative: WisprFlowIsDead (open source) — YourAppIsDead</title>
+<meta name="description" content="WisprFlowIsDead is free, open-source Mac dictation: hold a key, talk, and cleaned-up text types into any app. On-device speech, no word limits, no account.">
+<link rel="canonical" href="https://yourappisdead.com/alternatives/wispr-flow">
+<meta property="og:title" content="Free Wispr Flow alternative: WisprFlowIsDead (open source)"><meta property="og:description" content="WisprFlowIsDead is free, open-source Mac dictation: hold a key, talk, and cleaned-up text types into any app. On-device speech, no word limits, no account."><meta property="og:url" content="https://yourappisdead.com/alternatives/wispr-flow"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/alternatives">Alternatives</a> › Wispr Flow</p>
+<h1>Free Wispr Flow alternative: WisprFlowIsDead</h1>
+<p class="meta">Last reviewed October 26, 2026 · License: Apache-2.0 · <a href="https://github.com/tommy-muckstack/wisprflowisdead">Source on GitHub</a></p>
+<p class="lede">WisprFlowIsDead is a free, open-source dictation app for the Mac. You hold a key, speak, and cleaned-up text is typed into whatever app has your cursor. Speech recognition runs on your Mac, and there is no account, word limit or subscription.</p>
+<div class="cta"><a class="pri" href="/wisprflowisdead">Get WisprFlowIsDead</a><a href="https://github.com/tommy-muckstack/wisprflowisdead">View the code</a></div>
+
+<h2>What Wispr Flow does, and what WisprFlowIsDead covers</h2>
+<p>Wispr Flow turns speech into polished writing anywhere you can type. Instead of transcribing word for word, it strips filler words, adds punctuation, follows self-corrections and adapts tone to the app you're in. It also offers a personal dictionary, voice snippets, a command mode for editing selected text, and apps for Mac, Windows, iPhone and Android.</p>
+<p>WisprFlowIsDead is a native Swift app that reproduces the desktop dictation workflow on macOS. Hold <code>fn</code> (or <code>⌃⌥</code> on keyboards without one) to talk, or press <code>fn</code> + <code>space</code> for hands-free mode. A small floating "Flow Bar" shows your audio level while you speak. When you release the key, the text is cleaned up and pasted at the cursor, and your clipboard is restored afterwards.</p>
+<p>Transcription uses NVIDIA's Parakeet model through the FluidAudio library, which downloads about 600 MB once and then runs locally. On macOS 26 you can use Apple's built-in recognizer instead. The stronger cleanup levels and the experimental Command Mode use Apple's on-device language model, so they need macOS 26 with Apple Intelligence available; on older systems a rule-based cleanup is used.</p>
+
+<h2>Feature comparison</h2>
+<div class="tw"><table>
+<thead><tr><th>Feature</th><th>Wispr Flow</th><th>WisprFlowIsDead</th></tr></thead>
+<tbody>
+<tr><td>Push-to-talk and hands-free dictation</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Types into any app</td><td>Yes</td><td>Yes (needs Accessibility permission)</td></tr>
+<tr><td>Filler removal, punctuation, lists</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>"Scratch that" style corrections</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Writing styles per app type</td><td>Yes</td><td>Yes (Formal, Casual, Very casual, Excited)</td></tr>
+<tr><td>Personal dictionary</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Voice snippets</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Command Mode for selected text</td><td>Yes</td><td>Partial: experimental, macOS 26 only</td></tr>
+<tr><td>History and usage stats</td><td>Yes</td><td>Yes (history with undo, words per minute, streaks)</td></tr>
+<tr><td>On-device transcription</td><td>No</td><td>Yes</td></tr>
+<tr><td>Weekly word limit on free use</td><td>Yes</td><td>No</td></tr>
+<tr><td>Windows, iOS and Android</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Team plans and admin controls</td><td>Yes</td><td>Not yet</td></tr>
+</tbody>
+</table></div>
+
+<h2>What it costs</h2>
+<p>As of October 2026, Wispr Flow's <a href="https://wisprflow.ai/pricing">pricing page</a> lists a free plan capped at 2,000 words a week on desktop, and Pro at $15 per user per month, or $12 when billed annually, with no word limit. Growth and Enterprise tiers add team features and meeting notes on top.</p>
+<p>WisprFlowIsDead is free with no usage cap. Because recognition and cleanup run on your own hardware, there's no per-word cost and no API key to buy.</p>
+
+<h2>How to switch from Wispr Flow</h2>
+<ol>
+<li>Check your Mac: the current release (0.1.1) is built for Apple silicon and needs macOS 14.2 or later.</li>
+<li>Download the DMG from the project page or the GitHub releases page, open it and drag the app into Applications. The 0.1.1 build is signed and notarized, so it opens without Gatekeeper workarounds.</li>
+<li>Quit Wispr Flow first, or change one app's shortcut, so both aren't listening for <code>fn</code>.</li>
+<li>Grant Microphone access when asked, then Accessibility in System Settings → Privacy &amp; Security. Without Accessibility the app can't type into other apps and puts the text on your clipboard instead.</li>
+<li>Let the speech model download on first run, then re-enter the names and jargon from your Wispr Flow dictionary and any snippets you rely on. There is no importer.</li>
+</ol>
+
+<h2>Running it yourself</h2>
+<p>The app is a Swift package. <code>Sources/FlowCore</code> holds the pure logic (shortcut state machine, styles, cleanup, dictionary, snippets, history), <code>Sources/FlowVoice</code> handles the microphone, speech-to-text and text insertion, and <code>Sources/WisprFlowIsDead</code> is the SwiftUI and AppKit interface. Run <code>scripts/run-dev.sh</code> to build, wrap and launch a development copy, and <code>swift test</code> for the core tests. Updates are delivered through Sparkle with signed update feeds, and you can trigger a check from the menu bar.</p>
+
+<h2>Limitations</h2>
+<ul>
+<li>Mac only, and the published installer targets Apple silicon. Intel Macs and other platforms aren't covered.</li>
+<li>The best cleanup levels and Command Mode require macOS 26; older systems get the simpler rule-based cleanup.</li>
+<li>The first run needs a roughly 600 MB model download before dictation works.</li>
+<li>The project's own status notes say live dictation into real apps, and typing while macOS Secure Input is active, haven't been fully verified by hand yet. Expect some rough edges.</li>
+<li>No team features, sync between devices, or mobile keyboard.</li>
+</ul>
+
+<h2>FAQ</h2>
+<details><summary>Does my voice leave my Mac?</summary><p>Not for dictation. Transcription runs locally through Parakeet or Apple's recognizer, and cleanup uses either rules or Apple's on-device model. The app doesn't need an account or an AI key.</p></details>
+<details><summary>Does it work offline?</summary><p>After the one-time model download, the dictation pipeline runs on the device, so it doesn't depend on a connection.</p></details>
+<details><summary>Can I change the hotkey?</summary><p>Yes. Every shortcut can be rebound, with up to four bindings per action, including extra mouse buttons.</p></details>
+<details><summary>What happens if I say the wrong thing?</summary><p>Say "scratch that" or "no wait" mid-sentence, or use "Undo AI edit" in History to get back the raw transcript.</p></details>
+<details><summary>Will it work on an Intel Mac?</summary><p>The released installer is described as Apple silicon only. You could try building from source, but that isn't a documented, supported path.</p></details>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/alternatives/otter">Free Otter alternative</a></li>
+<li><a href="/alternatives/granola">Free Granola alternative</a></li>
+<li><a href="/alternatives/grammarly">Free Grammarly alternative</a></li>
+<li><a href="/guides/choosing-open-source-software">Guide: choosing open-source software</a></li>
+</ul>
+<p class="meta">YourAppIsDead isn't affiliated with Wispr. "Wispr Flow" is a trademark of its owner and is used here only to describe what this project replaces.</p>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>

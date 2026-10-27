@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Loom alternative: LoomIsDead (open source) — YourAppIsDead</title>
+<meta name="description" content="LoomIsDead is a free, open-source Mac screen and camera recorder. Share a link where viewers react and comment, with no account, video cap or time limit.">
+<link rel="canonical" href="https://yourappisdead.com/alternatives/loom">
+<meta property="og:title" content="Free Loom alternative: LoomIsDead (open source)"><meta property="og:description" content="LoomIsDead is a free, open-source Mac screen and camera recorder. Share a link where viewers react and comment, with no account, video cap or time limit."><meta property="og:url" content="https://yourappisdead.com/alternatives/loom"><meta property="og:type" content="article">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css?v=11">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3018137267540474"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/" style="text-decoration:none">YOURAPP<span class="red">IS</span>DEAD</a>
+  <nav class="topnav sub" aria-label="Site"><a href="/#apps">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a></nav>
+</header>
+<main class="legal">
+<article>
+<p class="crumbs"><a href="/alternatives">Alternatives</a> › Loom</p>
+<h1>Free Loom alternative: LoomIsDead</h1>
+<p class="meta">Last reviewed October 26, 2026 · License: Apache-2.0 · <a href="https://github.com/tommy-muckstack/loomisdead">Source on GitHub</a></p>
+<p class="lede">LoomIsDead is a free, open-source Mac app for recording your screen and camera and sharing the result as a link. Viewers watch in the browser and can react and leave timestamped comments without an account. There's no sign-up, no video count limit and no time limit on recordings.</p>
+<div class="cta"><a class="pri" href="/loomisdead">Get LoomIsDead</a><a href="https://github.com/tommy-muckstack/loomisdead">View the code</a></div>
+
+<h2>What Loom does, and what LoomIsDead covers</h2>
+<p>Loom is built for quick async video: you record your screen with your face in a small bubble, stop, and a share link is ready to paste into chat or a ticket. Viewers can react, comment at a specific moment and see a transcript, and paid plans add editing, AI summaries, viewer insights, privacy controls and team workspaces.</p>
+<p>LoomIsDead focuses on the record-and-share loop. It lives in the menu bar and records full screen (choosing a display), a single window, a custom-sized area, or camera only. A round camera bubble can be dragged anywhere and resized, a 3-2-1 countdown can be skipped or paused, and the control bar offers pause and resume, restart, cancel, an on-screen pen whose strokes fade after two seconds, and confetti. By default the controls don't appear in the finished video.</p>
+<p>Recordings stay in a local library on your Mac (<code>⌘L</code>) where you can search, sort, import an existing video, reveal it in Finder or delete it. Nothing is uploaded until you choose "Copy link". The app then uploads the file, up to 500 MB, and copies a link to the LoomIsDead watch page. That page has a custom player with speed control and keyboard shortcuts, floating emoji reactions, timestamped comments pinned on the timeline, and a view counter.</p>
+
+<h2>Feature comparison</h2>
+<div class="tw"><table>
+<thead><tr><th>Feature</th><th>Loom</th><th>LoomIsDead</th></tr></thead>
+<tbody>
+<tr><td>Screen, window and area recording</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Camera bubble and camera-only mode</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>System audio</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Pause, restart and drawing while recording</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Resolution up to 4K</td><td>Paid plans</td><td>Yes (720p to 4K, 30 or 60 fps)</td></tr>
+<tr><td>Instant share link</td><td>Yes</td><td>Yes (files up to 500 MB)</td></tr>
+<tr><td>Reactions and timestamped comments</td><td>Yes</td><td>Yes, no viewer account needed</td></tr>
+<tr><td>Video and length limits on free use</td><td>Yes</td><td>No</td></tr>
+<tr><td>Trimming and editing</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Transcripts and AI summaries</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>Private or password-protected links</td><td>Yes</td><td>Not yet (links are unlisted)</td></tr>
+<tr><td>Viewer insights</td><td>Yes</td><td>Partial: view count only</td></tr>
+<tr><td>Windows, Chrome extension, mobile</td><td>Yes</td><td>Not yet</td></tr>
+</tbody>
+</table></div>
+
+<h2>What it costs</h2>
+<p>As of October 2026, Loom's <a href="https://www.loom.com/pricing">pricing page</a> lists a free Starter plan limited to 25 videos per person and five minutes per recording, Business at $18 per user per month, and Business + AI at $24 per user per month, with annual billing up to 17% cheaper. Enterprise pricing is by quote.</p>
+<p>LoomIsDead is free, including hosting for shared videos on yourappisdead.com. If you self-host the watch page, you pay whatever your hosting and storage cost.</p>
+
+<h2>How to switch from Loom</h2>
+<ol>
+<li>Check your Mac runs macOS 15 or later. The release is a universal build for Apple silicon and Intel.</li>
+<li>Download the signed, notarized DMG from the project page and drag LoomIsDead to Applications. It runs from the menu bar.</li>
+<li>Grant Screen Recording, Camera and Microphone in System Settings → Privacy &amp; Security. After you enable Screen Recording, macOS asks you to quit and reopen the app.</li>
+<li>Press <code>⌘⇧L</code> to open the recorder, pick a mode, camera and microphone, and record. The same shortcut finishes.</li>
+<li>Download any Loom videos you want to keep and import them into the library if you want to reshare them. Comments and view history don't carry over.</li>
+</ol>
+
+<h2>Running it yourself</h2>
+<p>The Mac app in <code>mac/</code> is Swift: <code>./scripts/run-dev.sh</code> builds, signs and launches it, and <code>swift test</code> runs the tests; building needs macOS 15 and Xcode 16. The website and watch page are a Next.js app (<code>npm ci</code>, <code>npm run dev</code>) that stores video files in Vercel Blob and metadata in Firestore, with a local-file fallback for development. The Mac app's settings include a "Share links" address, so you can point uploads at your own deployment.</p>
+
+<h2>Limitations</h2>
+<ul>
+<li>Mac only, and it needs macOS 15. There is no Windows app, browser extension or mobile recorder.</li>
+<li>No trimming or editing after recording, and no transcripts, captions or AI summaries.</li>
+<li>Shared links are unlisted, not private. Anyone who has the link, or the underlying file address, can watch.</li>
+<li>Uploads are capped at 500 MB per video.</li>
+<li>No folders, workspaces or per-viewer analytics, and the server's rate limiter isn't shared across instances.</li>
+<li>The app sends anonymous usage stats unless you switch them off in Settings.</li>
+</ul>
+
+<h2>FAQ</h2>
+<details><summary>Do I need an account to record or share?</summary><p>No. The app creates an anonymous guest session for uploads, and viewers don't need an account to watch or comment.</p></details>
+<details><summary>Are my recordings uploaded automatically?</summary><p>No. They stay on your Mac until you copy a share link or upload from the library.</p></details>
+<details><summary>Can I delete a shared video?</summary><p>Yes. The session that uploaded a video can rename or delete it from the watch page, and deleting removes the stored file too.</p></details>
+<details><summary>Is there a recording time limit?</summary><p>No time limit is set by the app. Shared files must be 500 MB or smaller, so very long, high-resolution recordings may need a lower quality setting.</p></details>
+<details><summary>Can I record my computer's sound?</summary><p>Yes. Turn on "Record computer sounds" in the recorder menu or "Use system audio" in Settings.</p></details>
+
+<h2>Related</h2>
+<ul>
+<li><a href="/alternatives/cleanshot-x">Free CleanShot X alternative</a></li>
+<li><a href="/alternatives/wetransfer">Free WeTransfer alternative</a></li>
+<li><a href="/alternatives/granola">Free Granola alternative</a></li>
+<li><a href="/guides/free-saas-alternatives">Guide: free SaaS alternatives</a></li>
+</ul>
+<p class="meta">YourAppIsDead isn't affiliated with Loom, Inc. or Atlassian. "Loom" is a trademark of its owner and is used here only to describe what this project replaces.</p>
+</article>
+</main>
+<footer class="foot">
+  <nav class="footlinks" aria-label="Site"><a href="/">Apps</a><a href="/alternatives">Alternatives</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><button type="button" data-consent="settings">Privacy &amp; cookie settings</button><button type="button" data-consent="optout">Do Not Sell or Share My Personal Information</button></nav>
+  <p class="fine">Not affiliated with any company named here. Product names are used only to describe what each project replaces.</p>
+</footer>
+<script src="/analytics.js?v=6" defer></script>
+<script src="/consent.js?v=1" defer></script>
+</body>
+</html>
